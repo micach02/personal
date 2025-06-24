@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Michael Vincent</title>
+    <!-- Bootstrap CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+</head>
+
+<body id="home">
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm sticky-top"
+        style="top: 0; left: 0; right: 0; z-index: 1030; padding-top: 0.25rem; padding-bottom: 0.25rem;">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#home">Michael Vincent</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar"
+                aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNavbar">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home" id="navHome">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about" id="navAbout">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#portfolio" id="navPortfolio">Portfolio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact" id="navContact">Contact</a>
+                    </li>
+                    <li>
+                        <!-- Dark Mode Toggle Button -->
+                        <button id="darkModeToggle" class="btn btn-outline-light position-fixed" style="z-index: 2000;"
+                            aria-label="Toggle dark mode">
+                            <i class="bi bi-moon"></i>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section text-white text-center d-flex align-items-start justify-content-center fade-section"
+        style="min-height: 90vh; position: relative; overflow: hidden;">
+        <div class="hero-bg-img"
+            style="position: absolute; inset: 0; z-index: 0; background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('images/michael.jpg') center center/cover no-repeat; transition: transform 0.6s cubic-bezier(.4,0,.2,1); will-change: transform;">
+        </div>
+        <div class="container py-5 position-relative z-2" style="margin-top: 60px; z-index: 2;">
+            <h1 class="display-2 fw-bold mb-3">I'm Michael Vincent</h1>
+            <hr>
+            <p class="lead fs-3">HTML5 Developer</p>
+        </div>
+        <div style="position: absolute; inset: 0; background: rgba(0,0,0,0.1); z-index: 1;"></div>
+    </section>
+
+    <!-- Main Section -->
+    <main id="about" class="container my-5">
+        <!-- about me -->
+        <section class="fade-section" style="margin-top: 100px;margin-bottom: 100px;">
+            <div class="row align-items-center">
+                <div class="col-md-5 mb-4 mb-md-0 text-center">
+                    <img src="images/michael2.jpg" alt="Michael Vincent" class="img-fluid rounded-4 shadow"
+                        style="max-width: 320px;">
+                </div>
+                <div class="col-md-7">
+                    <h2>About Me</h2>
+                    <p>
+                        I am an experienced HTML5 Developer at PV Multimedia Inc., where I specialize in building
+                        interactive and engaging web applications. My passion lies in crafting clean, efficient code and
+                        delivering user-friendly digital experiences. I am continuously expanding my skills, with a keen
+                        interest in modern web technologies. Outside of work, I enjoy exploring new
+                        places and cuisines—especially ramen—and am always eager to learn and grow both professionally
+                        and personally.
+                    </p>
+                    <div class="d-flex flex-wrap gap-3 mt-4">
+                        <div class="bg-light rounded-3 px-4 py-2 shadow-sm text-center">
+                            <span class="fw-bold fs-4 jungle-green">7+</span><br>
+                            <span class="text-muted small">Years Experience</span>
+                        </div>
+                        <div class="bg-light rounded-3 px-4 py-2 shadow-sm text-center">
+                            <span class="fw-bold fs-4 jungle-green">5</span><br>
+                            <span class="text-muted small">Core Skills</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <hr>
+        <!-- professional skills -->
+        <section class="fade-section" style="margin-top: 100px;margin-bottom: 100px;">
+            <div class="row pb-3">
+                <div class="col text-center">
+                    <h2 class="mb-4 fw-bold display-5">Professional Skills</h2>
+                    <p class="text-muted fs-5 mb-0">My core competencies & tools</p>
+                </div>
+            </div>
+            <div class="row g-4 justify-content-center">
+                <!-- Programming Skills Card -->
+                <div class="col-md-6">
+                    <div class="card shadow-sm border-0 h-100 bg-light bg-opacity-75 p-4">
+                        <h4 class="mb-4 text-center"><i class="bi bi-code-slash me-2"></i>Programming</h4>
+                        <div class="skills-list">
+                            <div class="skill-bar mb-4">
+                                <div class="d-flex justify-content-between align-items-center mb-1">
+                                    <span><i class="bi bi-filetype-html me-2"></i>HTML &amp; CSS</span>
+                                    <span class="fw-bold">0%</span>
+                                </div>
+                                <div class="progress" style="height: 10px;">
+                                    <div class="progress-bar sunset-orange" id="htmlCssProgress" role="progressbar"
+                                        style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="skill-bar mb-4">
+                                <div class="d-flex justify-content-between align-items-center mb-1">
+                                    <span><i class="bi bi-filetype-js me-2"></i>JavaScript</span>
+                                    <span class="fw-bold">0%</span>
+                                </div>
+                                <div class="progress" style="height: 10px;">
+                                    <div class="progress-bar sunset-orange" id="jsProgress" role="progressbar"
+                                        style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="skill-bar mb-4">
+                                <div class="d-flex justify-content-between align-items-center mb-1">
+                                    <span><i class="bi bi-filetype-php me-2"></i>PHP</span>
+                                    <span class="fw-bold">0%</span>
+                                </div>
+                                <div class="progress" style="height: 10px;">
+                                    <div class="progress-bar sunset-orange" id="phpProgress" role="progressbar"
+                                        style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="skill-bar mb-4">
+                                <div class="d-flex justify-content-between align-items-center mb-1">
+                                    <span><i class="bi bi-bootstrap-fill me-2"></i>Bootstrap</span>
+                                    <span class="fw-bold">0%</span>
+                                </div>
+                                <div class="progress" style="height: 10px;">
+                                    <div class="progress-bar sunset-orange" id="bootstrapProgress" role="progressbar"
+                                        style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="d-flex justify-content-between align-items-center mb-1">
+                                    <span><i class="bi bi-wordpress me-2"></i>WordPress</span>
+                                    <span class="fw-bold">0%</span>
+                                </div>
+                                <div class="progress" style="height: 10px;">
+                                    <div class="progress-bar sunset-orange" id="wordpressProgress" role="progressbar"
+                                        style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Software & Tools Card -->
+                <div class="col-md-6">
+                    <div class="card shadow-sm border-0 h-100 bg-light bg-opacity-75 p-4">
+                        <h4 class="mb-4 text-center"><i class="bi bi-tools me-2"></i>Software &amp; Tools</h4>
+                        <div class="skills-list">
+                            <div class="skill-bar mb-4">
+                                <div class="d-flex justify-content-between align-items-center mb-1">
+                                    <span><i class="bi bi-kanban me-2"></i>Canva</span>
+                                    <span class="fw-bold">0%</span>
+                                </div>
+                                <div class="progress" style="height: 10px;">
+                                    <div class="progress-bar sunset-orange" id="canvaProgress" role="progressbar"
+                                        style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="skill-bar mb-4">
+                                <div class="d-flex justify-content-between align-items-center mb-1">
+                                    <span><i class="bi bi-easel2 me-2"></i>Adobe XD</span>
+                                    <span class="fw-bold">0%</span>
+                                </div>
+                                <div class="progress" style="height: 10px;">
+                                    <div class="progress-bar sunset-orange" id="adobeXdProgress" role="progressbar"
+                                        style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="skill-bar mb-4">
+                                <div class="d-flex justify-content-between align-items-center mb-1">
+                                    <span><i class="bi bi-easel2 me-2"></i>Figma</span>
+                                    <span class="fw-bold">0%</span>
+                                </div>
+                                <div class="progress" style="height: 10px;">
+                                    <div class="progress-bar sunset-orange" id="figmaProgress" role="progressbar"
+                                        style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="skill-bar mb-4">
+                                <div class="d-flex justify-content-between align-items-center mb-1">
+                                    <span><i class="bi bi-image me-2"></i>Adobe Photoshop</span>
+                                    <span class="fw-bold">0%</span>
+                                </div>
+                                <div class="progress" style="height: 10px;">
+                                    <div class="progress-bar sunset-orange" id="photoshopProgress" role="progressbar"
+                                        style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="skill-bar mb-4">
+                                <div class="d-flex justify-content-between align-items-center mb-1">
+                                    <span><i class="bi bi-film me-2"></i>Adobe Animate</span>
+                                    <span class="fw-bold">0%</span>
+                                </div>
+                                <div class="progress" style="height: 10px;">
+                                    <div class="progress-bar sunset-orange" id="animateProgress" role="progressbar"
+                                        style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="skill-bar mb-4">
+                                <div class="d-flex justify-content-between align-items-center mb-1">
+                                    <span><i class="bi bi-code-square me-2"></i>VS Code</span>
+                                    <span class="fw-bold">0%</span>
+                                </div>
+                                <div class="progress" style="height: 10px;">
+                                    <div class="progress-bar sunset-orange" id="vscodeProgress" role="progressbar"
+                                        style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="d-flex justify-content-between align-items-center mb-1">
+                                    <span><i class="bi bi-box me-2"></i>Blender</span>
+                                    <span class="fw-bold">0%</span>
+                                </div>
+                                <div id="portfolio" class="progress" style="height: 10px;">
+                                    <div class="progress-bar sunset-orange" id="blenderProgress" role="progressbar"
+                                        style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <hr>
+        <!-- portfolio -->
+        <section class="fade-section" style="margin-top: 100px;margin-bottom: 100px;">
+            <div class="row mb-4">
+                <div class="col text-center">
+                    <h2 class="mb-3 fw-bold display-5">Portfolio</h2>
+                    <p class="text-muted fs-5 mb-0">Featured Projects & Case Studies</p>
+                </div>
+            </div>
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                <!-- Project 1 -->
+                <div class="col">
+                    <div class="card portfolio-card h-100 border-0 shadow-lg hover-shadow transition">
+                        <div class="portfolio-img-container position-relative">
+                            <img src="images/project1/project1.png" class="portfolio-img card-img-top"
+                                alt="Project 1 Screenshot">
+                            <div class="portfolio-overlay d-flex flex-column justify-content-center align-items-center">
+                                <a href="projects/project1/index.html" class="btn btn-primary rounded-pill px-4 py-2"
+                                    target="_self">
+                                    <i class="bi bi-box-arrow-up-right me-2"></i>View Project
+                                </a>
+                            </div>
+                        </div>
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title mb-2 fw-semibold">Interactive E-Learning Modules</h5>
+                            <div class="mb-2">
+                                <span class="badge bg-sky-blue me-1">HTML5</span>
+                                <span class="badge bg-sky-blue me-1">CSS</span>
+                                <span class="badge bg-sky-blue me-1">JavaScript</span>
+                                <span class="badge bg-sky-blue me-1">jQuery</span>
+                            </div>
+                            <p class="card-text text-muted mb-0">
+                                Responsive HTML5 e-learning modules with interactive quizzes, animations, and progress
+                                tracking.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Project 2 -->
+                <div class="col">
+                    <div class="card portfolio-card h-100 border-0 shadow-lg hover-shadow transition">
+                        <div class="portfolio-img-container position-relative">
+                            <img src="images/project2/project2.png" class="portfolio-img card-img-top"
+                                alt="Project 2 Screenshot">
+                            <div class="portfolio-overlay d-flex flex-column justify-content-center align-items-center">
+                                <a href="projects/project2/index.html" class="btn btn-primary rounded-pill px-4 py-2"
+                                    target="_self">
+                                    <i class="bi bi-box-arrow-up-right me-2"></i>View Project
+                                </a>
+                            </div>
+                        </div>
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title mb-2 fw-semibold">3D Avatar Animation</h5>
+                            <div class="mb-2">
+                                <span class="badge bg-sky-blue me-1">Blender</span>
+                                <span class="badge bg-sky-blue me-1">NVIDIA Omniverse</span>
+                            </div>
+                            <p class="card-text text-muted mb-0">
+                                Animated 3D avatar tutors for educational content, integrated into web modules.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Project 3 -->
+                <div class="col">
+                    <div class="card portfolio-card h-100 border-0 shadow-lg hover-shadow transition">
+                        <div class="portfolio-img-container position-relative">
+                            <img src="images/project3/project3.png" class="portfolio-img card-img-top"
+                                alt="Project 3 Screenshot">
+                            <div class="portfolio-overlay d-flex flex-column justify-content-center align-items-center">
+                                <a href="projects/project3/index.html" class="btn btn-primary rounded-pill px-4 py-2"
+                                    target="_self">
+                                    <i class="bi bi-box-arrow-up-right me-2"></i>View Project
+                                </a>
+                            </div>
+                        </div>
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title mb-2 fw-semibold">Banking Simulation Apps</h5>
+                            <div class="mb-2">
+                                <span class="badge bg-sky-blue me-1">PHP</span>
+                                <span class="badge bg-sky-blue me-1">JavaScript</span>
+                                <span class="badge bg-sky-blue me-1">Bootstrap</span>
+                            </div>
+                            <p class="card-text text-muted mb-0">
+                                Web-based banking simulation app for training, with real-time feedback and scoring.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <hr>
+        <!-- experience -->
+        <section class="fade-section" style="margin-top: 100px; margin-bottom: 100px;">
+            <div class="row mb-4">
+                <div class="col text-center">
+                    <h2 class="mb-4 fw-bold display-5">Experience</h2>
+                    <p class="text-muted mb-0 fs-5">Professional journey & roles</p>
+                </div>
+            </div>
+            <div class="timeline position-relative">
+                <!-- Timeline vertical line -->
+                <div class="position-absolute top-0 start-50 translate-middle-x h-100"
+                    style="width: 4px; background: linear-gradient(180deg, #38bdf8 0%, #e3f0ff 100%); opacity: 0.15; z-index: 0;">
+                </div>
+                <!-- Experience 1 -->
+                <div class="row align-items-center mb-5 position-relative">
+                    <div class="col-md-5 text-md-end text-center">
+                        <div class="d-inline-block bg-white shadow rounded-pill px-4 py-2 mb-2 position-relative z-1">
+                            <span class="fw-semibold text-sky-blue">Apr - Jun 2016</span>
+                        </div>
+                        <div>
+                            <span class="badge bg-secondary">Internship</span>
+                        </div>
+                    </div>
+                    <div class="col-md-2 d-flex justify-content-center align-items-center position-relative">
+                        <span class="timeline-dot bg-sky-blue"></span>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="card border-0 shadow-sm mb-0">
+                            <div class="card-body">
+                                <h5 class="mb-1">Technician</h5>
+                                <p class="mb-1 fw-semibold text-secondary">CEBU CITY HALL, MICS Department</p>
+                                <ul class="mb-0 ps-3">
+                                    <li>Assisted senior technicians with software installation and updates across city
+                                        hall departments.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Experience 2 -->
+                <div class="row align-items-center mb-5 flex-md-row-reverse position-relative">
+                    <div class="col-md-5 text-md-start text-center">
+                        <div class="d-inline-block bg-white shadow rounded-pill px-4 py-2 mb-2 position-relative z-1">
+                            <span class="fw-semibold text-sky-blue">Oct 2016 - Mar 2017</span>
+                        </div>
+                        <div>
+                            <span class="badge bg-secondary">Internship</span>
+                        </div>
+                    </div>
+                    <div class="col-md-2 d-flex justify-content-center align-items-center position-relative">
+                        <span class="timeline-dot bg-sky-blue"></span>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="card border-0 shadow-sm mb-0">
+                            <div class="card-body">
+                                <h5 class="mb-1">Technician</h5>
+                                <p class="mb-1 fw-semibold text-secondary">Channel Technologies Inc.</p>
+                                <ul class="mb-0 ps-3">
+                                    <li>Assisted senior technicians with the installation and testing of POS machines in
+                                        various retail stores and money transfer facilities.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Experience 3 -->
+                <div class="row align-items-center mb-5 position-relative">
+                    <div class="col-md-5 text-md-end text-center">
+                        <div class="d-inline-block bg-white shadow rounded-pill px-4 py-2 mb-2 position-relative z-1">
+                            <span class="fw-semibold text-success">Jun 2017 - Present</span>
+                        </div>
+                        <div>
+                            <span class="badge bg-success">Full-Time</span>
+                        </div>
+                    </div>
+                    <div class="col-md-2 d-flex justify-content-center align-items-center position-relative">
+                        <span class="timeline-dot bg-success"></span>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="card border-0 shadow-sm mb-0">
+                            <div class="card-body">
+                                <h5 class="mb-1">HTML5 Developer</h5>
+                                <p class="mb-1 fw-semibold text-secondary">PV Multimedia Inc.</p>
+                                <ul class="mb-0 ps-3">
+                                    <li>Team Lead Front-end Development.</li>
+                                    <li>Collaborate with designers and stakeholders in designing UI/UX elements.</li>
+                                    <li>Translate storyboards and wireframes into responsive web applications.</li>
+                                    <li>Develop and maintain interactive e-learning modules using HTML5, JavaScript, and CSS.</li>
+                                    <li>Create animated 3D avatar tutors for educational content.</li>
+                                    <li>Develop simulation apps using PHP and JavaScript.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <hr>
+        <!-- education -->
+        <section class="fade-section" style="margin-top: 100px; margin-bottom: 100px;">
+            <div class="row mb-4">
+                <div class="col text-center">
+                    <h2 class="mb-4 fw-bold display-5">Education</h2>
+                    <p class="text-muted mb-0 fs-5">Academic background & achievements</p>
+                </div>
+            </div>
+            <div class="row justify-content-center align-items-stretch">
+                <div class="col-lg-10">
+                    <div class="card border-0 shadow-sm bg-gradient mb-4"
+                        style="background: linear-gradient(135deg, #f8fafc 60%, #e3f0ff 100%);">
+                        <div class="card-body d-flex flex-column flex-md-row align-items-center p-4">
+                            <div class="me-md-4 mb-3 mb-md-0 text-center text-md-start" style="min-width: 220px;">
+                                <div class="d-flex flex-column align-items-center align-items-md-start">
+                                    <span class="badge bg-success fs-6 mb-2 px-3 py-2 rounded-pill">2012 - 2017</span>
+                                    <h5 class="fw-bold mb-1 jungle-green">BS in Information Technology</h5>
+                                    <span class="text-muted small">Cebu Institute of Technology - University</span>
+                                </div>
+                            </div>
+                            <div class="flex-grow-1">
+                                <ul class="list-unstyled mb-0 ps-0">
+                                    <li class="mb-2 d-flex align-items-start">
+                                        <span class="me-2 text-sky-blue">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                                fill="currentColor" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+                                                <path
+                                                    d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM6.97 11.03a.75.75 0 0 0 1.07 0l3.992-3.992a.75.75 0 1 0-1.06-1.06L7.5 9.439 6.03 7.97a.75.75 0 1 0-1.06 1.06l1.999 2z" />
+                                            </svg>
+                                        </span>
+                                        <span>Comprehensive training in software development, networking, databases, and
+                                            systems analysis</span>
+                                    </li>
+                                    <li class="mb-2 d-flex align-items-start">
+                                        <span class="me-2 text-sky-blue">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                                fill="currentColor" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+                                                <path
+                                                    d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM6.97 11.03a.75.75 0 0 0 1.07 0l3.992-3.992a.75.75 0 1 0-1.06-1.06L7.5 9.439 6.03 7.97a.75.75 0 1 0-1.06 1.06l1.999 2z" />
+                                            </svg>
+                                        </span>
+                                        <span>Hands-on experience in programming, web development, and IT
+                                            infrastructure</span>
+                                    </li>
+                                    <li class="mb-2 d-flex align-items-start">
+                                        <span class="me-2 text-sky-blue">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                                fill="currentColor" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+                                                <path
+                                                    d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM6.97 11.03a.75.75 0 0 0 1.07 0l3.992-3.992a.75.75 0 1 0-1.06-1.06L7.5 9.439 6.03 7.97a.75.75 0 1 0-1.06 1.06l1.999 2z" />
+                                            </svg>
+                                        </span>
+                                        <span>Developed strong skills in problem-solving, software engineering, and
+                                            project collaboration</span>
+                                    </li>
+                                    <li class="d-flex align-items-start">
+                                        <span class="me-2 text-sky-blue">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                                fill="currentColor" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+                                                <path
+                                                    d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM6.97 11.03a.75.75 0 0 0 1.07 0l3.992-3.992a.75.75 0 1 0-1.06-1.06L7.5 9.439 6.03 7.97a.75.75 0 1 0-1.06 1.06l1.999 2z" />
+                                            </svg>
+                                        </span>
+                                        <span>Completed capstone projects and internships simulating real-world IT
+                                            challenges</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <hr>
+        <!-- professional development -->
+        <section class="fade-section" style="margin-top: 100px; margin-bottom: 100px;">
+            <div class="row mb-4">
+                <div class="col text-center">
+                    <h2 class="mb-4 fw-bold display-5">Professional Development</h2>
+                    <p class="text-muted mb-0 fs-5">Courses & continuous learning</p>
+                </div>
+            </div>
+            <div class="row justify-content-center g-4">
+                <div class="col-md-6 col-lg-5">
+                    <div class="card shadow-sm border-0 h-100 bg-light bg-opacity-75">
+                        <div class="card-body d-flex align-items-start gap-3">
+                            <div class="d-flex flex-column align-items-center justify-content-center">
+                                <span class="badge bg-info text-dark fs-6 mb-2 px-3 py-2 rounded-pill">2024</span>
+                                <span class="display-6 text-primary mb-2">
+                                    <i class="bi bi-code-slash"></i>
+                                </span>
+                            </div>
+                            <div>
+                                <h5 class="mb-1 fw-semibold">The Complete Web Developer Bootcamp</h5>
+                                <div class="mb-2">
+                                    <span class="badge bg-primary bg-opacity-10 text-primary fw-normal">Angela Yu</span>
+                                    <span class="badge bg-secondary bg-opacity-10 text-secondary fw-normal">Udemy</span>
+                                </div>
+                                <ul class="mb-0 ps-3 small text-muted">
+                                    <li>HTML, CSS, JavaScript, Node, React, PostgreSQL, Web3, DApps</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-5">
+                    <div class="card shadow-sm border-0 h-100 bg-light bg-opacity-75">
+                        <div class="card-body d-flex align-items-start gap-3">
+                            <div class="d-flex flex-column align-items-center justify-content-center">
+                                <span class="badge bg-info text-dark fs-6 mb-2 px-3 py-2 rounded-pill">2025</span>
+                                <span class="display-6 text-primary mb-2">
+                                    <i class="bi bi-wordpress"></i>
+                                </span>
+                            </div>
+                            <div>
+                                <h5 class="mb-1 fw-semibold">WordPress 2025: The Complete WordPress Website Course</h5>
+                                <div class="mb-2">
+                                    <span class="badge bg-primary bg-opacity-10 text-primary fw-normal">Tanzeel</span>
+                                    <span class="badge bg-secondary bg-opacity-10 text-secondary fw-normal">Udemy</span>
+                                </div>
+                                <ul class="mb-0 ps-3 small text-muted">
+                                    <li>WordPress, Page Builders, Themes, Plugins</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="col-md-6 col-lg-5">
+                    <div class="card shadow-sm border-0 h-100 bg-light bg-opacity-75">
+                        <div class="card-body d-flex align-items-start gap-3">
+                            <div class="d-flex flex-column align-items-center justify-content-center">
+                                <span class="badge bg-info text-dark fs-6 mb-2 px-3 py-2 rounded-pill">2025</span>
+                                <span class="display-6 text-primary mb-2">
+                                    <i class="bi bi-easel2"></i>
+                                </span>
+                            </div>
+                            <div>
+                                <h5 class="mb-1 fw-semibold">Google UX Design</h5>
+                                <div class="mb-2">
+                                    <span class="badge bg-primary bg-opacity-10 text-primary fw-normal">Google</span>
+                                    <span class="badge bg-secondary bg-opacity-10 text-secondary fw-normal">Coursera</span>
+                                </div>
+                                <ul class="mb-0 ps-3 small text-muted">
+                                    <li>UX Design, User Research, Prototyping, Usability Testing</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>   -->
+            </div>
+        </section>
+        <!-- <hr> -->
+        <!-- certifications -->
+        <!-- <section class="fade-section" style="margin-top: 100px; margin-bottom: 100px;">
+            <div class="row mb-4">
+                <div class="col text-center">
+                    <h2 class="mb-4 fw-bold display-5">Certifications</h2>
+                    <p class="text-muted mb-0 fs-5">Professional credentials and achievements</p>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-7">
+                    <div class="card border-0 shadow-sm bg-gradient"
+                        style="background: linear-gradient(135deg, #f8fafc 60%, #e3f0ff 100%);">
+                        <div class="card-body d-flex flex-column align-items-center py-5">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" fill="#0d6efd" class="mb-3"
+                                viewBox="0 0 16 16"></svg>
+                            <path
+                                d="M9.669.864 8 0 6.331.864 5.803 2.824l-1.932.282L2.522 4.522l.282 1.932 1.96.528.528 1.96 1.932.282 1.932-.282.528-1.96 1.96-.528.282-1.932-1.349-1.416-1.932-.282L9.669.864zm-2.633 3.2.528-1.96L8 1.134l1.436.97.528 1.96-1.96.528-.528 1.96-1.96-.528zm2.633 7.936-1.669.864-1.669-.864-.528-1.96-1.96-.528-.282-1.932 1.349-1.416 1.932-.282 1.932.282 1.349 1.416-.282 1.932-1.96.528-.528 1.96z" />
+                            </svg>
+                            <div class="text-center">
+                                <h5 class="fw-semibold mb-2">Coming Soon</h5>
+                                <p class="mb-0 text-secondary fs-6">
+                                    I am currently working towards earning professional certifications.<br>
+                                    <span class="fw-semibold text-primary">Stay tuned for updates!</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section> -->
+        <hr id="contact">
+        <!-- contact -->
+        <section class="fade-section py-5" style="margin-top: 100px; margin-bottom: 100px;">
+            <div class="container">
+                <div class="row g-4 align-items-stretch">
+                    <!-- Contact Info Card -->
+                    <div class="col-lg-5">
+                        <div class="card shadow-sm border-0 h-100 bg-light bg-opacity-75">
+                            <div class="card-body d-flex flex-column justify-content-center h-100 p-4">
+                                <h3 class="card-title mb-4 fw-bold">Contact</h3>
+                                <ul class="list-unstyled">
+                                    <li class="mb-4 d-flex align-items-center">
+                                        <span
+                                            class="d-inline-flex justify-content-center align-items-center rounded-circle bg-primary bg-opacity-10 me-3"
+                                            style="width:48px;height:48px;">
+                                            <i class="bi bi-envelope-fill fs-4 text-primary"></i>
+                                        </span>
+                                        <div>
+                                            <div class="fw-semibold text-secondary small text-uppercase">Email</div>
+                                            <a href="mailto:michaelabellar75@gmail.com"
+                                                class="text-decoration-none fs-6">michaelabellar75@gmail.com</a>
+                                        </div>
+                                    </li>
+                                    <li class="mb-4 d-flex align-items-center">
+                                        <span
+                                            class="d-inline-flex justify-content-center align-items-center rounded-circle bg-primary bg-opacity-10 me-3"
+                                            style="width:48px;height:48px;">
+                                            <i class="bi bi-telephone-fill fs-4 text-primary"></i>
+                                        </span>
+                                        <div>
+                                            <div class="fw-semibold text-secondary small text-uppercase">Phone</div>
+                                            <a href="tel:+639393661843" class="text-decoration-none fs-6">+63 393 661
+                                                1843</a>
+                                        </div>
+                                    </li>
+                                    <li class="mb-4 d-flex align-items-center">
+                                        <span
+                                            class="d-inline-flex justify-content-center align-items-center rounded-circle bg-primary bg-opacity-10 me-3"
+                                            style="width:48px;height:48px;">
+                                            <i class="bi bi-geo-alt-fill fs-4 text-primary"></i>
+                                        </span>
+                                        <div>
+                                            <div class="fw-semibold text-secondary small text-uppercase">Location</div>
+                                            <span class="fs-6">#55 Panganiban St., Brgy. Pahina Central,<br>Cebu City,
+                                                Cebu, Philippines, 6000</span>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <div class="mt-3">
+                                    <a href="https://www.linkedin.com/in/michael-vincent-abellar-971798a5/"
+                                        target="_blank" class="btn btn-outline-sky-blue btn-sm rounded-pill me-2">
+                                        <i class="bi bi-linkedin"></i> LinkedIn
+                                    </a>
+                                    <a href="https://github.com/micach02" target="_blank"
+                                        class="btn btn-outline-dark btn-sm rounded-pill me-2">
+                                        <i class="bi bi-github"></i> GitHub
+                                    </a>
+                                    <a href="https://www.facebook.com/mykill.vitsen/" target="_blank"
+                                        class="btn btn-outline-sky-blue btn-sm rounded-pill">
+                                        <i class="bi bi-facebook"></i> Facebook
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Contact Form Card -->
+                    <div class="col-lg-7">
+                        <div class="card shadow-sm border-0 h-100 bg-white">
+                            <div
+                                class="card-body d-flex flex-column justify-content-center align-items-center h-100 py-5 px-4">
+                                <h3 class="card-title mb-4 fw-bold">Let's Connect</h3>
+                                <form id="contactForm" class="w-100" style="max-width: 420px;">
+                                    <div class="form-floating mb-3">
+                                        <input type="text" class="form-control rounded-2 shadow-sm" id="contactName"
+                                            placeholder="Your Name" required>
+                                        <label for="contactName">Name</label>
+                                    </div>
+                                    <div class="form-floating mb-3">
+                                        <input type="email" class="form-control rounded-2 shadow-sm" id="contactEmail"
+                                            placeholder="your@email.com" required>
+                                        <label for="contactEmail">Email</label>
+                                    </div>
+                                    <div class="form-floating mb-3">
+                                        <textarea class="form-control rounded-2 shadow-sm" id="contactMessage"
+                                            placeholder="Type your message..." style="height: 120px;"
+                                            required></textarea>
+                                        <label for="contactMessage">Message</label>
+                                    </div>
+                                    <button type="submit"
+                                        class="btn btn-primary w-100 py-2 rounded-2 fw-semibold shadow-sm"
+                                        style="font-size: 1.1rem; letter-spacing: 0.5px;">
+                                        <i class="bi bi-send me-2"></i>Send Message
+                                    </button>
+                                </form>
+                                <div id="contactFormAlert" class="alert d-none mt-3 w-100 text-center" role="alert">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="bg-dark text-white text-center py-3">
+        <div class="container">
+            <small>&copy; <span id="footerYear"></span> Michael Vincent Abellar. All rights reserved.</small>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+    <script>
+        (function () {
+            emailjs.init("0T4BlYr-j_FV1WJ5N"); // Replace with your EmailJS user ID
+        })();
+        document.getElementById('contactForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            emailjs.send("service_fjkoeyh", "template_1oiwg99", {
+                from_name: document.getElementById('contactName').value,
+                from_email: document.getElementById('contactEmail').value,
+                message: document.getElementById('contactMessage').value,
+                time: new Date().toISOString()
+            })
+                .then(function (response) {
+                    const alertBox = document.getElementById('contactFormAlert');
+                    alertBox.classList.remove('d-none');
+                    alertBox.classList.add('alert', 'alert-success', 'mt-3');
+                    alertBox.textContent = 'Thank you! Your message has been sent.';
+                    document.getElementById('contactForm').reset();
+                }, function (error) {
+                    const alertBox = document.getElementById('contactFormAlert');
+                    alertBox.classList.remove('d-none');
+                    alertBox.classList.add('alert', 'alert-danger', 'mt-3');
+                    alertBox.textContent = 'Sorry, there was an error sending your message. Please try again later.';
+                });
+        });
+    </script>
+
+    <!-- Bootstrap JS Bundle CDN (optional, for interactive components) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./js/app.js"></script>
+</body>
+
+</html>
