@@ -1,10 +1,13 @@
-const footerYear = document.getElementById('footerYear');
-if (footerYear) {
-    footerYear.textContent = new Date().getFullYear();
-}
+// Set footer year
+(function setFooterYear() {
+    const footerYear = document.getElementById('footerYear');
+    if (footerYear) {
+        footerYear.textContent = new Date().getFullYear();
+    }
+})();
 
 // Animate progress bars when they enter the viewport
-function animateProgressBars() {
+(function animateProgressBars() {
     const skills = [
         { id: 'htmlCssProgress', value: 90 },
         { id: 'jsProgress', value: 80 },
@@ -19,25 +22,19 @@ function animateProgressBars() {
         { id: 'vscodeProgress', value: 90 },
         { id: 'blenderProgress', value: 40 },
     ];
-
     let animated = false;
 
     function isInViewport(el) {
         const rect = el.getBoundingClientRect();
-        return (
-            rect.top < window.innerHeight &&
-            rect.bottom > 0
-        );
+        return rect.top < window.innerHeight && rect.bottom > 0;
     }
 
     function animateBarAndNumber(bar, numberSpan, endValue, delay) {
         setTimeout(() => {
-            // Animate progress bar
             bar.style.transition = 'width 1.2s cubic-bezier(.4,0,.2,1)';
-            bar.style.width = endValue + '%';
+            bar.style.width = `${endValue}%`;
             bar.setAttribute('aria-valuenow', endValue);
 
-            // Animate number
             let frame = 0;
             const duration = 1200;
             const frameRate = 30;
@@ -46,11 +43,8 @@ function animateProgressBars() {
             function updateNumber() {
                 frame++;
                 const progress = Math.min(frame / totalFrames, 1);
-                const current = Math.round(progress * endValue);
-                numberSpan.textContent = current + '%';
-                if (progress < 1) {
-                    setTimeout(updateNumber, frameRate);
-                }
+                numberSpan.textContent = `${Math.round(progress * endValue)}%`;
+                if (progress < 1) setTimeout(updateNumber, frameRate);
             }
             updateNumber();
         }, delay);
@@ -73,48 +67,45 @@ function animateProgressBars() {
         }
     }
 
-    window.addEventListener('scroll', triggerAnimation);
-    window.addEventListener('resize', triggerAnimation);
-    window.addEventListener('DOMContentLoaded', triggerAnimation);
-}
-
-animateProgressBars();
+    ['scroll', 'resize', 'DOMContentLoaded'].forEach(evt =>
+        window.addEventListener(evt, triggerAnimation)
+    );
+})();
 
 // Hero image zoom on scroll
-window.addEventListener('scroll', function () {
-    const hero = document.querySelector('.hero-section');
-    const bg = document.querySelector('.hero-bg-img');
-    if (!hero || !bg) return;
-    const rect = hero.getBoundingClientRect();
-    const windowHeight = window.innerHeight || document.documentElement.clientHeight;
-    // Only animate while hero is in viewport
-    if (rect.bottom > 0 && rect.top < windowHeight) {
-        // Calculate scroll progress (0 at top, 1 at bottom of hero)
-        const progress = Math.min(Math.max((window.scrollY || window.pageYOffset) / (hero.offsetHeight * 0.8), 0), 1);
-        // Scale from 1 to 1.15
-        bg.style.transform = `scale(${1 + progress * 0.15})`;
-    }
-});
-
-// Fade in sections on scroll
-function fadeInSections() {
-    const sections = document.querySelectorAll('.fade-section');
-    sections.forEach(section => {
-        const rect = section.getBoundingClientRect();
-        if (rect.top < window.innerHeight - 80 && rect.bottom > 80) {
-            section.classList.add('active');
-        } else {
-            section.classList.remove('active');
+(function heroImageZoom() {
+    window.addEventListener('scroll', () => {
+        const hero = document.querySelector('.hero-section');
+        const bg = document.querySelector('.hero-bg-img');
+        if (!hero || !bg) return;
+        const rect = hero.getBoundingClientRect();
+        const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+        if (rect.bottom > 0 && rect.top < windowHeight) {
+            const progress = Math.min(Math.max((window.scrollY || window.pageYOffset) / (hero.offsetHeight * 0.8), 0), 1);
+            bg.style.transform = `scale(${1 + progress * 0.15})`;
         }
     });
-}
-window.addEventListener('scroll', fadeInSections);
-window.addEventListener('resize', fadeInSections);
-window.addEventListener('DOMContentLoaded', fadeInSections);
+})();
 
+// Fade in sections on scroll
+(function fadeInSections() {
+    function handleFade() {
+        document.querySelectorAll('.fade-section').forEach(section => {
+            const rect = section.getBoundingClientRect();
+            if (rect.top < window.innerHeight - 80 && rect.bottom > 80) {
+                section.classList.add('active');
+            } else {
+                section.classList.remove('active');
+            }
+        });
+    }
+    ['scroll', 'resize', 'DOMContentLoaded'].forEach(evt =>
+        window.addEventListener(evt, handleFade)
+    );
+})();
 
 // Dynamically set active nav-link based on scroll position and click
-document.addEventListener("DOMContentLoaded", function () {
+(function navActiveOnScroll() {
     const sections = [
         { id: "home", nav: "navHome" },
         { id: "about", nav: "navAbout" },
@@ -124,22 +115,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function getSectionTop(id) {
         const el = document.getElementById(id);
-        if (!el) return Number.POSITIVE_INFINITY;
-        return el.getBoundingClientRect().top + window.scrollY;
+        return el ? el.getBoundingClientRect().top + window.scrollY : Number.POSITIVE_INFINITY;
     }
 
     function onScroll() {
-        let scrollPos = window.scrollY || window.pageYOffset;
-        let offset = 130; // adjust for navbar height
-
+        const scrollPos = window.scrollY || window.pageYOffset;
+        const offset = 130;
         let activeSection = sections[0];
         for (let i = 0; i < sections.length; i++) {
-            const sectionTop = getSectionTop(sections[i].id) - offset;
-            if (scrollPos >= sectionTop) {
+            if (scrollPos >= getSectionTop(sections[i].id) - offset) {
                 activeSection = sections[i];
             }
         }
-
         sections.forEach(s => {
             const nav = document.getElementById(s.nav);
             if (nav) nav.classList.remove("active");
@@ -148,11 +135,10 @@ document.addEventListener("DOMContentLoaded", function () {
         if (activeNav) activeNav.classList.add("active");
     }
 
-    // Add click event to nav-links to set active immediately
     sections.forEach(s => {
         const nav = document.getElementById(s.nav);
         if (nav) {
-            nav.addEventListener("click", function () {
+            nav.addEventListener("click", () => {
                 sections.forEach(sec => {
                     const navEl = document.getElementById(sec.nav);
                     if (navEl) navEl.classList.remove("active");
@@ -163,53 +149,60 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     window.addEventListener("scroll", onScroll);
-    onScroll();
-});
+    document.addEventListener("DOMContentLoaded", onScroll);
+})();
 
 // Animate circular progress bars
-function animateCircularProgress() {
-  document.querySelectorAll('.progress-circle').forEach(circle => {
-    const value = parseInt(circle.getAttribute('data-value'), 10);
-    const left = circle.querySelector('.progress-left .progress-bar');
-    const right = circle.querySelector('.progress-right .progress-bar');
-    if (value > 50) {
-      right.style.transform = 'rotate(180deg)';
-      left.style.transform = `rotate(${(value - 50) * 3.6}deg)`;
-    } else {
-      right.style.transform = `rotate(${value * 3.6}deg)`;
-      left.style.transform = 'rotate(0deg)';
+(function animateCircularProgress() {
+    function updateCircles() {
+        document.querySelectorAll('.progress-circle').forEach(circle => {
+            const value = parseInt(circle.getAttribute('data-value'), 10);
+            const left = circle.querySelector('.progress-left .progress-bar');
+            const right = circle.querySelector('.progress-right .progress-bar');
+            if (value > 50) {
+                right.style.transform = 'rotate(180deg)';
+                left.style.transform = `rotate(${(value - 50) * 3.6}deg)`;
+            } else {
+                right.style.transform = `rotate(${value * 3.6}deg)`;
+                left.style.transform = 'rotate(0deg)';
+            }
+        });
     }
-  });
-}
-window.addEventListener('DOMContentLoaded', animateCircularProgress);
-window.addEventListener('scroll', animateCircularProgress);
+    ['DOMContentLoaded', 'scroll'].forEach(evt =>
+        window.addEventListener(evt, updateCircles)
+    );
+})();
 
 // Gallery modal: open correct image in carousel
-document.querySelectorAll('.gallery-thumb').forEach((thumb, idx) => {
-    thumb.addEventListener('click', function (e) {
-        e.preventDefault();
-        const carousel = document.getElementById('galleryCarousel');
-        if (carousel) {
-            const bsCarousel = bootstrap.Carousel.getOrCreateInstance(carousel);
-            bsCarousel.to(idx);
-        }
+(function galleryModal() {
+    document.querySelectorAll('.gallery-thumb').forEach((thumb, idx) => {
+        thumb.addEventListener('click', e => {
+            e.preventDefault();
+            const carousel = document.getElementById('galleryCarousel');
+            if (carousel) {
+                const bsCarousel = bootstrap.Carousel.getOrCreateInstance(carousel);
+                bsCarousel.to(idx);
+            }
+        });
     });
-});
+})();
 
 // Dark mode toggle
-document.addEventListener('DOMContentLoaded', function () {
-    const toggleBtn = document.getElementById('darkModeToggle');
-    if (!toggleBtn) return;
-    const icon = toggleBtn.querySelector('i');
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const saved = localStorage.getItem('darkMode');
-    function setDarkMode(on) {
-        document.body.classList.toggle('dark-mode', on);
-        icon.className = on ? 'bi bi-brightness-high' : 'bi bi-moon';
-        localStorage.setItem('darkMode', on ? '1' : '0');
-    }
-    setDarkMode(saved === null ? prefersDark : saved === '1');
-    toggleBtn.addEventListener('click', function () {
-        setDarkMode(!document.body.classList.contains('dark-mode'));
+(function darkModeToggle() {
+    document.addEventListener('DOMContentLoaded', () => {
+        const toggleBtn = document.getElementById('darkModeToggle');
+        if (!toggleBtn) return;
+        const icon = toggleBtn.querySelector('i');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const saved = localStorage.getItem('darkMode');
+        function setDarkMode(on) {
+            document.body.classList.toggle('dark-mode', on);
+            icon.className = on ? 'bi bi-brightness-high' : 'bi bi-moon';
+            localStorage.setItem('darkMode', on ? '1' : '0');
+        }
+        setDarkMode(saved === null ? prefersDark : saved === '1');
+        toggleBtn.addEventListener('click', () => {
+            setDarkMode(!document.body.classList.contains('dark-mode'));
+        });
     });
-});
+})();
