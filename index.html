@@ -59,6 +59,9 @@
             <h1 class="display-2 fw-bold mb-3">I'm Michael Vincent</h1>
             <hr>
             <p class="lead fs-3">Web Developer & UI Designer</p>
+            <a href="./cv/Michael_CV_Resume.pdf" class="btn btn-primary btn-lg mt-3 rounded-pill shadow" download>
+                <i class="bi bi-download me-2"></i>Download CV
+            </a>
         </div>
         <div style="position: absolute; inset: 0; background: rgba(0s,0,0,0.1); z-index: 1;"></div>
     </section>
@@ -82,10 +85,6 @@
                         places and cuisines—especially ramen—and am always eager to learn and grow both professionally
                         and personally.
                     </p>
-                    <a href="./cv/Michael_CV_Resume.pdf" class="btn btn-primary btn-lg mt-3 rounded-pill shadow"
-                        download>
-                        <i class="bi bi-download me-2"></i>Download CV
-                    </a>
                     <div class="d-flex flex-wrap gap-3 mt-4">
                         <div class="bg-light rounded-3 px-4 py-2 shadow-sm text-center">
                             <span class="fw-bold fs-4 jungle-green">7+</span><br>
@@ -248,7 +247,7 @@
                                     <span><i class="bi bi-box me-2"></i>Blender</span>
                                     <span class="fw-bold">0%</span>
                                 </div>
-                                <div id="portfolio" class="progress" style="height: 10px;">
+                                <div class="progress" style="height: 10px;">
                                     <div class="progress-bar sunset-orange" id="blenderProgress" role="progressbar"
                                         style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
                                     </div>
@@ -259,7 +258,7 @@
                 </div>
             </div>
         </section>
-        <hr>
+        <hr id="portfolio">
         <!-- portfolio -->
         <section class="fade-section" style="margin-top: 100px;margin-bottom: 100px;">
             <div class="row mb-4">
@@ -268,9 +267,9 @@
                     <p class="text-muted fs-5 mb-0">Featured Projects & Case Studies</p>
                 </div>
             </div>
-            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+            <div id="portfolioProjects" class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
                 <!-- Project 1 -->
-                <div class="col">
+                <div class="col portfolio-item">
                     <div class="card portfolio-card h-100 border-0 shadow-lg hover-shadow transition">
                         <div class="portfolio-icon-container d-flex justify-content-center align-items-center"
                             style="height:180px; background: linear-gradient(135deg, #e3f0ff 60%, #f8fafc 100%); border-radius: 1rem 1rem 0 0;">
@@ -291,7 +290,7 @@
                                 tracking.
                             </p>
                             <div class="mt-auto">
-                                <a href="projects/project1/index.html" class="btn btn-primary rounded-pill px-4 py-2"
+                                <a href="./projects/project1/index.html" class="btn btn-primary rounded-pill px-4 py-2"
                                     target="_self">
                                     <i class="bi bi-box-arrow-up-right me-2"></i>View Project
                                 </a>
@@ -318,7 +317,7 @@
                                 Animated 3D avatar tutors for educational content, integrated into web modules.
                             </p>
                             <div class="mt-auto">
-                                <a href="projects/project2/index.html" class="btn btn-primary rounded-pill px-4 py-2"
+                                <a href="./projects/project2/index.html" class="btn btn-primary rounded-pill px-4 py-2"
                                     target="_self">
                                     <i class="bi bi-box-arrow-up-right me-2"></i>View Project
                                 </a>
@@ -346,7 +345,67 @@
                                 Web-based banking simulation app for training, with real-time feedback and scoring.
                             </p>
                             <div class="mt-auto">
-                                <a href="projects/project3/index.html" class="btn btn-primary rounded-pill px-4 py-2"
+                                <a href="./projects/project3/index.html" class="btn btn-primary rounded-pill px-4 py-2"
+                                    target="_self">
+                                    <i class="bi bi-box-arrow-up-right me-2"></i>View Project
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Project 4 -->
+                <div class="col">
+                    <div class="card portfolio-card h-100 border-0 shadow-lg hover-shadow transition">
+                        <div class="portfolio-icon-container d-flex justify-content-center align-items-center"
+                            style="height:180px; background: linear-gradient(135deg, #e3f0ff 60%, #f8fafc 100%); border-radius: 1rem 1rem 0 0;">
+                            <span class="display-1 text-warning">
+                                <i class="bi bi-currency-dollar"></i>
+                            </span>
+                        </div>
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title mb-2 fw-semibold">Wealth Management App</h5>
+                            <div class="mb-2">
+                                <span class="badge bg-sky-blue me-1">PHP</span>
+                                <span class="badge bg-sky-blue me-1">JavaScript</span>
+                                <span class="badge bg-sky-blue me-1">Bootstrap</span>
+                                <span class="badge bg-sky-blue me-1">JQuery</span>
+                            </div>
+                            <p class="card-text text-muted mb-3">
+                                A responsive web application for managing personal finances, tracking investments, and
+                                visualizing wealth growth with interactive dashboards.
+                            </p>
+                            <div class="mt-auto">
+                                <a href="./projects/project4/index.html" class="btn btn-primary rounded-pill px-4 py-2"
+                                    target="_self">
+                                    <i class="bi bi-box-arrow-up-right me-2"></i>View Project
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Project 5 -->
+                <div class="col">
+                    <div class="card portfolio-card h-100 border-0 shadow-lg hover-shadow transition">
+                        <div class="portfolio-icon-container d-flex justify-content-center align-items-center"
+                            style="height:180px; background: linear-gradient(135deg, #f8fafc 60%, #e3f0ff 100%); border-radius: 1rem 1rem 0 0;">
+                            <span class="display-1 text-info">
+                                <i class="bi bi-window"></i>
+                            </span>
+                        </div>
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title mb-2 fw-semibold">Personal Portfolio Website</h5>
+                            <div class="mb-2">
+                                <span class="badge bg-sky-blue me-1">HTML5</span>
+                                <span class="badge bg-sky-blue me-1">CSS</span>
+                                <span class="badge bg-sky-blue me-1">Bootstrap</span>
+                                <span class="badge bg-sky-blue me-1">JavaScript</span>
+                            </div>
+                            <p class="card-text text-muted mb-3">
+                                My own responsive portfolio website, designed and developed from scratch to showcase my
+                                skills, projects, and professional journey.
+                            </p>
+                            <div class="mt-auto">
+                                <a href="./projects/project5/index.html" class="btn btn-primary rounded-pill px-4 py-2"
                                     target="_self">
                                     <i class="bi bi-box-arrow-up-right me-2"></i>View Project
                                 </a>
@@ -543,7 +602,7 @@
                     <div class="card shadow-sm border-0 h-100 bg-light bg-opacity-75">
                         <div class="card-body d-flex align-items-start gap-3">
                             <div class="d-flex flex-column align-items-center justify-content-center">
-                                <span class="badge bg-info text-dark fs-6 mb-2 px-3 py-2 rounded-pill">2024</span>
+                                <span class="badge bg-info text-dark fs-6 mb-2 px-3 py-2 rounded-pill">2025</span>
                                 <span class="display-6 text-primary mb-2">
                                     <i class="bi bi-code-slash"></i>
                                 </span>
@@ -612,7 +671,7 @@
         <!-- <section class="fade-section" style="margin-top: 100px; margin-bottom: 100px;">
             <div class="row mb-4">
                 <div class="col text-center">
-                    <h2 class="mb-4 fw-bold display-5">Certifications</h2>
+                    <h2 class="mb-4 fw-bold display-5">License & Certifications</h2>
                     <p class="text-muted mb-0 fs-5">Professional credentials and achievements</p>
                 </div>
             </div>

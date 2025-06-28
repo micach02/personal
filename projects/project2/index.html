@@ -73,14 +73,54 @@
             </ul>
         </section>
         <hr>
-        <section>
+        <section class="my-5">
             <h2 class="mb-4">Challenges</h2>
-            <ul class="list-unstyled mb-0">
-                <li class="mb-2"><strong>Realistic Lip Sync:</strong> Achieving accurate synchronization between the avatar's mouth movements and audio required fine-tuning animation curves and experimenting with different speech-to-animation tools.</li>
-                <li class="mb-2"><strong>Facial Expression Complexity:</strong> Creating natural and expressive facial animations involved detailed rigging and careful keyframing to avoid uncanny or robotic results.</li>
-                <li class="mb-2"><strong>Performance Optimization:</strong> Ensuring smooth real-time rendering in web environments demanded optimization of 3D assets and efficient integration with NVIDIA Omniverse.</li>
-                <li class="mb-2"><strong>Cross-Platform Compatibility:</strong> Integrating the animated avatar into various presentation platforms required addressing differences in browser and device support.</li>
-            </ul>
+            <div class="row row-cols-1 row-cols-md-2 g-4">
+                <div class="col">
+                    <div class="card h-100 shadow-sm border-0">
+                        <div class="card-body d-flex flex-column">
+                            <div class="mb-3 text-danger fs-2">
+                                <i class="bi bi-emoji-neutral"></i>
+                            </div>
+                            <h5 class="card-title">Realistic Lip Sync</h5>
+                            <p class="card-text flex-grow-1">Achieving accurate synchronization between the avatar's mouth movements and audio required fine-tuning animation curves and experimenting with different speech-to-animation tools.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card h-100 shadow-sm border-0">
+                        <div class="card-body d-flex flex-column">
+                            <div class="mb-3 text-warning fs-2">
+                                <i class="bi bi-emoji-smile"></i>
+                            </div>
+                            <h5 class="card-title">Facial Expression Complexity</h5>
+                            <p class="card-text flex-grow-1">Creating natural and expressive facial animations involved detailed rigging and careful keyframing to avoid uncanny or robotic results.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card h-100 shadow-sm border-0">
+                        <div class="card-body d-flex flex-column">
+                            <div class="mb-3 text-info fs-2">
+                                <i class="bi bi-lightning-charge"></i>
+                            </div>
+                            <h5 class="card-title">Performance Optimization</h5>
+                            <p class="card-text flex-grow-1">Ensuring smooth real-time rendering in web environments demanded optimization of 3D assets and efficient integration with NVIDIA Omniverse.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card h-100 shadow-sm border-0">
+                        <div class="card-body d-flex flex-column">
+                            <div class="mb-3 text-primary fs-2">
+                                <i class="bi bi-laptop"></i>
+                            </div>
+                            <h5 class="card-title">Cross-Platform Compatibility</h5>
+                            <p class="card-text flex-grow-1">Integrating the animated avatar into various presentation platforms required addressing differences in browser and device support.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
         <hr>
         <section class="mt-5 mb-5">
@@ -127,18 +167,26 @@
         <hr>
         <section class="mt-5 mb-5">
             <h2 class="mb-4">Technologies Used</h2>
-            <div class="d-flex flex-wrap gap-3 justify-content-center align-items-stretch">
-                <div class="tech-card d-flex flex-column justify-content-center align-items-center p-4 bg-light rounded-4 shadow-sm"
-                    style="min-width: 140px; min-height: 110px;">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/blender/blender-original.svg"
-                        alt="Blender" width="36" height="36" class="mb-2">
-                    <span class="fw-semibold">Blender</span>
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 justify-content-center">
+                <div class="col">
+                    <div class="card h-100 border-0 shadow-lg tech-card-modern text-center p-4">
+                        <div class="mb-3">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/blender/blender-original.svg"
+                                alt="Blender" width="48" height="48" class="mb-2">
+                        </div>
+                        <h5 class="fw-bold mb-1">Blender</h5>
+                        <p class="text-muted small mb-2">3D Modeling & Animation</p>
+                    </div>
                 </div>
-                <div class="tech-card d-flex flex-column justify-content-center align-items-center p-4 bg-light rounded-4 shadow-sm"
-                    style="min-width: 140px; min-height: 110px;">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/2/21/Nvidia_logo.svg"
-                        alt="NVIDIA Omniverse" width="36" height="36" class="mb-2">
-                    <span class="fw-semibold">NVIDIA Omniverse</span>
+                <div class="col">
+                    <div class="card h-100 border-0 shadow-lg tech-card-modern text-center p-4">
+                        <div class="mb-3">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/2/21/Nvidia_logo.svg"
+                                alt="NVIDIA Omniverse" width="48" height="48" class="mb-2">
+                        </div>
+                        <h5 class="fw-bold mb-1">NVIDIA Omniverse</h5>
+                        <p class="text-muted small mb-2">Real-Time Rendering & Integration</p>
+                    </div>
                 </div>
             </div>
         </section>

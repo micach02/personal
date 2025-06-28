@@ -514,3 +514,16 @@ body.dark-mode .form-label,
 body.dark-mode label {
   color: #e3e3e3 !important;
 }
+
+
+.tech-card-modern {
+    transition: transform 0.2s, box-shadow 0.2s;
+    border-radius: 1.25rem;
+    background: linear-gradient(135deg, #f8fafc 60%, #e9ecef 100%);
+}
+
+.tech-card-modern:hover {
+    transform: translateY(-6px) scale(1.03);
+    box-shadow: 0 8px 32px rgba(60, 72, 88, 0.12);
+    background: linear-gradient(135deg, #f1f3f9 60%, #e3e7ed 100%);
+}
