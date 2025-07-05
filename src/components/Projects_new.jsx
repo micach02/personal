@@ -19,7 +19,7 @@ function Projects() {
       technologies: ["HTML5", "JavaScript", "CSS3", "jQuery", "Bootstrap", "PHP"],
       demoLink: "#",
       codeLink: "#",
-      image: "/images/project1.jpg",
+      image: "./images/project1.jpg",
       category: "Web Development",
       color: "#667eea"
     },
@@ -30,7 +30,7 @@ function Projects() {
       technologies: ["PHP", "JavaScript", "Bootstrap", "Chart.js"],
       demoLink: "#",
       codeLink: "#",
-      image: "/images/project2.jpg",
+      image: "./images/project2.jpg",
       category: "FinTech",
       color: "#764ba2"
     },
@@ -41,7 +41,7 @@ function Projects() {
       technologies: ["PHP", "JavaScript","jQuery", "Bootstrap", "Chart.js", "Analytics"],
       demoLink: "#",
       codeLink: "#",
-      image: "/images/project3.jpg",
+      image: "./images/project3.jpg",
       category: "FinTech",
       color: "#f093fb"
     },
@@ -52,7 +52,7 @@ function Projects() {
       technologies: ["Blender", "NVIDIA Omniverse", "3D Modeling"],
       demoLink: "#",
       codeLink: "#",
-      image: "/images/project4.jpg",
+      image: "./images/project4.jpg",
       category: "Animation",
       color: "#f5576c"
     },
@@ -63,7 +63,7 @@ function Projects() {
       technologies: ["React", "Vite", "Bootstrap", "AOS", "Modern CSS"],
       demoLink: "#",
       codeLink: "#",
-      image: "/images/project5.jpg",
+      image: "./images/project5.jpg",
       category: "Web Development",
       color: "#4facfe"
     }

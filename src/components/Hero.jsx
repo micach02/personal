@@ -83,7 +83,7 @@ function Hero() {
       <div 
         className="hero-background position-absolute top-0 start-0 w-100 h-100"
         style={{
-          backgroundImage: "url('/images/michael.jpg')",
+          backgroundImage: "url('./images/michael.jpg')",
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",

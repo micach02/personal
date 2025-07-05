@@ -336,7 +336,7 @@ function Experience() {
                             >
                               {exp.company === "PV Multimedia Inc." ? (
                                 <img 
-                                  src="/images/pvm_logo.svg" 
+                                  src="./images/pvm_logo.svg" 
                                   alt="PV Multimedia Inc. Logo"
                                   style={{
                                     width: '60px',
@@ -346,7 +346,7 @@ function Experience() {
                                 />
                               ) : exp.company === "Channel Technologies Inc." ? (
                                 <img 
-                                  src="/images/channel_technologies_inc_logo.jpg" 
+                                  src="./images/channel_technologies_inc_logo.jpg" 
                                   alt="Channel Technologies Inc. Logo"
                                   style={{
                                     width: '60px',
@@ -357,7 +357,7 @@ function Experience() {
                                 />
                               ) : exp.company === "CEBU CITY HALL, MICS Department" ? (
                                 <img 
-                                  src="/images/cebu_city.png" 
+                                  src="./images/cebu_city.png" 
                                   alt="Cebu City Hall Logo"
                                   style={{
                                     width: '60px',

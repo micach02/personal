@@ -220,7 +220,7 @@ function Education() {
                               }}
                             >
                               <img 
-                                src="/images/citu.png" 
+                                src="./images/citu.png" 
                                 alt="Cebu Institute of Technology - University Logo"
                                 style={{
                                   width: '100%',
