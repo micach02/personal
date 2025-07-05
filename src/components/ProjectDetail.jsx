@@ -49,7 +49,7 @@ The project was built using modern web technologies and follows best practices f
       technologies: ["HTML5", "JavaScript", "CSS3", "jQuery", "Bootstrap", "PHP"],
       demoLink: "#",
       codeLink: "#",
-      image: "https://via.placeholder.com/400x300/667eea/ffffff?text=Financial+Learning+Platform",
+      image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='300'%3E%3Crect width='400' height='300' fill='%23667eea'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-family='Arial' font-size='16'%3EFinancial Learning Platform%3C/text%3E%3C/svg%3E",
       category: "Web Development",
       challenges: [
         "Dynamic Data Integration: Incorporating real-time financial datasets required robust data fetching, validation, and error handling to ensure accuracy and reliability.",
@@ -70,9 +70,9 @@ The project was built using modern web technologies and follows best practices f
         "UI/UX Design Collaboration: Contributed to the UI/UX design process, helping to create an intuitive, accessible, and responsive interface for a seamless user experience across devices."
       ],
       gallery: [
-        "https://via.placeholder.com/600x400/667eea/ffffff?text=Financial+Dashboard+1",
-        "https://via.placeholder.com/600x400/667eea/ffffff?text=Financial+Dashboard+2",
-        "https://via.placeholder.com/600x400/667eea/ffffff?text=Financial+Dashboard+3"
+        "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='400'%3E%3Crect width='600' height='400' fill='%23667eea'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-family='Arial' font-size='18'%3EFinancial Dashboard 1%3C/text%3E%3C/svg%3E",
+        "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='400'%3E%3Crect width='600' height='400' fill='%23667eea'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-family='Arial' font-size='18'%3EFinancial Dashboard 2%3C/text%3E%3C/svg%3E",
+        "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='400'%3E%3Crect width='600' height='400' fill='%23667eea'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-family='Arial' font-size='18'%3EFinancial Dashboard 3%3C/text%3E%3C/svg%3E"
       ]
     },
     {
@@ -94,7 +94,7 @@ The platform includes a sophisticated scoring system that evaluates user perform
       technologies: ["PHP", "JavaScript", "Bootstrap", "Chart.js"],
       demoLink: "#",
       codeLink: "#",
-      image: "https://via.placeholder.com/400x300/28a745/ffffff?text=Banking+Simulation+App",
+      image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='300'%3E%3Crect width='400' height='300' fill='%2328a745'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-family='Arial' font-size='16'%3EBanking Simulation App%3C/text%3E%3C/svg%3E",
       category: "FinTech",
       challenges: [
         "Simulating realistic banking scenarios",
@@ -103,9 +103,9 @@ The platform includes a sophisticated scoring system that evaluates user perform
         "Ensuring data security and privacy"
       ],
       gallery: [
-        "https://via.placeholder.com/600x400/28a745/ffffff?text=Banking+Interface+1",
-        "https://via.placeholder.com/600x400/28a745/ffffff?text=Banking+Interface+2",
-        "https://via.placeholder.com/600x400/28a745/ffffff?text=Banking+Interface+3"
+        "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='400'%3E%3Crect width='600' height='400' fill='%2328a745'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-family='Arial' font-size='18'%3EBanking Interface 1%3C/text%3E%3C/svg%3E",
+        "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='400'%3E%3Crect width='600' height='400' fill='%2328a745'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-family='Arial' font-size='18'%3EBanking Interface 2%3C/text%3E%3C/svg%3E",
+        "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='400'%3E%3Crect width='600' height='400' fill='%2328a745'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-family='Arial' font-size='18'%3EBanking Interface 3%3C/text%3E%3C/svg%3E"
       ]
     },
     {
@@ -128,7 +128,7 @@ The user-friendly interface makes complex financial concepts accessible to users
       technologies: ["PHP", "JavaScript", "jQuery", "Bootstrap", "Chart.js"],
       demoLink: "#",
       codeLink: "#",
-      image: "https://via.placeholder.com/400x300/17a2b8/ffffff?text=Real+Estate+CRM",
+      image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='300'%3E%3Crect width='400' height='300' fill='%2317a2b8'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-family='Arial' font-size='16'%3EReal Estate CRM%3C/text%3E%3C/svg%3E",
       category: "FinTech",
       challenges: [
         "Integrating real-time market data",
@@ -137,9 +137,9 @@ The user-friendly interface makes complex financial concepts accessible to users
         "Ensuring data accuracy and reliability"
       ],
       gallery: [
-        "https://via.placeholder.com/600x400/17a2b8/ffffff?text=CRM+Dashboard+1",
-        "https://via.placeholder.com/600x400/17a2b8/ffffff?text=CRM+Dashboard+2",
-        "https://via.placeholder.com/600x400/17a2b8/ffffff?text=CRM+Dashboard+3"
+        "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='400'%3E%3Crect width='600' height='400' fill='%2317a2b8'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-family='Arial' font-size='18'%3ECRM Dashboard 1%3C/text%3E%3C/svg%3E",
+        "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='400'%3E%3Crect width='600' height='400' fill='%2317a2b8'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-family='Arial' font-size='18'%3ECRM Dashboard 2%3C/text%3E%3C/svg%3E",
+        "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='400'%3E%3Crect width='600' height='400' fill='%2317a2b8'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-family='Arial' font-size='18'%3ECRM Dashboard 3%3C/text%3E%3C/svg%3E"
       ]
     },
     {
@@ -162,7 +162,7 @@ The character system supports various animation styles from realistic human move
       technologies: ["Blender", "NVIDIA Omniverse"],
       demoLink: "#",
       codeLink: "#",
-      image: "https://via.placeholder.com/400x300/fd7e14/ffffff?text=Responsive+Web+Design",
+      image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='300'%3E%3Crect width='400' height='300' fill='%23fd7e14'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-family='Arial' font-size='16'%3EResponsive Web Design%3C/text%3E%3C/svg%3E",
       category: "Animation",
       challenges: [
         "Creating photorealistic character models",
@@ -171,9 +171,9 @@ The character system supports various animation styles from realistic human move
         "Ensuring cross-platform compatibility"
       ],
       gallery: [
-        "https://via.placeholder.com/600x400/fd7e14/ffffff?text=Responsive+Design+1",
-        "https://via.placeholder.com/600x400/fd7e14/ffffff?text=Responsive+Design+2",
-        "https://via.placeholder.com/600x400/fd7e14/ffffff?text=Responsive+Design+3"
+        "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='400'%3E%3Crect width='600' height='400' fill='%23fd7e14'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-family='Arial' font-size='18'%3EResponsive Design 1%3C/text%3E%3C/svg%3E",
+        "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='400'%3E%3Crect width='600' height='400' fill='%23fd7e14'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-family='Arial' font-size='18'%3EResponsive Design 2%3C/text%3E%3C/svg%3E",
+        "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='400'%3E%3Crect width='600' height='400' fill='%23fd7e14'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-family='Arial' font-size='18'%3EResponsive Design 3%3C/text%3E%3C/svg%3E"
       ]
     },
     {
@@ -196,7 +196,7 @@ The development process followed modern best practices including component-based
       technologies: ["React", "Vite", "Bootstrap", "AOS"],
       demoLink: "#",
       codeLink: "#",
-      image: "https://via.placeholder.com/400x300/6f42c1/ffffff?text=API+Integration+Tools",
+      image: "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjNmY0MmMxIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIyMCIgZmlsbD0iI2ZmZmZmZiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkFQSSBJbnRlZ3JhdGlvbiBUb29sczwvdGV4dD48L3N2Zz4=",
       category: "Web Development",
       challenges: [
         "Creating a unique and memorable design",
@@ -205,9 +205,9 @@ The development process followed modern best practices including component-based
         "Ensuring accessibility compliance"
       ],
       gallery: [
-        "https://via.placeholder.com/600x400/6f42c1/ffffff?text=API+Tools+1",
-        "https://via.placeholder.com/600x400/6f42c1/ffffff?text=API+Tools+2",
-        "https://via.placeholder.com/600x400/6f42c1/ffffff?text=API+Tools+3"
+        "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAwIiBoZWlnaHQ9IjQwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjNmY0MmMxIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIzMCIgZmlsbD0iI2ZmZmZmZiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkFQSSBUb29scyAxPC90ZXh0Pjwvc3ZnPg==",
+        "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAwIiBoZWlnaHQ9IjQwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjNmY0MmMxIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIzMCIgZmlsbD0iI2ZmZmZmZiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkFQSSBUb29scyAyPC90ZXh0Pjwvc3ZnPg==",
+        "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAwIiBoZWlnaHQ9IjQwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjNmY0MmMxIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIzMCIgZmlsbD0iI2ZmZmZmZiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkFQSSBUb29scyAzPC90ZXh0Pjwvc3ZnPg=="
       ]
     }
   ];

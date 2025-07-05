@@ -19,7 +19,7 @@ function Projects() {
       technologies: ["HTML5", "JavaScript", "CSS3", "jQuery", "Bootstrap", "PHP"],
       demoLink: "#",
       codeLink: "#",
-      image: "https://via.placeholder.com/400x300/667eea/ffffff?text=Financial+Learning+Platform",
+      image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='300'%3E%3Crect width='400' height='300' fill='%23667eea'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-family='Arial' font-size='16'%3EFinancial Learning Platform%3C/text%3E%3C/svg%3E",
       category: "Web Development",
       color: "#667eea"
     },
@@ -30,7 +30,7 @@ function Projects() {
       technologies: ["PHP", "JavaScript", "Bootstrap", "Chart.js"],
       demoLink: "#",
       codeLink: "#",
-      image: "https://via.placeholder.com/400x300/28a745/ffffff?text=Banking+Simulation+App",
+      image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='300'%3E%3Crect width='400' height='300' fill='%2328a745'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-family='Arial' font-size='16'%3EBanking Simulation App%3C/text%3E%3C/svg%3E",
       category: "FinTech",
       color: "#764ba2"
     },
@@ -41,7 +41,7 @@ function Projects() {
       technologies: ["PHP", "JavaScript","jQuery", "Bootstrap", "Chart.js", "Analytics"],
       demoLink: "#",
       codeLink: "#",
-      image: "https://via.placeholder.com/400x300/17a2b8/ffffff?text=Real+Estate+CRM",
+      image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='300'%3E%3Crect width='400' height='300' fill='%2317a2b8'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-family='Arial' font-size='16'%3EReal Estate CRM%3C/text%3E%3C/svg%3E",
       category: "FinTech",
       color: "#f093fb"
     },
@@ -52,7 +52,7 @@ function Projects() {
       technologies: ["Blender", "NVIDIA Omniverse", "3D Modeling"],
       demoLink: "#",
       codeLink: "#",
-      image: "https://via.placeholder.com/400x300/fd7e14/ffffff?text=Responsive+Web+Design",
+      image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='300'%3E%3Crect width='400' height='300' fill='%23fd7e14'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-family='Arial' font-size='16'%3EResponsive Web Design%3C/text%3E%3C/svg%3E",
       category: "Animation",
       color: "#f5576c"
     },
@@ -63,7 +63,7 @@ function Projects() {
       technologies: ["React", "Vite", "Bootstrap", "AOS", "Modern CSS"],
       demoLink: "#",
       codeLink: "#",
-      image: "https://via.placeholder.com/400x300/6f42c1/ffffff?text=API+Integration+Tools",
+      image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='300'%3E%3Crect width='400' height='300' fill='%236f42c1'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-family='Arial' font-size='16'%3EAPI Integration Tools%3C/text%3E%3C/svg%3E",
       category: "Web Development",
       color: "#4facfe"
     }
