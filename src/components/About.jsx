@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 function About() {
   const [isVisible, setIsVisible] = useState(false);
@@ -219,9 +220,9 @@ function About() {
                   Beyond the professional journey, discover the person behind the code. 
                   Learn about my personal experiences, values, and what makes me who I am.
                 </p>
-                <a href="/personal-journey" className="btn btn-light btn-lg px-5 fw-semibold">
+                <Link to="/personal-journey" className="btn btn-light btn-lg px-5 fw-semibold">
                   <i className="bi bi-heart me-2"></i>My Personal Journey
-                </a>
+                </Link>
               </div>
             </div>
           </div>
