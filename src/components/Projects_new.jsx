@@ -19,7 +19,7 @@ function Projects() {
       technologies: ["HTML5", "JavaScript", "CSS3", "jQuery", "Bootstrap", "PHP"],
       demoLink: "#",
       codeLink: "#",
-      image: "./images/project1.jpg",
+      image: "https://via.placeholder.com/400x300/667eea/ffffff?text=Financial+Learning+Platform",
       category: "Web Development",
       color: "#667eea"
     },
@@ -30,7 +30,7 @@ function Projects() {
       technologies: ["PHP", "JavaScript", "Bootstrap", "Chart.js"],
       demoLink: "#",
       codeLink: "#",
-      image: "./images/project2.jpg",
+      image: "https://via.placeholder.com/400x300/28a745/ffffff?text=Banking+Simulation+App",
       category: "FinTech",
       color: "#764ba2"
     },
@@ -41,7 +41,7 @@ function Projects() {
       technologies: ["PHP", "JavaScript","jQuery", "Bootstrap", "Chart.js", "Analytics"],
       demoLink: "#",
       codeLink: "#",
-      image: "./images/project3.jpg",
+      image: "https://via.placeholder.com/400x300/17a2b8/ffffff?text=Real+Estate+CRM",
       category: "FinTech",
       color: "#f093fb"
     },
@@ -52,7 +52,7 @@ function Projects() {
       technologies: ["Blender", "NVIDIA Omniverse", "3D Modeling"],
       demoLink: "#",
       codeLink: "#",
-      image: "./images/project4.jpg",
+      image: "https://via.placeholder.com/400x300/fd7e14/ffffff?text=Responsive+Web+Design",
       category: "Animation",
       color: "#f5576c"
     },
@@ -63,7 +63,7 @@ function Projects() {
       technologies: ["React", "Vite", "Bootstrap", "AOS", "Modern CSS"],
       demoLink: "#",
       codeLink: "#",
-      image: "./images/project5.jpg",
+      image: "https://via.placeholder.com/400x300/6f42c1/ffffff?text=API+Integration+Tools",
       category: "Web Development",
       color: "#4facfe"
     }

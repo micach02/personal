@@ -66,7 +66,7 @@ function About() {
                 style={{ zIndex: 1 }}
               >
                 <img
-                  src="./images/michael2.jpg"
+                  src="/personal/images/michael2.jpg"
                   alt="Michael - Web Developer"
                   className="rounded-circle"
                   style={{ 

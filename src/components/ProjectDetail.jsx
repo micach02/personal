@@ -49,7 +49,7 @@ The project was built using modern web technologies and follows best practices f
       technologies: ["HTML5", "JavaScript", "CSS3", "jQuery", "Bootstrap", "PHP"],
       demoLink: "#",
       codeLink: "#",
-      image: "./images/project1.jpg",
+      image: "https://via.placeholder.com/400x300/667eea/ffffff?text=Financial+Learning+Platform",
       category: "Web Development",
       challenges: [
         "Dynamic Data Integration: Incorporating real-time financial datasets required robust data fetching, validation, and error handling to ensure accuracy and reliability.",
@@ -70,9 +70,9 @@ The project was built using modern web technologies and follows best practices f
         "UI/UX Design Collaboration: Contributed to the UI/UX design process, helping to create an intuitive, accessible, and responsive interface for a seamless user experience across devices."
       ],
       gallery: [
-        "./images/project1-1.jpg",
-        "./images/project1-2.jpg",
-        "./images/project1-3.jpg"
+        "https://via.placeholder.com/600x400/667eea/ffffff?text=Financial+Dashboard+1",
+        "https://via.placeholder.com/600x400/667eea/ffffff?text=Financial+Dashboard+2",
+        "https://via.placeholder.com/600x400/667eea/ffffff?text=Financial+Dashboard+3"
       ]
     },
     {
@@ -94,7 +94,7 @@ The platform includes a sophisticated scoring system that evaluates user perform
       technologies: ["PHP", "JavaScript", "Bootstrap", "Chart.js"],
       demoLink: "#",
       codeLink: "#",
-      image: "./images/project2.jpg",
+      image: "https://via.placeholder.com/400x300/28a745/ffffff?text=Banking+Simulation+App",
       category: "FinTech",
       challenges: [
         "Simulating realistic banking scenarios",
@@ -103,9 +103,9 @@ The platform includes a sophisticated scoring system that evaluates user perform
         "Ensuring data security and privacy"
       ],
       gallery: [
-        "./images/project2-1.jpg",
-        "./images/project2-2.jpg",
-        "./images/project2-3.jpg"
+        "https://via.placeholder.com/600x400/28a745/ffffff?text=Banking+Interface+1",
+        "https://via.placeholder.com/600x400/28a745/ffffff?text=Banking+Interface+2",
+        "https://via.placeholder.com/600x400/28a745/ffffff?text=Banking+Interface+3"
       ]
     },
     {
@@ -128,7 +128,7 @@ The user-friendly interface makes complex financial concepts accessible to users
       technologies: ["PHP", "JavaScript", "jQuery", "Bootstrap", "Chart.js"],
       demoLink: "#",
       codeLink: "#",
-      image: "./images/project3.jpg",
+      image: "https://via.placeholder.com/400x300/17a2b8/ffffff?text=Real+Estate+CRM",
       category: "FinTech",
       challenges: [
         "Integrating real-time market data",
@@ -137,9 +137,9 @@ The user-friendly interface makes complex financial concepts accessible to users
         "Ensuring data accuracy and reliability"
       ],
       gallery: [
-        "./images/project3-1.jpg",
-        "./images/project3-2.jpg",
-        "./images/project3-3.jpg"
+        "https://via.placeholder.com/600x400/17a2b8/ffffff?text=CRM+Dashboard+1",
+        "https://via.placeholder.com/600x400/17a2b8/ffffff?text=CRM+Dashboard+2",
+        "https://via.placeholder.com/600x400/17a2b8/ffffff?text=CRM+Dashboard+3"
       ]
     },
     {
@@ -162,7 +162,7 @@ The character system supports various animation styles from realistic human move
       technologies: ["Blender", "NVIDIA Omniverse"],
       demoLink: "#",
       codeLink: "#",
-      image: "./images/project4.jpg",
+      image: "https://via.placeholder.com/400x300/fd7e14/ffffff?text=Responsive+Web+Design",
       category: "Animation",
       challenges: [
         "Creating photorealistic character models",
@@ -171,9 +171,9 @@ The character system supports various animation styles from realistic human move
         "Ensuring cross-platform compatibility"
       ],
       gallery: [
-        "./images/project4-1.jpg",
-        "./images/project4-2.jpg",
-        "./images/project4-3.jpg"
+        "https://via.placeholder.com/600x400/fd7e14/ffffff?text=Responsive+Design+1",
+        "https://via.placeholder.com/600x400/fd7e14/ffffff?text=Responsive+Design+2",
+        "https://via.placeholder.com/600x400/fd7e14/ffffff?text=Responsive+Design+3"
       ]
     },
     {
@@ -196,7 +196,7 @@ The development process followed modern best practices including component-based
       technologies: ["React", "Vite", "Bootstrap", "AOS"],
       demoLink: "#",
       codeLink: "#",
-      image: "./images/project5.jpg",
+      image: "https://via.placeholder.com/400x300/6f42c1/ffffff?text=API+Integration+Tools",
       category: "Web Development",
       challenges: [
         "Creating a unique and memorable design",
@@ -205,9 +205,9 @@ The development process followed modern best practices including component-based
         "Ensuring accessibility compliance"
       ],
       gallery: [
-        "./images/project5-1.jpg",
-        "./images/project5-2.jpg",
-        "./images/project5-3.jpg"
+        "https://via.placeholder.com/600x400/6f42c1/ffffff?text=API+Tools+1",
+        "https://via.placeholder.com/600x400/6f42c1/ffffff?text=API+Tools+2",
+        "https://via.placeholder.com/600x400/6f42c1/ffffff?text=API+Tools+3"
       ]
     }
   ];
