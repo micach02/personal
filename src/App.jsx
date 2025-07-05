@@ -14,7 +14,7 @@ import './styles/projects-ultra-modern.css';
 
 function App() {
   return (
-    <Router>
+    <Router basename="/personal">
       <Routes>
         <Route path="/" element={
           <>
