@@ -4,6 +4,11 @@ function PersonalJourney() {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
+    // Scroll to top when component mounts
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, []);
+
+  useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -27,42 +32,49 @@ function PersonalJourney() {
       title: "Childhood Dreams",
       icon: "🌟",
       color: "primary",
-      description: "Growing up with a curious mind, always taking apart toys to see how they worked. My family often found me with screwdrivers and broken electronics, trying to understand the magic behind the machines."
+      description: "Growing up without a father figure, I found strength and unconditional love in my mother's embrace. As an only child, I often found myself in quiet solitude, which became my greatest teacher. My world was one of endless curiosity - every toy became a puzzle to solve, every broken appliance an adventure waiting to unfold. Armed with screwdrivers and boundless imagination, I transformed discarded radios, electric fans, and old televisions into my personal laboratories. In those moments of discovery, taking apart the mysteries of how things worked, I was unknowingly building the foundation for my future in technology. Solitude taught me to think deeply, and curiosity taught me to never stop asking 'how' and 'why.'"
     },
     {
-      year: "High School",
+      year: "Grade School",
       title: "First Computer",
       icon: "💻",
       color: "success",
-      description: "Got my first computer at 16. Spent countless hours not just gaming, but exploring every corner of the system. This is where my love for technology truly began to flourish."
+      description: "At 12, I fell in love with computers when our school introduced us to the basics of computing. Coming from a low-income family meant no computer at home, but that didn't diminish my curiosity. I spent every free moment at school exploring every corner of the system, clicking on every icon, and discovering new features. Those precious hours in the computer lab ignited a passion that would shape my entire future."
+    },
+    {
+      year: "High School",
+      title: "Programming & Creative Discovery",
+      icon: "⚡",
+      color: "info",
+      description: "High school transformed my curiosity into concrete skills through my first computer science class. Writing my first Visual Basic program felt like casting a spell - watching lines of code breathe life into digital forms was pure magic. As I explored HTML, CSS, and JavaScript, I discovered that programming was like digital architecture. This realization sparked another passion: sketching and designing building structures. Whether I was crafting code or drawing blueprints, both involved creating something from nothing, turning abstract ideas into tangible realities. These dual interests taught me that creativity and logic aren't opposites - they're partners."
+    },
+    {
+      year: "High School",
+      title: "The Crossroads Decision",
+      icon: "🎯",
+      color: "warning",
+      description: "High school brought me to a defining crossroads where dreams met reality. My heart was torn between two passions: the elegance of architectural design and the limitless possibilities of technology. Architecture called to me with its promise of creating spaces that touch lives, but the financial reality was stark - tuition fees and material costs far exceeded what even scholarship programs could cover. It was a painful but necessary choice. Choosing Information Technology wasn't settling for less; it was recognizing that technology could be my canvas for creation. Sometimes life redirects our dreams, and in retrospect, this redirection led me exactly where I needed to be."
     },
     {
       year: "College Years",
-      title: "Finding My Path",
-      icon: "🎓",
-      color: "warning",
-      description: "Studied hard but also discovered my passion for creating things that matter. Late night study sessions turned into late night coding sessions. Met lifelong friends who shared the same passion."
+      title: "Forging Character Through Challenge",
+      icon: "💪",
+      color: "success",
+      description: "College was where dreams met determination. As a working scholar at CIT University, I discovered that success isn't just about talent—it's about resilience, grit, and the courage to transform obstacles into opportunities. Balancing classes with my part-time job taught me invaluable lessons in time management and prioritization that no textbook could provide. My days were packed with responsibilities, but my nights belonged to my true passion: coding. Those late-night study sessions naturally evolved into programming marathons, where I found profound joy in creating software that could solve real-world problems. During these challenging yet rewarding years, I forged lifelong friendships with fellow dreamers who shared my passion for technology. Together, we pushed each other to innovate and grow beyond our limits. The working scholar program opened doors to exclusive seminars and workshops that expanded both my knowledge and professional network. While it took five years to complete what was traditionally a four-year degree due to limited course loads, every extra semester was an investment in building the character and work ethic that would define my professional journey. When I failed a major subject, instead of seeing it as a setback, I embraced it as a lesson in resilience. I learned to adapt, seek help when needed, and never give up on my dreams. Those years weren't just about earning a degree—they were about discovering who I was and who I wanted to become."
     },
     {
       year: "First Job",
-      title: "Real World",
+      title: "Professional Awakening",
       icon: "🚀",
       color: "info",
-      description: "The transition from student life to professional world was eye-opening. Learning that soft skills matter just as much as technical skills. Every challenge became a learning opportunity."
+      description: "Three months after graduation, I embarked on my professional journey as an HTML5 Developer at a vibrant local startup. The leap from academic theory to real-world application was both thrilling and humbling—I quickly learned that classroom coding and production development were entirely different universes. The intense pressure of tight deadlines became my greatest teacher, transforming every challenge into a masterclass in growth. The startup's fast-paced environment forged skills that no textbook could teach: agility, resourcefulness, and the art of innovation under pressure. What began as my first job evolved into my professional sanctuary, where I continue to flourish as a developer. Here, I discovered mentors who became lifelong guides and colleagues who transformed into cherished friends, all believing in my potential when I barely believed in myself. Their faith ignited a confidence that propels me forward every day. The company even sent me to Singapore, an unforgettable journey where I connected with global teammates and immersed myself in a new culture. Every day here is an opportunity to push boundaries, solve meaningful problems, and create technology that genuinely impacts lives."
     },
     {
       year: "Personal Growth",
-      title: "Life Balance",
-      icon: "⚖️",
-      color: "danger",
-      description: "Discovered the importance of work-life balance. Started traveling, picked up new hobbies, and learned that the best code comes from a well-rested and inspired mind."
-    },
-    {
-      year: "Today",
-      title: "Living the Dream",
-      icon: "✨",
-      color: "secondary",
-      description: "Every day is a new adventure. Whether it's trying a new ramen place, exploring a new city, or solving a complex coding problem - life is full of possibilities and I'm grateful for every moment."
+      title: "Strength Through Adversity",
+      icon: "💎",
+      color: "warning",
+      description: "Life shaped me through challenges that would have seemed insurmountable to many. Abandoned early in life and literally discarded by my biological parents, I learned to navigate the world with resilience as my compass and determination as my guide. The absence of a father figure became an unexpected teacher, revealing the value of self-reliance and the incredible strength that lives within us all. Every struggle I faced—from academic hurdles to balancing work and study—transformed from stumbling blocks into stepping stones. These experiences instilled in me a deep appreciation for perseverance and taught me that true growth often emerges from life's most challenging moments. Growing up with profound gratitude toward my foster mother and relatives who opened their hearts and home to me, I felt both the weight of their sacrifice and the pressure to rise above our circumstances. While their expectations were heavy, they became the very fuel that ignited my drive to succeed and break free from poverty's grip. Through this journey, I learned to embrace vulnerability as a form of strength, challenges as opportunities for growth, and setbacks as setups for powerful comebacks. These profound experiences revealed a fundamental truth that guides me still: it's not the struggles that define us, but how we choose to rise through them that unveils our true potential and shapes our character."
     }
   ];
 
@@ -90,12 +102,14 @@ function PersonalJourney() {
   ];
 
   const funFacts = [
-    { fact: "I've tried ramen in over 50 different restaurants", icon: "🍜" },
-    { fact: "Traveled to 15+ countries and counting", icon: "✈️" },
+    { fact: "I've tried ramen in over 50 different restaurants (Kanto Ramen da best 😉)", icon: "🍜" },
     { fact: "Can solve a Rubik's cube in under 2 minutes", icon: "🧩" },
-    { fact: "Morning person who loves watching sunrises", icon: "🌅" },
-    { fact: "Learned to cook during the pandemic", icon: "👨‍🍳" },
-    { fact: "Collects vintage tech gadgets", icon: "📱" }
+    { fact: "Plays chess", icon: "♟️" },
+    { fact: "Can play table tennis", icon: "🏓" },
+    { fact: "Plays Mobile Legends", icon: "🎮" },
+    { fact: "Listening to music is my therapy.", icon: "🎵" },
+    { fact: "Loves going out to beaches.", icon: "🏖️" },
+    { fact: "Learned to cook during the pandemic", icon: "👨‍🍳" }
   ];
 
   return (
@@ -105,18 +119,9 @@ function PersonalJourney() {
       color: 'white'
     }}>
       <div className="container">
-        {/* Back Button */}
-        <div className="mb-4">
-          <button 
-            onClick={() => window.history.back()} 
-            className="btn btn-outline-light"
-          >
-            <i className="bi bi-arrow-left me-2"></i>Back to About
-          </button>
-        </div>
 
         {/* Section Header */}
-        <div className="text-center mb-5">
+        <div className="text-center mb-5 mt-5">
           <h1 className={`display-3 fw-bold mb-3 ${isVisible ? 'animate__animated animate__fadeInUp' : ''}`}>
             My Personal Journey
             <span className="ms-3">🗺️</span>
@@ -237,7 +242,21 @@ function PersonalJourney() {
                 </p>
                 <div className="text-center">
                   <button 
-                    onClick={() => window.location.href = '/#contact'} 
+                    onClick={() => {
+                      // First navigate to home page if not already there
+                      if (window.location.pathname !== '/') {
+                        window.location.href = '/#contact';
+                      } else {
+                        // If already on home page, scroll to contact section
+                        const contactSection = document.getElementById('contact');
+                        if (contactSection) {
+                          contactSection.scrollIntoView({ behavior: 'smooth' });
+                        } else {
+                          // Fallback: try to navigate to contact
+                          window.location.href = '#contact';
+                        }
+                      }
+                    }}
                     className="btn btn-light btn-lg px-5 fw-semibold"
                   >
                     <i className="bi bi-heart me-2"></i>Let's Connect
