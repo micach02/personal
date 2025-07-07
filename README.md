@@ -1,4 +1,4 @@
-# 🚀 Modern React Portfolio
+# 🚀 Michael Vincent's Portfolio
 
 A sophisticated, modern React portfolio website showcasing professional experience, skills, and projects with cutting-edge design and functionality.
 
