@@ -13,32 +13,63 @@ function Header() {
     const handleScroll = () => {
       const isScrolled = window.scrollY > 50;
       setScrolled(isScrolled);
+
+      // Fallback method to detect active section based on scroll position
+      if (location.pathname === '/') {
+        const sections = ['about', 'skills', 'experience', 'education', 'projects', 'contact'];
+        const scrollPosition = window.scrollY + 150; // Offset for header height
+        
+        for (let i = sections.length - 1; i >= 0; i--) {
+          const element = document.getElementById(sections[i]);
+          if (element && element.offsetTop <= scrollPosition) {
+            setActiveSection(sections[i]);
+            break;
+          }
+        }
+      }
     };
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [location.pathname]);
 
   // Track active section for highlighting nav items
   useEffect(() => {
     const sections = ['about', 'skills', 'experience', 'education', 'projects', 'contact'];
     const observerOptions = {
-      threshold: 0.3,
-      rootMargin: '-100px 0px -100px 0px'
+      threshold: [0.1, 0.25, 0.5, 0.75],
+      rootMargin: '-80px 0px -80px 0px'
     };
 
     const observer = new IntersectionObserver((entries) => {
+      // Find the entry with the highest intersection ratio
+      let maxRatio = 0;
+      let activeEntry = null;
+      
       entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          setActiveSection(entry.target.id);
+        if (entry.isIntersecting && entry.intersectionRatio > maxRatio) {
+          maxRatio = entry.intersectionRatio;
+          activeEntry = entry;
         }
       });
+      
+      if (activeEntry) {
+        setActiveSection(activeEntry.target.id);
+      }
     }, observerOptions);
 
-    sections.forEach((section) => {
-      const element = document.getElementById(section);
-      if (element) observer.observe(element);
-    });
+    // Only observe sections when on the home page
+    if (location.pathname === '/') {
+      sections.forEach((section) => {
+        const element = document.getElementById(section);
+        if (element) {
+          observer.observe(element);
+        }
+      });
+    } else {
+      // Clear active section when not on home page
+      setActiveSection('');
+    }
 
     return () => observer.disconnect();
   }, [location.pathname]);

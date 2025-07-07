@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function PersonalJourney() {
   const [isVisible, setIsVisible] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     // Scroll to top when component mounts
@@ -243,19 +245,19 @@ function PersonalJourney() {
                 <div className="text-center">
                   <button 
                     onClick={() => {
-                      // First navigate to home page if not already there
-                      if (window.location.pathname !== '/') {
-                        window.location.href = '/#contact';
-                      } else {
-                        // If already on home page, scroll to contact section
+                      // Navigate to home page and scroll to contact after navigation
+                      navigate('/', { replace: true });
+                      
+                      // Use setTimeout to ensure the home page is loaded before scrolling
+                      setTimeout(() => {
                         const contactSection = document.getElementById('contact');
                         if (contactSection) {
-                          contactSection.scrollIntoView({ behavior: 'smooth' });
-                        } else {
-                          // Fallback: try to navigate to contact
-                          window.location.href = '#contact';
+                          contactSection.scrollIntoView({ 
+                            behavior: 'smooth',
+                            block: 'start'
+                          });
                         }
-                      }
+                      }, 100);
                     }}
                     className="btn btn-light btn-lg px-5 fw-semibold"
                   >
@@ -303,6 +305,25 @@ function PersonalJourney() {
         .timeline-dot:hover {
           transform: scale(1.2);
           box-shadow: 0 0 0 8px rgba(255,255,255,0.4);
+        }
+        
+        /* Custom scrollbar for consistency */
+        ::-webkit-scrollbar {
+          width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+          background: #f1f1f1;
+          border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+          background: linear-gradient(to bottom, #667eea, #764ba2);
+          border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+          background: linear-gradient(to bottom, #5a6fd8, #6a4190);
         }
         
         @media (max-width: 768px) {

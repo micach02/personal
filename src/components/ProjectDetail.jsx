@@ -335,7 +335,15 @@ The development process followed modern best practices including component-based
           background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
           backdropFilter: 'blur(10px)'
         }}
-        onClick={() => navigate('/')}
+        onClick={() => {
+          // Navigate to home page and scroll to top
+          navigate('/', { replace: true });
+          
+          // Use setTimeout to ensure the home page is loaded before scrolling
+          setTimeout(() => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }, 100);
+        }}
         title="Back to Home"
       >
         <i className="fas fa-arrow-left"></i>
@@ -352,7 +360,15 @@ The development process followed modern best practices including component-based
               <li className="breadcrumb-item">
                 <button 
                   className="btn btn-link p-0 text-decoration-none fw-medium"
-                  onClick={() => navigate('/')}
+                  onClick={() => {
+                    // Navigate to home page and scroll to top
+                    navigate('/', { replace: true });
+                    
+                    // Use setTimeout to ensure the home page is loaded before scrolling
+                    setTimeout(() => {
+                      window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }, 100);
+                  }}
                   style={{ color: '#667eea' }}
                 >
                   <i className="fas fa-home me-2"></i>Home
@@ -361,7 +377,21 @@ The development process followed modern best practices including component-based
               <li className="breadcrumb-item">
                 <button 
                   className="btn btn-link p-0 text-decoration-none fw-medium"
-                  onClick={() => navigate('/#projects')}
+                  onClick={() => {
+                    // Navigate to home page and scroll to projects after navigation
+                    navigate('/', { replace: true });
+                    
+                    // Use setTimeout to ensure the home page is loaded before scrolling
+                    setTimeout(() => {
+                      const projectsSection = document.getElementById('projects');
+                      if (projectsSection) {
+                        projectsSection.scrollIntoView({ 
+                          behavior: 'smooth',
+                          block: 'start'
+                        });
+                      }
+                    }, 100);
+                  }}
                   style={{ color: '#667eea' }}
                 >
                   <i className="fas fa-folder me-2"></i>Projects
@@ -1055,7 +1085,15 @@ The development process followed modern best practices including component-based
                       <button 
                         className="btn btn-outline-primary d-flex align-items-center justify-content-center fw-medium rounded-pill"
                         style={{ padding: '12px 24px', transition: 'all 0.3s ease' }}
-                        onClick={() => navigate('/')}
+                        onClick={() => {
+                          // Navigate to home page and scroll to top
+                          navigate('/', { replace: true });
+                          
+                          // Use setTimeout to ensure the home page is loaded before scrolling
+                          setTimeout(() => {
+                            window.scrollTo({ top: 0, behavior: 'smooth' });
+                          }, 100);
+                        }}
                         onMouseEnter={(e) => {
                           e.target.style.background = '#667eea';
                           e.target.style.borderColor = '#667eea';
@@ -1075,7 +1113,21 @@ The development process followed modern best practices including component-based
                       <button 
                         className="btn btn-outline-secondary d-flex align-items-center justify-content-center fw-medium rounded-pill"
                         style={{ padding: '12px 24px', transition: 'all 0.3s ease' }}
-                        onClick={() => navigate('/#projects')}
+                        onClick={() => {
+                          // Navigate to home page and scroll to projects after navigation
+                          navigate('/', { replace: true });
+                          
+                          // Use setTimeout to ensure the home page is loaded before scrolling
+                          setTimeout(() => {
+                            const projectsSection = document.getElementById('projects');
+                            if (projectsSection) {
+                              projectsSection.scrollIntoView({ 
+                                behavior: 'smooth',
+                                block: 'start'
+                              });
+                            }
+                          }, 100);
+                        }}
                         onMouseEnter={(e) => {
                           e.target.style.background = '#6c757d';
                           e.target.style.borderColor = '#6c757d';
@@ -1224,7 +1276,21 @@ The development process followed modern best practices including component-based
                       color: '#667eea',
                       transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)'
                     }}
-                    onClick={() => navigate('/#contact')}
+                    onClick={() => {
+                      // Navigate to home page and scroll to contact after navigation
+                      navigate('/', { replace: true });
+                      
+                      // Use setTimeout to ensure the home page is loaded before scrolling
+                      setTimeout(() => {
+                        const contactSection = document.getElementById('contact');
+                        if (contactSection) {
+                          contactSection.scrollIntoView({ 
+                            behavior: 'smooth',
+                            block: 'start'
+                          });
+                        }
+                      }, 100);
+                    }}
                     onMouseEnter={(e) => {
                       e.target.style.transform = 'translateY(-5px) scale(1.05)';
                       e.target.style.boxShadow = '0 20px 60px rgba(0,0,0,0.2)';
@@ -1248,7 +1314,21 @@ The development process followed modern best practices including component-based
                       border: '2px solid rgba(255, 255, 255, 0.3)',
                       transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)'
                     }}
-                    onClick={() => navigate('/#projects')}
+                    onClick={() => {
+                      // Navigate to home page and scroll to projects after navigation
+                      navigate('/', { replace: true });
+                      
+                      // Use setTimeout to ensure the home page is loaded before scrolling
+                      setTimeout(() => {
+                        const projectsSection = document.getElementById('projects');
+                        if (projectsSection) {
+                          projectsSection.scrollIntoView({ 
+                            behavior: 'smooth',
+                            block: 'start'
+                          });
+                        }
+                      }, 100);
+                    }}
                     onMouseEnter={(e) => {
                       e.target.style.background = 'rgba(255, 255, 255, 0.2)';
                       e.target.style.transform = 'translateY(-5px)';
@@ -1269,6 +1349,107 @@ The development process followed modern best practices including component-based
           </div>
         </div>
       </section>
+      
+      {/* Custom styles for consistency */}
+      <style>{`
+        /* Custom scrollbar for consistency */
+        ::-webkit-scrollbar {
+          width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+          background: #f1f1f1;
+          border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+          background: linear-gradient(to bottom, #667eea, #764ba2);
+          border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+          background: linear-gradient(to bottom, #5a6fd8, #6a4190);
+        }
+        
+        /* Smooth animations */
+        @keyframes float {
+          0%, 100% { transform: translateY(0px); }
+          50% { transform: translateY(-20px); }
+        }
+        
+        @keyframes pulse-glow {
+          0%, 100% { 
+            text-shadow: 0 0 5px rgba(255,255,255,0.5); 
+            transform: scale(1);
+          }
+          50% { 
+            text-shadow: 0 0 20px rgba(255,255,255,0.8); 
+            transform: scale(1.05);
+          }
+        }
+        
+        @keyframes slideInFromBottom {
+          from {
+            opacity: 0;
+            transform: translateY(30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        
+        @keyframes slideInFromLeft {
+          from {
+            opacity: 0;
+            transform: translateX(-50px);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+        
+        @keyframes slideInFromRight {
+          from {
+            opacity: 0;
+            transform: translateX(50px);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+        
+        .gradient-text {
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+        }
+        
+        .modern-card {
+          transition: all 0.3s ease;
+        }
+        
+        .modern-card:hover {
+          transform: translateY(-5px);
+        }
+        
+        .hover-lift {
+          transition: all 0.3s ease;
+        }
+        
+        .hover-lift:hover {
+          transform: translateY(-3px);
+        }
+        
+        .section-divider {
+          height: 1px;
+          background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.3), transparent);
+          margin: 1.5rem 0;
+        }
+      `}</style>
     </div>
   );
 }
