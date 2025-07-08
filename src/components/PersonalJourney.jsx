@@ -8,6 +8,29 @@ function PersonalJourney() {
   useEffect(() => {
     // Scroll to top when component mounts
     window.scrollTo({ top: 0, behavior: 'smooth' });
+    
+    // Prevent common keyboard shortcuts for saving/downloading images
+    const preventImageSaving = (e) => {
+      // Prevent Ctrl+S (Save), Ctrl+Shift+S (Save As), F12 (DevTools), Ctrl+U (View Source)
+      if (
+        (e.ctrlKey && e.key === 's') ||
+        (e.ctrlKey && e.shiftKey && e.key === 'S') ||
+        e.key === 'F12' ||
+        (e.ctrlKey && e.key === 'u') ||
+        (e.ctrlKey && e.shiftKey && e.key === 'I') ||
+        (e.ctrlKey && e.shiftKey && e.key === 'J') ||
+        (e.ctrlKey && e.shiftKey && e.key === 'C')
+      ) {
+        e.preventDefault();
+        return false;
+      }
+    };
+    
+    document.addEventListener('keydown', preventImageSaving);
+    
+    return () => {
+      document.removeEventListener('keydown', preventImageSaving);
+    };
   }, []);
 
   useEffect(() => {
@@ -110,8 +133,10 @@ function PersonalJourney() {
     { fact: "Can play table tennis", icon: "🏓" },
     { fact: "Plays Mobile Legends", icon: "🎮" },
     { fact: "Listening to music is my therapy.", icon: "🎵" },
+    { fact: "Singing is my passion, but I'm not the best at it.", icon: "🎤" },
     { fact: "Loves going out to beaches.", icon: "🏖️" },
-    { fact: "Learned to cook during the pandemic", icon: "👨‍🍳" }
+    { fact: "Learned to cook during the pandemic", icon: "👨‍🍳" },
+    { fact: "Riding motorcycles is also my hobby. Loves long rides.", icon: "🏍️" }
   ];
 
   return (
@@ -208,17 +233,305 @@ function PersonalJourney() {
           </div>
         </div>
 
+        {/* Photo Gallery */}
+        <div className="row mb-5">
+          <div className="col-lg-6 mb-4">
+            <div className="card border-0 shadow-lg h-100" style={{ background: 'rgba(255,255,255,0.1)', backdropFilter: 'blur(10px)' }}>
+              <div className="card-body p-5">
+                <h3 className="text-white mb-4">
+                  Life Through My Lens
+                  <span className="ms-3">📸</span>
+                </h3>
+                <p className="text-light lh-lg mb-4">
+                  Moments that matter, memories that last forever. Each photo tells a story of 
+                  my journey - from quiet moments of reflection to adventures that shaped who 
+                  I am today.
+                </p>
+                <p className="text-light lh-lg mb-4">
+                  Photography has been my way of capturing the beauty in everyday life, 
+                  preserving memories that bring joy and inspiration whenever I look back 
+                  at them.
+                </p>
+                <p className="text-light lh-lg mb-0">
+                  These images represent chapters of my personal story - click on any photo 
+                  to explore the collection and get a glimpse into my world beyond coding.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className="col-lg-6">
+            <div className="gallery-container">
+              <div className="row g-2">
+                {[
+                  'FB_IMG_1746857461511.jpg',
+                  'IMG_20240825_132059.jpg',
+                  'IMG_20241020_202537.jpg',
+                  'IMG_20241117_202735.jpg',
+                  'IMG_20241124_171319.jpg',
+                  'IMG_20241126_183302.jpg',
+                  'IMG_20241223_200638.jpg',
+                  'IMG_20250120_195219.jpg',
+                  'IMG_20250501_155020.jpg',
+                  'IMG_20250501_162423.jpg',
+                  'IMG_20250521_190754.jpg',
+                  'IMG_20250607_171130.jpg',
+                  'IMG_20250608_084227.jpg',
+                  'IMG_20250629_182706.jpg',
+                  'IMG_20250629_182733.jpg',
+                  'IMG_20250629_183013.jpg',
+                  'IMG_5450.JPG',
+                  'IMG_5757.jpg',
+                  'IMG_6232.jpg',
+                  'IMG_6524.jpg',
+                  'IMG_6635.JPG',
+                  'IMG_6728.jpg',
+                  'IMG_6751.jpg',
+                  'IMG_6901.jpg',
+                  'IMG_6964.jpg'
+                ].slice(0, 12).map((photo, index) => (
+                  <div key={index} className="col-4 col-sm-4 col-md-4">
+                    <div 
+                      className="gallery-item"
+                      style={{
+                        animationDelay: `${index * 0.05}s`
+                      }}
+                    >
+                      <div 
+                        className="gallery-image-container"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          e.stopPropagation();
+                          
+                          // Create modal overlay
+                          const modal = document.createElement('div');
+                          modal.className = 'gallery-modal';
+                          modal.style.cssText = `
+                            position: fixed;
+                            top: 0;
+                            left: 0;
+                            width: 100%;
+                            height: 100%;
+                            background: rgba(0, 0, 0, 0.95);
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            z-index: 9999;
+                            animation: modalFadeIn 0.3s ease-out;
+                          `;
+                          
+                          modal.innerHTML = `
+                            <div class="gallery-modal-content" style="position: relative; max-width: 90vw; max-height: 90vh; text-align: center;">
+                              <span class="gallery-modal-close" style="position: absolute; top: -50px; right: 0; font-size: 2.5rem; color: white; cursor: pointer; background: rgba(255,255,255,0.1); width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; backdrop-filter: blur(10px);">&times;</span>
+                              <img src="images/gallery/${photo}" alt="Gallery photo ${index + 1}" class="gallery-modal-image" style="max-width: 100%; max-height: 85vh; object-fit: contain; border-radius: 12px; box-shadow: 0 20px 60px rgba(0,0,0,0.5); user-select: none; pointer-events: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none;" draggable="false" oncontextmenu="return false;" ondragstart="return false;" onselectstart="return false;">
+                              <div class="gallery-modal-nav" style="position: absolute; top: 50%; transform: translateY(-50%); width: calc(100% + 100px); left: -50px; display: flex; justify-content: space-between; pointer-events: none;">
+                                <button class="gallery-nav-btn gallery-prev-btn" style="background: rgba(255,255,255,0.1); border: none; color: white; font-size: 2rem; width: 50px; height: 50px; border-radius: 50%; cursor: pointer; transition: all 0.3s ease; backdrop-filter: blur(10px); pointer-events: all; display: flex; align-items: center; justify-content: center;">❮</button>
+                                <button class="gallery-nav-btn gallery-next-btn" style="background: rgba(255,255,255,0.1); border: none; color: white; font-size: 2rem; width: 50px; height: 50px; border-radius: 50%; cursor: pointer; transition: all 0.3s ease; backdrop-filter: blur(10px); pointer-events: all; display: flex; align-items: center; justify-content: center;">❯</button>
+                              </div>
+                            </div>
+                          `;
+                          
+                          document.body.appendChild(modal);
+                          document.body.style.overflow = 'hidden';
+                          
+                          // Close modal functionality
+                          const closeModal = () => {
+                            try {
+                              if (modal && modal.parentNode) {
+                                document.body.removeChild(modal);
+                              }
+                              document.body.style.overflow = 'auto';
+                              document.removeEventListener('keydown', handleKeyPress);
+                            } catch (error) {
+                              console.log('Modal cleanup error:', error);
+                            }
+                          };
+                          
+                          // Event listeners
+                          const closeBtn = modal.querySelector('.gallery-modal-close');
+                          if (closeBtn) {
+                            closeBtn.addEventListener('click', closeModal);
+                            closeBtn.addEventListener('mouseover', (e) => {
+                              e.target.style.background = 'rgba(255,255,255,0.2)';
+                              e.target.style.transform = 'scale(1.1)';
+                            });
+                            closeBtn.addEventListener('mouseout', (e) => {
+                              e.target.style.background = 'rgba(255,255,255,0.1)';
+                              e.target.style.transform = 'scale(1)';
+                            });
+                          }
+                          
+                          modal.addEventListener('click', (e) => {
+                            if (e.target === modal) closeModal();
+                          });
+                          
+                          // Navigation functionality
+                          const photos = [
+                            'FB_IMG_1746857461511.jpg',
+                            'IMG_20240825_132059.jpg',
+                            'IMG_20241020_202537.jpg',
+                            'IMG_20241117_202735.jpg',
+                            'IMG_20241124_171319.jpg',
+                            'IMG_20241126_183302.jpg',
+                            'IMG_20241223_200638.jpg',
+                            'IMG_20250120_195219.jpg',
+                            'IMG_20250501_155020.jpg',
+                            'IMG_20250501_162423.jpg',
+                            'IMG_20250521_190754.jpg',
+                            'IMG_20250607_171130.jpg',
+                            'IMG_20250608_084227.jpg',
+                            'IMG_20250629_182706.jpg',
+                            'IMG_20250629_182733.jpg',
+                            'IMG_20250629_183013.jpg',
+                            'IMG_5450.JPG',
+                            'IMG_5757.jpg',
+                            'IMG_6232.jpg',
+                            'IMG_6524.jpg',
+                            'IMG_6635.JPG',
+                            'IMG_6728.jpg',
+                            'IMG_6751.jpg',
+                            'IMG_6901.jpg',
+                            'IMG_6964.jpg'
+                          ];
+                          
+                          let currentIndex = index;
+                          const modalImage = modal.querySelector('.gallery-modal-image');
+                          
+                          const updateImage = (newIndex) => {
+                            if (modalImage) {
+                              modalImage.src = `images/gallery/${photos[newIndex]}`;
+                              modalImage.alt = `Gallery photo ${newIndex + 1}`;
+                              modalImage.draggable = false;
+                              modalImage.oncontextmenu = () => false;
+                              modalImage.ondragstart = () => false;
+                              modalImage.onselectstart = () => false;
+                            }
+                          };
+                          
+                          const prevBtn = modal.querySelector('.gallery-prev-btn');
+                          const nextBtn = modal.querySelector('.gallery-next-btn');
+                          
+                          if (prevBtn) {
+                            prevBtn.addEventListener('click', () => {
+                              currentIndex = (currentIndex - 1 + photos.length) % photos.length;
+                              updateImage(currentIndex);
+                            });
+                            prevBtn.addEventListener('mouseover', (e) => {
+                              e.target.style.background = 'rgba(255,255,255,0.2)';
+                              e.target.style.transform = 'scale(1.1)';
+                            });
+                            prevBtn.addEventListener('mouseout', (e) => {
+                              e.target.style.background = 'rgba(255,255,255,0.1)';
+                              e.target.style.transform = 'scale(1)';
+                            });
+                          }
+                          
+                          if (nextBtn) {
+                            nextBtn.addEventListener('click', () => {
+                              currentIndex = (currentIndex + 1) % photos.length;
+                              updateImage(currentIndex);
+                            });
+                            nextBtn.addEventListener('mouseover', (e) => {
+                              e.target.style.background = 'rgba(255,255,255,0.2)';
+                              e.target.style.transform = 'scale(1.1)';
+                            });
+                            nextBtn.addEventListener('mouseout', (e) => {
+                              e.target.style.background = 'rgba(255,255,255,0.1)';
+                              e.target.style.transform = 'scale(1)';
+                            });
+                          }
+                          
+                          // Keyboard navigation
+                          const handleKeyPress = (e) => {
+                            if (e.key === 'Escape') closeModal();
+                            if (e.key === 'ArrowLeft') {
+                              currentIndex = (currentIndex - 1 + photos.length) % photos.length;
+                              updateImage(currentIndex);
+                            }
+                            if (e.key === 'ArrowRight') {
+                              currentIndex = (currentIndex + 1) % photos.length;
+                              updateImage(currentIndex);
+                            }
+                          };
+                          
+                          document.addEventListener('keydown', handleKeyPress);
+                        }}
+                      >
+                        <img
+                          src={`images/gallery/${photo}`}
+                          alt={`Gallery photo ${index + 1}`}
+                          className="gallery-image"
+                          loading="lazy"
+                          draggable="false"
+                          onContextMenu={(e) => e.preventDefault()}
+                          onDragStart={(e) => e.preventDefault()}
+                          onSelectStart={(e) => e.preventDefault()}
+                          style={{ userSelect: 'none', pointerEvents: 'none' }}
+                        />
+                        <div className="gallery-overlay">
+                          <div className="gallery-overlay-content">
+                            <div style={{fontSize: '2rem', marginBottom: '5px'}}>🔍</div>
+                            <p className="mt-1 mb-0" style={{fontSize: '0.8rem'}}>View</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <div className="text-center mt-3">
+                <small className="text-light opacity-75">
+                  Showing 12 of 25 photos • Click any image to view full gallery
+                </small>
+                <br />
+                <small className="text-light opacity-50" style={{ fontSize: '0.7rem' }}>
+                  © All photos are protected by copyright. Unauthorized downloading or distribution is prohibited.
+                </small>
+              </div>
+            </div>
+          </div>
+        </div>
+
         {/* Fun Facts */}
         <div className="row mb-5">
           <div className="col-12">
-            <h3 className="fw-bold mb-5 text-center text-white">Fun Facts About Me</h3>
-            <div className="row">
+            <h3 className="fw-bold mb-5 text-center text-white">
+              Fun Facts About Me
+              <span className="ms-3">🎉</span>
+            </h3>
+            <div className="row g-4">
               {funFacts.map((fact, index) => (
                 <div key={index} className="col-lg-4 col-md-6 mb-4">
-                  <div className="card border-0 shadow-lg h-100" style={{ background: 'rgba(255,255,255,0.95)' }}>
-                    <div className="card-body p-4 text-center">
-                      <div className="fs-2 mb-3">{fact.icon}</div>
-                      <p className="text-dark mb-0 fw-medium">{fact.fact}</p>
+                  <div 
+                    className="fun-fact-card card border-0 shadow-lg h-100" 
+                    style={{ 
+                      background: 'rgba(255,255,255,0.95)',
+                      transition: 'all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
+                      cursor: 'pointer',
+                      animationDelay: `${index * 0.1}s`
+                    }}
+                  >
+                    <div className="card-body p-4 text-center position-relative overflow-hidden">
+                      <div 
+                        className="fun-fact-icon fs-1 mb-3 position-relative z-index-2" 
+                        style={{ 
+                          transition: 'all 0.3s ease',
+                          filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.1))'
+                        }}
+                      >
+                        {fact.icon}
+                      </div>
+                      <p className="text-dark mb-0 fw-medium position-relative z-index-2" style={{ fontSize: '0.95rem', lineHeight: '1.5' }}>
+                        {fact.fact}
+                      </p>
+                      <div 
+                        className="fun-fact-bg-effect position-absolute top-0 start-0 w-100 h-100"
+                        style={{
+                          background: 'linear-gradient(45deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1))',
+                          transform: 'scale(0)',
+                          transition: 'transform 0.3s ease',
+                          borderRadius: '12px'
+                        }}
+                      ></div>
                     </div>
                   </div>
                 </div>
@@ -324,6 +637,338 @@ function PersonalJourney() {
         
         ::-webkit-scrollbar-thumb:hover {
           background: linear-gradient(to bottom, #5a6fd8, #6a4190);
+        }
+        
+        /* Fun Facts Enhanced Animations */
+        .fun-fact-card {
+          border-radius: 16px !important;
+          overflow: hidden;
+          animation: fadeInUp 0.6s ease-out forwards;
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        
+        @keyframes fadeInUp {
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        
+        .fun-fact-card:hover {
+          transform: translateY(-12px) scale(1.05) !important;
+          box-shadow: 0 20px 40px rgba(0,0,0,0.15) !important;
+        }
+        
+        .fun-fact-card:hover .fun-fact-icon {
+          transform: scale(1.2) rotate(10deg);
+          filter: drop-shadow(0 8px 16px rgba(0,0,0,0.2)) !important;
+        }
+        
+        .fun-fact-card:hover .fun-fact-bg-effect {
+          transform: scale(1) !important;
+        }
+        
+        .fun-fact-card:active {
+          transform: translateY(-8px) scale(1.02) !important;
+        }
+        
+        /* Subtle pulse animation for icons */
+        .fun-fact-icon {
+          animation: subtlePulse 3s ease-in-out infinite;
+        }
+        
+        @keyframes subtlePulse {
+          0%, 100% { transform: scale(1); }
+          50% { transform: scale(1.05); }
+        }
+        
+        /* Staggered animation delay for cards */
+        .fun-fact-card:nth-child(1) { animation-delay: 0.1s; }
+        .fun-fact-card:nth-child(2) { animation-delay: 0.2s; }
+        .fun-fact-card:nth-child(3) { animation-delay: 0.3s; }
+        .fun-fact-card:nth-child(4) { animation-delay: 0.4s; }
+        .fun-fact-card:nth-child(5) { animation-delay: 0.5s; }
+        .fun-fact-card:nth-child(6) { animation-delay: 0.6s; }
+        .fun-fact-card:nth-child(7) { animation-delay: 0.7s; }
+        .fun-fact-card:nth-child(8) { animation-delay: 0.8s; }
+        .fun-fact-card:nth-child(9) { animation-delay: 0.9s; }
+        .fun-fact-card:nth-child(10) { animation-delay: 1.0s; }
+        
+        /* Gallery Styles */
+        .gallery-container {
+          max-width: 1200px;
+          margin: 0 auto;
+        }
+        
+        .gallery-item {
+          animation: galleryFadeIn 0.8s ease-out forwards;
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        
+        @keyframes galleryFadeIn {
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        
+        .gallery-image-container {
+          position: relative;
+          overflow: hidden;
+          border-radius: 16px;
+          box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+          aspect-ratio: 1;
+          cursor: pointer;
+          transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+          -webkit-user-select: none;
+          -moz-user-select: none;
+          -ms-user-select: none;
+          user-select: none;
+        }
+        
+        .gallery-image-container:hover {
+          transform: translateY(-8px) scale(1.05);
+          box-shadow: 0 16px 32px rgba(0,0,0,0.3);
+        }
+        
+        .gallery-image {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          transition: all 0.4s ease;
+          -webkit-user-select: none;
+          -moz-user-select: none;
+          -ms-user-select: none;
+          user-select: none;
+          -webkit-user-drag: none;
+          -khtml-user-drag: none;
+          -moz-user-drag: none;
+          -o-user-drag: none;
+          user-drag: none;
+          pointer-events: none;
+        }
+        
+        .gallery-image-container:hover .gallery-image {
+          transform: scale(1.1);
+        }
+        
+        .gallery-overlay {
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: linear-gradient(45deg, rgba(102, 126, 234, 0.8), rgba(118, 75, 162, 0.8));
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          opacity: 0;
+          transition: all 0.3s ease;
+          border-radius: 16px;
+        }
+        
+        .gallery-image-container:hover .gallery-overlay {
+          opacity: 1;
+        }
+        
+        .gallery-overlay-content {
+          text-align: center;
+          color: white;
+          transform: translateY(20px);
+          transition: all 0.3s ease;
+        }
+        
+        .gallery-image-container:hover .gallery-overlay-content {
+          transform: translateY(0);
+        }
+        
+        /* Gallery Modal Styles */
+        .gallery-modal {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: rgba(0, 0, 0, 0.95);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          z-index: 9999;
+          animation: modalFadeIn 0.3s ease-out;
+        }
+        
+        @keyframes modalFadeIn {
+          from {
+            opacity: 0;
+          }
+          to {
+            opacity: 1;
+          }
+        }
+        
+        .gallery-modal-content {
+          position: relative;
+          max-width: 90vw;
+          max-height: 90vh;
+          text-align: center;
+        }
+        
+        .gallery-modal-image {
+          max-width: 100%;
+          max-height: 85vh;
+          object-fit: contain;
+          border-radius: 12px;
+          box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+          -webkit-user-select: none;
+          -moz-user-select: none;
+          -ms-user-select: none;
+          user-select: none;
+          -webkit-user-drag: none;
+          -khtml-user-drag: none;
+          -moz-user-drag: none;
+          -o-user-drag: none;
+          user-drag: none;
+          pointer-events: none;
+        }
+        
+        .gallery-modal-close {
+          position: absolute;
+          top: -50px;
+          right: 0;
+          font-size: 2.5rem;
+          color: white;
+          cursor: pointer;
+          background: rgba(255,255,255,0.1);
+          width: 45px;
+          height: 45px;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transition: all 0.3s ease;
+          backdrop-filter: blur(10px);
+        }
+        
+        .gallery-modal-close:hover {
+          background: rgba(255,255,255,0.2);
+          transform: scale(1.1);
+        }
+        
+        .gallery-modal-nav {
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          width: calc(100% + 100px);
+          left: -50px;
+          display: flex;
+          justify-content: space-between;
+          pointer-events: none;
+        }
+        
+        .gallery-nav-btn {
+          background: rgba(255,255,255,0.1);
+          border: none;
+          color: white;
+          font-size: 2rem;
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          backdrop-filter: blur(10px);
+          pointer-events: all;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        
+        .gallery-nav-btn:hover {
+          background: rgba(255,255,255,0.2);
+          transform: scale(1.1);
+        }
+        
+        /* Additional Image Protection */
+        .gallery-container * {
+          -webkit-touch-callout: none;
+          -webkit-user-select: none;
+          -khtml-user-select: none;
+          -moz-user-select: none;
+          -ms-user-select: none;
+          user-select: none;
+        }
+        
+        /* Disable image dragging and context menu */
+        .gallery-image,
+        .gallery-modal-image {
+          -webkit-touch-callout: none;
+          -webkit-user-select: none;
+          -khtml-user-select: none;
+          -moz-user-select: none;
+          -ms-user-select: none;
+          user-select: none;
+          -webkit-user-drag: none;
+          -khtml-user-drag: none;
+          -moz-user-drag: none;
+          -o-user-drag: none;
+          user-drag: none;
+        }
+        
+        /* Prevent right-click context menu on gallery */
+        .gallery-container {
+          -webkit-touch-callout: none;
+          -webkit-user-select: none;
+          -khtml-user-select: none;
+          -moz-user-select: none;
+          -ms-user-select: none;
+          user-select: none;
+        }
+        
+        /* Responsive adjustments for gallery */
+        @media (max-width: 768px) {
+          .gallery-image-container {
+            border-radius: 12px;
+          }
+          
+          .gallery-overlay {
+            border-radius: 12px;
+          }
+          
+          .gallery-modal-close {
+            top: -40px;
+            right: 10px;
+            font-size: 2rem;
+            width: 40px;
+            height: 40px;
+          }
+          
+          .gallery-nav-btn {
+            font-size: 1.5rem;
+            width: 45px;
+            height: 45px;
+          }
+          
+          .gallery-modal-nav {
+            width: calc(100% + 80px);
+            left: -40px;
+          }
+          
+          .gallery-modal-image {
+            max-height: 75vh;
+            border-radius: 8px;
+          }
+        }
+        
+        /* Responsive adjustments for fun facts */
+        @media (max-width: 768px) {
+          .fun-fact-card {
+            margin-bottom: 1rem;
+          }
+          
+          .fun-fact-card:hover {
+            transform: translateY(-8px) scale(1.02) !important;
+          }
         }
         
         @media (max-width: 768px) {
