@@ -214,9 +214,9 @@ The avatar system is specifically designed for educational and professional use 
       id: 5,
       title: "Personal Portfolio Website",
       description: "A modern React-based portfolio website showcasing my professional skills, projects, and career journey with interactive components and responsive design.",
-      fullDescription: `This is my personal portfolio website, built from scratch using React and modern web technologies to showcase my professional skills, projects, and career journey. The website serves as a comprehensive digital presence that demonstrates my expertise in full-stack development, UI/UX design, and modern web development practices.
+      fullDescription: `This personal portfolio website represents my journey as a full-stack developer, originally crafted from scratch using fundamental web technologies (HTML5, CSS3, and JavaScript) before being completely reimagined and rebuilt with React and modern development frameworks. The transformation showcases my evolution as a developer and serves as a comprehensive digital showcase of my professional skills, innovative projects, and career progression.
 
-Built with React, Vite, Bootstrap, and AOS (Animate On Scroll), the portfolio features a component-based architecture that ensures maintainability and scalability. The design emphasizes clean aesthetics, smooth animations, and user experience best practices.
+Built with React, Vite, Bootstrap, and AOS (Animate On Scroll), the portfolio features a sophisticated component-based architecture that ensures maintainability and scalability. The design emphasizes clean aesthetics, smooth animations, and user experience best practices.
 
 Key features include:
 • Modern React component architecture with reusable components
