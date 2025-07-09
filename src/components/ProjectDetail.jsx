@@ -49,7 +49,7 @@ The project was built using modern web technologies and follows best practices f
       technologies: ["HTML5", "JavaScript", "CSS3", "jQuery", "Bootstrap", "PHP"],
       demoLink: "#",
       codeLink: "#",
-      image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='300'%3E%3Crect width='400' height='300' fill='%23667eea'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-family='Arial' font-size='16'%3EFinancial Learning Platform%3C/text%3E%3C/svg%3E",
+      image: `${import.meta.env.BASE_URL}images/projects/project1/project1_img1.png`,
       category: "Web Development",
       challenges: [
         "Dynamic Data Integration: Incorporating real-time financial datasets required robust data fetching, validation, and error handling to ensure accuracy and reliability.",
@@ -70,9 +70,15 @@ The project was built using modern web technologies and follows best practices f
         "UI/UX Design Collaboration: Contributed to the UI/UX design process, helping to create an intuitive, accessible, and responsive interface for a seamless user experience across devices."
       ],
       gallery: [
-        "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='400'%3E%3Crect width='600' height='400' fill='%23667eea'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-family='Arial' font-size='18'%3EFinancial Dashboard 1%3C/text%3E%3C/svg%3E",
-        "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='400'%3E%3Crect width='600' height='400' fill='%23667eea'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-family='Arial' font-size='18'%3EFinancial Dashboard 2%3C/text%3E%3C/svg%3E",
-        "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='400'%3E%3Crect width='600' height='400' fill='%23667eea'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-family='Arial' font-size='18'%3EFinancial Dashboard 3%3C/text%3E%3C/svg%3E"
+        `${import.meta.env.BASE_URL}images/projects/project1/project1_img1.png`,
+        `${import.meta.env.BASE_URL}images/projects/project1/project1_img2.png`,
+        `${import.meta.env.BASE_URL}images/projects/project1/project1_img3.png`,
+        `${import.meta.env.BASE_URL}images/projects/project1/project1_img4.png`,
+        `${import.meta.env.BASE_URL}images/projects/project1/project1_img5.png`,
+        `${import.meta.env.BASE_URL}images/projects/project1/project1_img6.png`,
+        `${import.meta.env.BASE_URL}images/projects/project1/project1_img7.png`,
+        `${import.meta.env.BASE_URL}images/projects/project1/project1_img8.png`,
+        `${import.meta.env.BASE_URL}images/projects/project1/project1_img9.png`
       ]
     },
     {
@@ -99,7 +105,7 @@ The platform provides an engaging way to understand banking operations, financia
       technologies: ["PHP", "JavaScript", "Bootstrap", "Chart.js"],
       demoLink: "#",
       codeLink: "#",
-      image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='300'%3E%3Crect width='400' height='300' fill='%2328a745'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-family='Arial' font-size='16'%3EBanking Simulation App%3C/text%3E%3C/svg%3E",
+      image: `${import.meta.env.BASE_URL}images/projects/project2/project2_img1.png`,
       category: "FinTech",
       challenges: [
         "Data Consistency & Validation: Ensuring all simulated transactions and account operations maintained data integrity and reflected real-world banking logic.",
@@ -116,9 +122,18 @@ The platform provides an engaging way to understand banking operations, financia
         "Testing & Deployment: Conducted thorough testing, fixed bugs, and deployed the application for educational use."
       ],
       gallery: [
-        "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='400'%3E%3Crect width='600' height='400' fill='%2328a745'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-family='Arial' font-size='18'%3EBanking Interface 1%3C/text%3E%3C/svg%3E",
-        "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='400'%3E%3Crect width='600' height='400' fill='%2328a745'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-family='Arial' font-size='18'%3EBanking Interface 2%3C/text%3E%3C/svg%3E",
-        "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='400'%3E%3Crect width='600' height='400' fill='%2328a745'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-family='Arial' font-size='18'%3EBanking Interface 3%3C/text%3E%3C/svg%3E"
+        `${import.meta.env.BASE_URL}images/projects/project2/project2_img1.png`,
+        `${import.meta.env.BASE_URL}images/projects/project2/project2_img2.png`,
+        `${import.meta.env.BASE_URL}images/projects/project2/project2_img3.png`,
+        `${import.meta.env.BASE_URL}images/projects/project2/project2_img4.png`,
+        `${import.meta.env.BASE_URL}images/projects/project2/project2_img5.png`,
+        `${import.meta.env.BASE_URL}images/projects/project2/project2_img6.png`,
+        `${import.meta.env.BASE_URL}images/projects/project2/project2_img7.png`,
+        `${import.meta.env.BASE_URL}images/projects/project2/project2_img8.png`,
+        `${import.meta.env.BASE_URL}images/projects/project2/project2_img9.png`,
+        `${import.meta.env.BASE_URL}images/projects/project2/project2_img10.png`,
+        `${import.meta.env.BASE_URL}images/projects/project2/project2_img11.png`,
+        `${import.meta.env.BASE_URL}images/projects/project2/project2_img12.png`
       ]
     },
     {
@@ -147,7 +162,7 @@ The platform combines powerful analytics with user-friendly interfaces, making c
       technologies: ["PHP", "JavaScript", "jQuery", "Bootstrap", "Chart.js"],
       demoLink: "#",
       codeLink: "#",
-      image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='300'%3E%3Crect width='400' height='300' fill='%2317a2b8'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-family='Arial' font-size='16'%3EReal Estate CRM%3C/text%3E%3C/svg%3E",
+      image: `${import.meta.env.BASE_URL}images/projects/project3/project3_img1.png`,
       category: "FinTech",
       challenges: [
         "Real-Time Data Integration: Integrating live market data and updating user portfolios in real time for accurate financial tracking.",
@@ -164,9 +179,10 @@ The platform combines powerful analytics with user-friendly interfaces, making c
         "Testing & Deployment: Conducted comprehensive testing, resolved bugs, and deployed the application for end-user access."
       ],
       gallery: [
-        "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='400'%3E%3Crect width='600' height='400' fill='%2317a2b8'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-family='Arial' font-size='18'%3ECRM Dashboard 1%3C/text%3E%3C/svg%3E",
-        "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='400'%3E%3Crect width='600' height='400' fill='%2317a2b8'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-family='Arial' font-size='18'%3ECRM Dashboard 2%3C/text%3E%3C/svg%3E",
-        "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='400'%3E%3Crect width='600' height='400' fill='%2317a2b8'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-family='Arial' font-size='18'%3ECRM Dashboard 3%3C/text%3E%3C/svg%3E"
+        `${import.meta.env.BASE_URL}images/projects/project3/project3_img1.png`,
+        `${import.meta.env.BASE_URL}images/projects/project3/project3_img2.png`,
+        `${import.meta.env.BASE_URL}images/projects/project3/project3_img4.png`,
+        `${import.meta.env.BASE_URL}images/projects/project3/project3_img5.png`
       ]
     },
     {
@@ -191,7 +207,7 @@ The avatar system is specifically designed for educational and professional use 
       technologies: ["Blender", "NVIDIA Omniverse"],
       demoLink: "#",
       codeLink: "#",
-      image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='300'%3E%3Crect width='400' height='300' fill='%23fd7e14'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-family='Arial' font-size='16'%3EResponsive Web Design%3C/text%3E%3C/svg%3E",
+      image: `${import.meta.env.BASE_URL}images/projects/project4/project4_img1.png`,
       category: "Animation",
       challenges: [
         "Realistic Lip Sync: Achieving accurate synchronization between the avatar's mouth movements and audio required fine-tuning animation curves and experimenting with different speech-to-animation tools.",
@@ -205,9 +221,17 @@ The avatar system is specifically designed for educational and professional use 
         "Integration: Embedded the animated avatar into web-based presentations using NVIDIA Omniverse and custom scripts."
       ],
       gallery: [
-        "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='400'%3E%3Crect width='600' height='400' fill='%23fd7e14'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-family='Arial' font-size='18'%3EResponsive Design 1%3C/text%3E%3C/svg%3E",
-        "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='400'%3E%3Crect width='600' height='400' fill='%23fd7e14'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-family='Arial' font-size='18'%3EResponsive Design 2%3C/text%3E%3C/svg%3E",
-        "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='400'%3E%3Crect width='600' height='400' fill='%23fd7e14'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-family='Arial' font-size='18'%3EResponsive Design 3%3C/text%3E%3C/svg%3E"
+        `${import.meta.env.BASE_URL}images/projects/project4/project4_img1.png`,
+        `${import.meta.env.BASE_URL}images/projects/project4/project4_img2.png`,
+        `${import.meta.env.BASE_URL}images/projects/project4/project4_img3.png`,
+        `${import.meta.env.BASE_URL}images/projects/project4/project4_img4.png`,
+        `${import.meta.env.BASE_URL}images/projects/project4/project4_img5.png`,
+        `${import.meta.env.BASE_URL}images/projects/project4/project4_img6.png`,
+        `${import.meta.env.BASE_URL}images/projects/project4/project4_img7.png`,
+        `${import.meta.env.BASE_URL}images/projects/project4/project4_img8.png`,
+        `${import.meta.env.BASE_URL}images/projects/project4/project4_img9.png`,
+        `${import.meta.env.BASE_URL}images/projects/project4/project4_img10.png`,
+        `${import.meta.env.BASE_URL}images/projects/project4/project4_img11.png`
       ]
     },
     {
@@ -236,7 +260,7 @@ The development process followed modern best practices including component-based
       technologies: ["React", "Vite", "Bootstrap", "AOS"],
       demoLink: "#",
       codeLink: "#",
-      image: "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjNmY0MmMxIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIyMCIgZmlsbD0iI2ZmZmZmZiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkFQSSBJbnRlZ3JhdGlvbiBUb29sczwvdGV4dD48L3N2Zz4=",
+      image: `${import.meta.env.BASE_URL}images/projects/project5/project5_img1.png`,
       category: "Web Development",
       challenges: [
         "Component Architecture: Designing a scalable React component structure that promotes reusability and maintainability across different sections.",
@@ -255,9 +279,13 @@ The development process followed modern best practices including component-based
         "Quality Assurance: Conducted thorough testing across different browsers and devices to ensure consistent user experience."
       ],
       gallery: [
-        "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAwIiBoZWlnaHQ9IjQwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjNmY0MmMxIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIzMCIgZmlsbD0iI2ZmZmZmZiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkFQSSBUb29scyAxPC90ZXh0Pjwvc3ZnPg==",
-        "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAwIiBoZWlnaHQ9IjQwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjNmY0MmMxIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIzMCIgZmlsbD0iI2ZmZmZmZiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkFQSSBUb29scyAyPC90ZXh0Pjwvc3ZnPg==",
-        "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAwIiBoZWlnaHQ9IjQwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjNmY0MmMxIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIzMCIgZmlsbD0iI2ZmZmZmZiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkFQSSBUb29scyAzPC90ZXh0Pjwvc3ZnPg=="
+        `${import.meta.env.BASE_URL}images/projects/project5/project5_img1.png`,
+        `${import.meta.env.BASE_URL}images/projects/project5/project5_img2.png`,
+        `${import.meta.env.BASE_URL}images/projects/project5/project5_img3.png`,
+        `${import.meta.env.BASE_URL}images/projects/project5/project5_img4.png`,
+        `${import.meta.env.BASE_URL}images/projects/project5/project5_img5.png`,
+        `${import.meta.env.BASE_URL}images/projects/project5/project5_img6.png`,
+        `${import.meta.env.BASE_URL}images/projects/project5/project5_img7.png`
       ]
     }
   ];
@@ -688,163 +716,592 @@ The development process followed modern best practices including component-based
           <div className="row g-5">
             {/* Left Column - Enhanced Content */}
             <div className="col-lg-8">
-              {/* Modern Project Overview */}
+              {/* Enhanced Project Overview */}
               <div className="mb-5" style={{ animation: 'slideInFromLeft 0.8s ease-out' }}>
                 <div className="d-flex align-items-center mb-4">
                   <div 
-                    className="rounded-circle p-4 me-4 shadow-lg"
+                    className="rounded-circle p-4 me-4 shadow-lg position-relative"
                     style={{
                       background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
                       color: 'white'
                     }}
                   >
                     <i className="fas fa-info-circle fs-4"></i>
+                    <div 
+                      className="position-absolute top-0 start-0 w-100 h-100 rounded-circle"
+                      style={{
+                        background: 'linear-gradient(45deg, transparent, rgba(255,255,255,0.2), transparent)',
+                        animation: 'pulse 2s ease-in-out infinite'
+                      }}
+                    />
                   </div>
                   <div>
-                    <h2 className="h2 mb-1 gradient-text">Project Overview</h2>
-                    <p className="text-muted mb-0 mt-3">Comprehensive project details and insights</p>
+                    <h2 className="h2 mb-1 gradient-text fw-bold">Project Overview</h2>
+                    <p className="text-muted mb-0 fs-6">Comprehensive project details and insights</p>
                   </div>
                 </div>
                 <div 
-                  className="modern-card p-5"
+                  className="modern-card overflow-hidden"
                   style={{
-                    background: 'rgba(255, 255, 255, 0.8)',
+                    background: 'rgba(255, 255, 255, 0.95)',
                     backdropFilter: 'blur(20px)',
                     borderRadius: '24px',
-                    border: '1px solid rgba(255, 255, 255, 0.2)'
+                    border: '1px solid rgba(102, 126, 234, 0.1)',
+                    boxShadow: '0 10px 40px rgba(102, 126, 234, 0.1)'
                   }}
                 >
+                  {/* Header with gradient */}
                   <div 
-                    className="text-muted lh-lg" 
-                    style={{ 
-                      whiteSpace: 'pre-line',
-                      fontSize: '1.1rem',
-                      color: '#5a6c7d'
+                    className="px-5 py-3"
+                    style={{
+                      background: 'linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%)',
+                      borderBottom: '1px solid rgba(102, 126, 234, 0.1)'
                     }}
                   >
-                    {project.fullDescription}
+                    <div className="d-flex align-items-center justify-content-between">
+                      <h5 className="mb-0 fw-bold text-primary">
+                        <i className="fas fa-file-alt me-2"></i>
+                        Project Description
+                      </h5>
+                      <span className="badge bg-primary bg-opacity-10 text-primary px-3 py-2 rounded-pill">
+                        <i className="fas fa-star me-1"></i>
+                        Featured Project
+                      </span>
+                    </div>
+                  </div>
+                  
+                  {/* Content */}
+                  <div className="p-5">
+                    <div 
+                      className="text-muted lh-lg position-relative" 
+                      style={{ 
+                        whiteSpace: 'pre-line',
+                        fontSize: '1.1rem',
+                        color: '#5a6c7d',
+                        lineHeight: '1.8'
+                      }}
+                    >
+                      {/* Add reading progress indicator */}
+                      <div 
+                        className="position-absolute start-0 top-0"
+                        style={{
+                          width: '4px',
+                          height: '100%',
+                          background: 'linear-gradient(to bottom, #667eea, #764ba2)',
+                          borderRadius: '2px',
+                          opacity: '0.3'
+                        }}
+                      />
+                      <div className="ps-4">
+                        {project.fullDescription}
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
 
-              {/* Modern Technical Challenges */}
+              {/* Enhanced Project Gallery */}
+              {project.gallery && project.gallery.length > 0 && (
+                <div className="mb-5" style={{ animation: 'slideInFromLeft 0.8s ease-out 0.15s both' }}>
+                  <div className="d-flex align-items-center mb-4">
+                    <div 
+                      className="rounded-circle p-4 me-4 shadow-lg position-relative"
+                      style={{
+                        background: 'linear-gradient(135deg, #28a745 0%, #20c997 100%)',
+                        color: 'white'
+                      }}
+                    >
+                      <i className="fas fa-images fs-4"></i>
+                      <div 
+                        className="position-absolute top-0 start-0 w-100 h-100 rounded-circle"
+                        style={{
+                          background: 'linear-gradient(45deg, transparent, rgba(255,255,255,0.2), transparent)',
+                          animation: 'pulse 2s ease-in-out infinite 0.3s'
+                        }}
+                      />
+                    </div>
+                    <div>
+                      <h2 className="h2 mb-1 fw-bold" style={{ color: '#28a745' }}>Project Gallery</h2>
+                      <p className="text-muted mb-0 fs-6">Visual showcase of project features and interface</p>
+                    </div>
+                  </div>
+                  <div 
+                    className="modern-card overflow-hidden"
+                    style={{
+                      background: 'rgba(255, 255, 255, 0.95)',
+                      backdropFilter: 'blur(20px)',
+                      borderRadius: '24px',
+                      border: '1px solid rgba(40, 167, 69, 0.15)',
+                      boxShadow: '0 10px 40px rgba(40, 167, 69, 0.1)'
+                    }}
+                  >
+                    {/* Header */}
+                    <div 
+                      className="px-5 py-3"
+                      style={{
+                        background: 'linear-gradient(135deg, rgba(40, 167, 69, 0.05) 0%, rgba(32, 201, 151, 0.05) 100%)',
+                        borderBottom: '1px solid rgba(40, 167, 69, 0.1)'
+                      }}
+                    >
+                      <div className="d-flex align-items-center justify-content-between">
+                        <h5 className="mb-0 fw-bold" style={{ color: '#28a745' }}>
+                          <i className="fas fa-photo-video me-2"></i>
+                          Interactive Screenshots
+                        </h5>
+                        <span className="badge bg-success bg-opacity-10 text-success px-3 py-2 rounded-pill">
+                          {project.gallery.length} Images
+                        </span>
+                      </div>
+                    </div>
+                    
+                    {/* Gallery Content */}
+                    <div className="p-5">
+                      {/* Main Featured Image */}
+                      <div className="mb-4">
+                        <div 
+                          className="position-relative rounded-4 overflow-hidden shadow-lg"
+                          style={{
+                            background: 'linear-gradient(135deg, rgba(40, 167, 69, 0.1) 0%, rgba(32, 201, 151, 0.1) 100%)',
+                            padding: '20px'
+                          }}
+                        >
+                          <img 
+                            src={project.gallery[activeImageIndex]} 
+                            alt={`${project.title} - Image ${activeImageIndex + 1}`}
+                            className="img-fluid rounded-3 w-100"
+                            style={{ 
+                              maxHeight: '500px',
+                              objectFit: 'cover',
+                              transition: 'all 0.5s ease'
+                            }}
+                            onError={(e) => {
+                              const canvas = document.createElement('canvas');
+                              canvas.width = 800;
+                              canvas.height = 500;
+                              const ctx = canvas.getContext('2d');
+                              
+                              const gradient = ctx.createLinearGradient(0, 0, 800, 500);
+                              gradient.addColorStop(0, '#28a745');
+                              gradient.addColorStop(1, '#20c997');
+                              ctx.fillStyle = gradient;
+                              ctx.fillRect(0, 0, 800, 500);
+                              
+                              ctx.font = '48px Arial';
+                              ctx.textAlign = 'center';
+                              ctx.textBaseline = 'middle';
+                              ctx.fillStyle = 'white';
+                              ctx.fillText('🖼️', 400, 250);
+                              
+                              e.target.src = canvas.toDataURL();
+                            }}
+                          />
+                          
+                          {/* Image Navigation Arrows */}
+                          {project.gallery.length > 1 && (
+                            <>
+                              <button 
+                                className="btn btn-light position-absolute top-50 start-0 translate-middle-y ms-3 rounded-circle shadow"
+                                style={{ 
+                                  width: '50px', 
+                                  height: '50px', 
+                                  display: 'flex', 
+                                  alignItems: 'center', 
+                                  justifyContent: 'center',
+                                  background: 'rgba(255, 255, 255, 0.9)',
+                                  backdropFilter: 'blur(10px)',
+                                  border: 'none',
+                                  transition: 'all 0.3s ease'
+                                }}
+                                onClick={() => setActiveImageIndex(prev => 
+                                  prev === 0 ? project.gallery.length - 1 : prev - 1
+                                )}
+                                onMouseEnter={(e) => {
+                                  e.target.style.background = 'rgba(255, 255, 255, 1)';
+                                  e.target.style.transform = 'scale(1.1)';
+                                }}
+                                onMouseLeave={(e) => {
+                                  e.target.style.background = 'rgba(255, 255, 255, 0.9)';
+                                  e.target.style.transform = 'scale(1)';
+                                }}
+                              >
+                                <i className="fas fa-chevron-left text-success"></i>
+                              </button>
+                              <button 
+                                className="btn btn-light position-absolute top-50 end-0 translate-middle-y me-3 rounded-circle shadow"
+                                style={{ 
+                                  width: '50px', 
+                                  height: '50px', 
+                                  display: 'flex', 
+                                  alignItems: 'center', 
+                                  justifyContent: 'center',
+                                  background: 'rgba(255, 255, 255, 0.9)',
+                                  backdropFilter: 'blur(10px)',
+                                  border: 'none',
+                                  transition: 'all 0.3s ease'
+                                }}
+                                onClick={() => setActiveImageIndex(prev => 
+                                  prev === project.gallery.length - 1 ? 0 : prev + 1
+                                )}
+                                onMouseEnter={(e) => {
+                                  e.target.style.background = 'rgba(255, 255, 255, 1)';
+                                  e.target.style.transform = 'scale(1.1)';
+                                }}
+                                onMouseLeave={(e) => {
+                                  e.target.style.background = 'rgba(255, 255, 255, 0.9)';
+                                  e.target.style.transform = 'scale(1)';
+                                }}
+                              >
+                                <i className="fas fa-chevron-right text-success"></i>
+                              </button>
+                            </>
+                          )}
+                          
+                          {/* Image Counter */}
+                          <div 
+                            className="position-absolute bottom-0 end-0 m-3 px-3 py-2 rounded-pill"
+                            style={{
+                              background: 'rgba(0, 0, 0, 0.7)',
+                              color: 'white',
+                              fontSize: '0.85rem',
+                              backdropFilter: 'blur(10px)'
+                            }}
+                          >
+                            {activeImageIndex + 1} / {project.gallery.length}
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Thumbnail Gallery */}
+                      {project.gallery.length > 1 && (
+                        <div className="row g-3">
+                          {project.gallery.map((image, index) => (
+                            <div key={index} className="col-6 col-md-4 col-lg-3">
+                              <div 
+                                className="position-relative rounded-3 overflow-hidden shadow-sm cursor-pointer"
+                                style={{
+                                  aspectRatio: '16/10',
+                                  border: activeImageIndex === index ? '3px solid #28a745' : '2px solid transparent',
+                                  transition: 'all 0.3s ease',
+                                  background: 'linear-gradient(135deg, rgba(40, 167, 69, 0.05) 0%, rgba(32, 201, 151, 0.05) 100%)'
+                                }}
+                                onClick={() => setActiveImageIndex(index)}
+                                onMouseEnter={(e) => {
+                                  if (activeImageIndex !== index) {
+                                    e.currentTarget.style.transform = 'scale(1.05)';
+                                    e.currentTarget.style.borderColor = '#28a745';
+                                  }
+                                }}
+                                onMouseLeave={(e) => {
+                                  if (activeImageIndex !== index) {
+                                    e.currentTarget.style.transform = 'scale(1)';
+                                    e.currentTarget.style.borderColor = 'transparent';
+                                  }
+                                }}
+                              >
+                                <img 
+                                  src={image} 
+                                  alt={`${project.title} - Thumbnail ${index + 1}`}
+                                  className="img-fluid w-100 h-100"
+                                  style={{ 
+                                    objectFit: 'cover',
+                                    opacity: activeImageIndex === index ? 1 : 0.7,
+                                    transition: 'opacity 0.3s ease'
+                                  }}
+                                  onError={(e) => {
+                                    const canvas = document.createElement('canvas');
+                                    canvas.width = 200;
+                                    canvas.height = 125;
+                                    const ctx = canvas.getContext('2d');
+                                    
+                                    const gradient = ctx.createLinearGradient(0, 0, 200, 125);
+                                    gradient.addColorStop(0, '#28a745');
+                                    gradient.addColorStop(1, '#20c997');
+                                    ctx.fillStyle = gradient;
+                                    ctx.fillRect(0, 0, 200, 125);
+                                    
+                                    ctx.font = '24px Arial';
+                                    ctx.textAlign = 'center';
+                                    ctx.textBaseline = 'middle';
+                                    ctx.fillStyle = 'white';
+                                    ctx.fillText(`${index + 1}`, 100, 62.5);
+                                    
+                                    e.target.src = canvas.toDataURL();
+                                  }}
+                                />
+                                {activeImageIndex === index && (
+                                  <div 
+                                    className="position-absolute top-50 start-50 translate-middle"
+                                    style={{
+                                      background: 'rgba(40, 167, 69, 0.8)',
+                                      color: 'white',
+                                      borderRadius: '50%',
+                                      width: '30px',
+                                      height: '30px',
+                                      display: 'flex',
+                                      alignItems: 'center',
+                                      justifyContent: 'center'
+                                    }}
+                                  >
+                                    <i className="fas fa-eye" style={{ fontSize: '12px' }}></i>
+                                  </div>
+                                )}
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {/* Enhanced Technical Challenges */}
               <div className="mb-5" style={{ animation: 'slideInFromLeft 0.8s ease-out 0.2s both' }}>
                 <div className="d-flex align-items-center mb-4">
                   <div 
-                    className="rounded-circle p-4 me-4 shadow-lg"
+                    className="rounded-circle p-4 me-4 shadow-lg position-relative"
                     style={{
                       background: 'linear-gradient(135deg, #ffc107 0%, #fd7e14 100%)',
                       color: 'white'
                     }}
                   >
                     <i className="fas fa-cog fs-4"></i>
+                    <div 
+                      className="position-absolute top-0 start-0 w-100 h-100 rounded-circle"
+                      style={{
+                        background: 'linear-gradient(45deg, transparent, rgba(255,255,255,0.2), transparent)',
+                        animation: 'pulse 2s ease-in-out infinite 0.5s'
+                      }}
+                    />
                   </div>
                   <div>
-                    <h2 className="h2 mb-1" style={{ color: '#ffc107' }}>Technical Challenges</h2>
-                    <p className="text-muted mb-0">Problems solved and solutions implemented</p>
+                    <h2 className="h2 mb-1 fw-bold" style={{ color: '#fd7e14' }}>Technical Challenges</h2>
+                    <p className="text-muted mb-0 fs-6">Problems solved and solutions implemented</p>
                   </div>
                 </div>
                 <div 
-                  className="modern-card p-5"
+                  className="modern-card overflow-hidden"
                   style={{
-                    background: 'rgba(255, 255, 255, 0.8)',
+                    background: 'rgba(255, 255, 255, 0.95)',
                     backdropFilter: 'blur(20px)',
                     borderRadius: '24px',
-                    border: '1px solid rgba(255, 193, 7, 0.1)'
+                    border: '1px solid rgba(255, 193, 7, 0.15)',
+                    boxShadow: '0 10px 40px rgba(255, 193, 7, 0.1)'
                   }}
                 >
-                  <div className="row g-4">
-                    {project.challenges.map((challenge, index) => (
-                      <div key={index} className="col-12">
-                        <div 
-                          className="d-flex align-items-start p-4 rounded-4"
-                          style={{
-                            background: 'linear-gradient(135deg, rgba(255, 193, 7, 0.1) 0%, rgba(253, 126, 20, 0.1) 100%)',
-                            border: '1px solid rgba(255, 193, 7, 0.2)',
-                            animationName: 'slideInFromRight',
-                            animationDuration: '0.6s',
-                            animationTimingFunction: 'ease-out',
-                            animationFillMode: 'both',
-                            animationDelay: `${index * 0.15}s`
-                          }}
-                        >
-                          <div 
-                            className="rounded-circle p-3 me-3 flex-shrink-0"
-                            style={{
-                              background: 'linear-gradient(135deg, #ffc107 0%, #fd7e14 100%)',
-                              color: 'white'
-                            }}
-                          >
-                            <i className="fas fa-lightbulb"></i>
+                  {/* Header */}
+                  <div 
+                    className="px-5 py-3"
+                    style={{
+                      background: 'linear-gradient(135deg, rgba(255, 193, 7, 0.05) 0%, rgba(253, 126, 20, 0.05) 100%)',
+                      borderBottom: '1px solid rgba(255, 193, 7, 0.1)'
+                    }}
+                  >
+                    <div className="d-flex align-items-center justify-content-between">
+                      <h5 className="mb-0 fw-bold" style={{ color: '#fd7e14' }}>
+                        <i className="fas fa-brain me-2"></i>
+                        Problem-Solving Journey
+                      </h5>
+                      <span className="badge bg-warning bg-opacity-10 text-warning px-3 py-2 rounded-pill">
+                        {project.challenges.length} Challenges Solved
+                      </span>
+                    </div>
+                  </div>
+                  
+                  {/* Content */}
+                  <div className="p-5">
+                    <div className="row g-4">
+                      {project.challenges.map((challenge, index) => {
+                        const [title, description] = challenge.split(': ');
+                        return (
+                          <div key={index} className="col-12">
+                            <div 
+                              className="challenge-card p-4 rounded-4 h-100"
+                              style={{
+                                background: 'linear-gradient(135deg, rgba(255, 193, 7, 0.08) 0%, rgba(253, 126, 20, 0.08) 100%)',
+                                border: '1px solid rgba(255, 193, 7, 0.2)',
+                                transition: 'all 0.3s ease',
+                                animationName: 'slideInFromRight',
+                                animationDuration: '0.6s',
+                                animationTimingFunction: 'ease-out',
+                                animationFillMode: 'both',
+                                animationDelay: `${index * 0.15}s`,
+                                cursor: 'pointer'
+                              }}
+                              onMouseEnter={(e) => {
+                                e.currentTarget.style.transform = 'translateY(-3px)';
+                                e.currentTarget.style.boxShadow = '0 10px 30px rgba(255, 193, 7, 0.2)';
+                                e.currentTarget.style.background = 'linear-gradient(135deg, rgba(255, 193, 7, 0.12) 0%, rgba(253, 126, 20, 0.12) 100%)';
+                              }}
+                              onMouseLeave={(e) => {
+                                e.currentTarget.style.transform = 'translateY(0)';
+                                e.currentTarget.style.boxShadow = 'none';
+                                e.currentTarget.style.background = 'linear-gradient(135deg, rgba(255, 193, 7, 0.08) 0%, rgba(253, 126, 20, 0.08) 100%)';
+                              }}
+                            >
+                              <div className="d-flex align-items-start">
+                                <div 
+                                  className="rounded-circle p-3 me-4 flex-shrink-0"
+                                  style={{
+                                    background: 'linear-gradient(135deg, #ffc107 0%, #fd7e14 100%)',
+                                    color: 'white',
+                                    minWidth: '52px',
+                                    height: '52px',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center'
+                                  }}
+                                >
+                                  <i className="fas fa-lightbulb fs-5"></i>
+                                </div>
+                                <div className="flex-grow-1">
+                                  {title && description ? (
+                                    <>
+                                      <h6 className="fw-bold mb-2" style={{ color: '#fd7e14' }}>
+                                        {title}
+                                      </h6>
+                                      <p className="mb-0 text-muted lh-lg" style={{ fontSize: '0.95rem' }}>
+                                        {description}
+                                      </p>
+                                    </>
+                                  ) : (
+                                    <span className="fw-medium text-dark lh-lg" style={{ fontSize: '0.95rem' }}>
+                                      {challenge}
+                                    </span>
+                                  )}
+                                </div>
+                              </div>
+                            </div>
                           </div>
-                          <div>
-                            <span className="fw-medium" style={{ color: '#2c3e50' }}>{challenge}</span>
-                          </div>
-                        </div>
-                      </div>
-                    ))}
+                        );
+                      })}
+                    </div>
                   </div>
                 </div>
               </div>
 
-              {/* Role & Responsibilities Section */}
+              {/* Enhanced Role & Responsibilities Section */}
               {project.roleAndResponsibilities && (
                 <div className="mb-5" style={{ animation: 'slideInFromLeft 0.8s ease-out 0.4s both' }}>
                   <div className="d-flex align-items-center mb-4">
                     <div 
-                      className="rounded-circle p-4 me-4 shadow-lg"
+                      className="rounded-circle p-4 me-4 shadow-lg position-relative"
                       style={{
                         background: 'linear-gradient(135deg, #6f42c1 0%, #e83e8c 100%)',
                         color: 'white'
                       }}
                     >
                       <i className="fas fa-user-tie fs-4"></i>
+                      <div 
+                        className="position-absolute top-0 start-0 w-100 h-100 rounded-circle"
+                        style={{
+                          background: 'linear-gradient(45deg, transparent, rgba(255,255,255,0.2), transparent)',
+                          animation: 'pulse 2s ease-in-out infinite 1s'
+                        }}
+                      />
                     </div>
                     <div>
-                      <h2 className="h2 mb-1" style={{ color: '#6f42c1' }}>Role & Responsibilities</h2>
-                      <p className="text-muted mb-0">Key contributions and professional duties</p>
+                      <h2 className="h2 mb-1 fw-bold" style={{ color: '#6f42c1' }}>Role & Responsibilities</h2>
+                      <p className="text-muted mb-0 fs-6">Key contributions and professional duties</p>
                     </div>
                   </div>
                   <div 
-                    className="modern-card p-5"
+                    className="modern-card overflow-hidden"
                     style={{
-                      background: 'rgba(255, 255, 255, 0.8)',
+                      background: 'rgba(255, 255, 255, 0.95)',
                       backdropFilter: 'blur(20px)',
                       borderRadius: '24px',
-                      border: '1px solid rgba(111, 66, 193, 0.1)'
+                      border: '1px solid rgba(111, 66, 193, 0.15)',
+                      boxShadow: '0 10px 40px rgba(111, 66, 193, 0.1)'
                     }}
                   >
-                    <div className="row g-4">
-                      {project.roleAndResponsibilities.map((responsibility, index) => (
-                        <div key={index} className="col-12">
-                          <div 
-                            className="d-flex align-items-start p-4 rounded-4"
-                            style={{
-                              background: 'linear-gradient(135deg, rgba(111, 66, 193, 0.1) 0%, rgba(232, 62, 140, 0.1) 100%)',
-                              border: '1px solid rgba(111, 66, 193, 0.2)',
-                              animationName: 'slideInFromRight',
-                              animationDuration: '0.6s',
-                              animationTimingFunction: 'ease-out',
-                              animationFillMode: 'both',
-                              animationDelay: `${index * 0.15}s`
-                            }}
-                          >
-                            <div 
-                              className="rounded-circle p-3 me-3 flex-shrink-0"
-                              style={{
-                                background: 'linear-gradient(135deg, #6f42c1 0%, #e83e8c 100%)',
-                                color: 'white',
-                                minWidth: '48px'
-                              }}
-                            >
-                              <i className="fas fa-arrow-right"></i>
+                    {/* Header */}
+                    <div 
+                      className="px-5 py-3"
+                      style={{
+                        background: 'linear-gradient(135deg, rgba(111, 66, 193, 0.05) 0%, rgba(232, 62, 140, 0.05) 100%)',
+                        borderBottom: '1px solid rgba(111, 66, 193, 0.1)'
+                      }}
+                    >
+                      <div className="d-flex align-items-center justify-content-between">
+                        <h5 className="mb-0 fw-bold" style={{ color: '#6f42c1' }}>
+                          <i className="fas fa-briefcase me-2"></i>
+                          Professional Contributions
+                        </h5>
+                        <span className="badge bg-primary bg-opacity-10 text-primary px-3 py-2 rounded-pill">
+                          {project.roleAndResponsibilities.length} Key Roles
+                        </span>
+                      </div>
+                    </div>
+                    
+                    {/* Content */}
+                    <div className="p-5">
+                      <div className="row g-4">
+                        {project.roleAndResponsibilities.map((responsibility, index) => {
+                          const [role, description] = responsibility.split(': ');
+                          return (
+                            <div key={index} className="col-12">
+                              <div 
+                                className="responsibility-card p-4 rounded-4 h-100"
+                                style={{
+                                  background: 'linear-gradient(135deg, rgba(111, 66, 193, 0.08) 0%, rgba(232, 62, 140, 0.08) 100%)',
+                                  border: '1px solid rgba(111, 66, 193, 0.2)',
+                                  transition: 'all 0.3s ease',
+                                  animationName: 'slideInFromRight',
+                                  animationDuration: '0.6s',
+                                  animationTimingFunction: 'ease-out',
+                                  animationFillMode: 'both',
+                                  animationDelay: `${index * 0.15}s`,
+                                  cursor: 'pointer'
+                                }}
+                                onMouseEnter={(e) => {
+                                  e.currentTarget.style.transform = 'translateY(-3px)';
+                                  e.currentTarget.style.boxShadow = '0 10px 30px rgba(111, 66, 193, 0.2)';
+                                  e.currentTarget.style.background = 'linear-gradient(135deg, rgba(111, 66, 193, 0.12) 0%, rgba(232, 62, 140, 0.12) 100%)';
+                                }}
+                                onMouseLeave={(e) => {
+                                  e.currentTarget.style.transform = 'translateY(0)';
+                                  e.currentTarget.style.boxShadow = 'none';
+                                  e.currentTarget.style.background = 'linear-gradient(135deg, rgba(111, 66, 193, 0.08) 0%, rgba(232, 62, 140, 0.08) 100%)';
+                                }}
+                              >
+                                <div className="d-flex align-items-start">
+                                  <div 
+                                    className="rounded-circle p-3 me-4 flex-shrink-0"
+                                    style={{
+                                      background: 'linear-gradient(135deg, #6f42c1 0%, #e83e8c 100%)',
+                                      color: 'white',
+                                      minWidth: '52px',
+                                      height: '52px',
+                                      display: 'flex',
+                                      alignItems: 'center',
+                                      justifyContent: 'center'
+                                    }}
+                                  >
+                                    <i className="fas fa-check-circle fs-5"></i>
+                                  </div>
+                                  <div className="flex-grow-1">
+                                    {role && description ? (
+                                      <>
+                                        <h6 className="fw-bold mb-2" style={{ color: '#6f42c1' }}>
+                                          {role}
+                                        </h6>
+                                        <p className="mb-0 text-muted lh-lg" style={{ fontSize: '0.95rem' }}>
+                                          {description}
+                                        </p>
+                                      </>
+                                    ) : (
+                                      <span className="fw-medium text-dark lh-lg" style={{ fontSize: '0.95rem' }}>
+                                        {responsibility}
+                                      </span>
+                                    )}
+                                  </div>
+                                </div>
+                              </div>
                             </div>
-                            <div>
-                              <span className="fw-medium" style={{ color: '#2c3e50' }}>{responsibility}</span>
-                            </div>
-                          </div>
-                        </div>
-                      ))}
+                          );
+                        })}
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -1350,7 +1807,7 @@ The development process followed modern best practices including component-based
         </div>
       </section>
       
-      {/* Custom styles for consistency */}
+      {/* Custom styles for consistency and enhanced UX */}
       <style>{`
         /* Custom scrollbar for consistency */
         ::-webkit-scrollbar {
@@ -1371,10 +1828,21 @@ The development process followed modern best practices including component-based
           background: linear-gradient(to bottom, #5a6fd8, #6a4190);
         }
         
-        /* Smooth animations */
+        /* Enhanced animations */
         @keyframes float {
           0%, 100% { transform: translateY(0px); }
           50% { transform: translateY(-20px); }
+        }
+        
+        @keyframes pulse {
+          0%, 100% { 
+            opacity: 0.3;
+            transform: scale(1);
+          }
+          50% { 
+            opacity: 0.7;
+            transform: scale(1.05);
+          }
         }
         
         @keyframes pulse-glow {
@@ -1421,6 +1889,7 @@ The development process followed modern best practices including component-based
           }
         }
         
+        /* Enhanced utility classes */
         .gradient-text {
           background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
           -webkit-background-clip: text;
@@ -1429,25 +1898,99 @@ The development process followed modern best practices including component-based
         }
         
         .modern-card {
-          transition: all 0.3s ease;
+          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+          position: relative;
         }
         
         .modern-card:hover {
           transform: translateY(-5px);
+          box-shadow: 0 20px 60px rgba(0,0,0,0.15) !important;
+        }
+        
+        .challenge-card, .responsibility-card {
+          position: relative;
+          overflow: hidden;
+        }
+        
+        .challenge-card::before, .responsibility-card::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: -100%;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+          transition: left 0.6s ease;
+          pointer-events: none;
+        }
+        
+        .challenge-card:hover::before, .responsibility-card:hover::before {
+          left: 100%;
         }
         
         .hover-lift {
-          transition: all 0.3s ease;
+          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
         
         .hover-lift:hover {
           transform: translateY(-3px);
         }
         
+        .cursor-pointer {
+          cursor: pointer;
+        }
+        
         .section-divider {
           height: 1px;
           background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.3), transparent);
           margin: 1.5rem 0;
+        }
+        
+        /* Improved mobile responsiveness */
+        @media (max-width: 768px) {
+          .modern-card {
+            margin-left: -15px;
+            margin-right: -15px;
+            border-radius: 16px !important;
+          }
+          
+          .challenge-card, .responsibility-card {
+            padding: 1rem !important;
+          }
+          
+          .d-flex.align-items-center.mb-4 {
+            flex-direction: column;
+            align-items: flex-start !important;
+            gap: 1rem;
+          }
+          
+          .d-flex.align-items-center.mb-4 > div:first-child {
+            align-self: center;
+          }
+          
+          .d-flex.align-items-center.mb-4 > div:last-child {
+            text-align: center;
+            width: 100%;
+          }
+        }
+        
+        /* Enhanced focus states for accessibility */
+        .challenge-card:focus-within,
+        .responsibility-card:focus-within {
+          outline: 2px solid #667eea;
+          outline-offset: 2px;
+        }
+        
+        /* Loading states */
+        .loading-shimmer {
+          background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+          background-size: 200% 100%;
+          animation: shimmer 2s infinite;
+        }
+        
+        @keyframes shimmer {
+          0% { background-position: -200% 0; }
+          100% { background-position: 200% 0; }
         }
       `}</style>
     </div>

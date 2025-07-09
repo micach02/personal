@@ -19,7 +19,7 @@ function Projects() {
       technologies: ["HTML5", "JavaScript", "CSS3", "jQuery", "Bootstrap", "PHP"],
       demoLink: "#",
       codeLink: "#",
-      image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='300'%3E%3Crect width='400' height='300' fill='%23667eea'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-family='Arial' font-size='16'%3EFinancial Learning Platform%3C/text%3E%3C/svg%3E",
+      image: `${import.meta.env.BASE_URL}images/projects/project1/project1_img1.png`,
       category: "Web Development",
       color: "#667eea"
     },
@@ -30,7 +30,7 @@ function Projects() {
       technologies: ["PHP", "JavaScript", "Bootstrap", "Chart.js"],
       demoLink: "#",
       codeLink: "#",
-      image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='300'%3E%3Crect width='400' height='300' fill='%2328a745'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-family='Arial' font-size='16'%3EBanking Simulation App%3C/text%3E%3C/svg%3E",
+      image: `${import.meta.env.BASE_URL}images/projects/project2/project2_img1.png`,
       category: "FinTech",
       color: "#764ba2"
     },
@@ -41,18 +41,18 @@ function Projects() {
       technologies: ["PHP", "JavaScript","jQuery", "Bootstrap", "Chart.js", "Analytics"],
       demoLink: "#",
       codeLink: "#",
-      image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='300'%3E%3Crect width='400' height='300' fill='%2317a2b8'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-family='Arial' font-size='16'%3EReal Estate CRM%3C/text%3E%3C/svg%3E",
+      image: `${import.meta.env.BASE_URL}images/projects/project3/project3_img1.png`,
       category: "FinTech",
       color: "#f093fb"
     },
     {
       id: 4,
       title: "3D Avatar Animation",
-      description: "A captivating 3D avatar animation project showcasing advanced animation techniques and interactive elements with real-time rendering capabilities.",
+      description: "3D modeling and animation of a personalized avatar using Blender and NVIDIA Omniverse, showcasing advanced 3D design techniques and real-time rendering capabilities.",
       technologies: ["Blender", "NVIDIA Omniverse", "3D Modeling"],
       demoLink: "#",
       codeLink: "#",
-      image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='300'%3E%3Crect width='400' height='300' fill='%23fd7e14'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-family='Arial' font-size='16'%3EResponsive Web Design%3C/text%3E%3C/svg%3E",
+      image: `${import.meta.env.BASE_URL}images/projects/project4/project4_img1.png`,
       category: "Animation",
       color: "#f5576c"
     },
@@ -63,7 +63,7 @@ function Projects() {
       technologies: ["React", "Vite", "Bootstrap", "AOS", "Modern CSS"],
       demoLink: "#",
       codeLink: "#",
-      image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='300'%3E%3Crect width='400' height='300' fill='%236f42c1'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-family='Arial' font-size='16'%3EAPI Integration Tools%3C/text%3E%3C/svg%3E",
+      image: `${import.meta.env.BASE_URL}images/projects/project5/project5_img1.png`,
       category: "Web Development",
       color: "#4facfe"
     }
@@ -351,7 +351,7 @@ function Projects() {
         </div>
       </div>
 
-      {/* Project Detail Modal */}
+      {/* Enhanced Project Detail Modal */}
       {selectedProject && (
         <div 
           className="project-modal-backdrop" 
@@ -361,49 +361,97 @@ function Projects() {
           }}
         >
           <div 
-            className="project-modal" 
+            className="project-modal-enhanced" 
             onClick={(e) => {
               console.log('Modal clicked, stopping propagation');
               e.stopPropagation();
             }}
           >
-            <div className="modal-content">
-              <div className="modal-header">
-                <h3>{selectedProject.title}</h3>
-                <span className="modal-category">{selectedProject.category}</span>
-                <button 
-                  className="modal-close" 
-                  onClick={(e) => {
-                    console.log('Close button clicked');
-                    handleCloseModal(e);
-                  }}
-                  type="button"
-                  title="Close modal"
-                >
-                  <i className="fas fa-times"></i>
-                </button>
-              </div>
-              <div className="modal-body">
-                <p>{selectedProject.description}</p>
-                <div className="modal-tech">
-                  {selectedProject.technologies.map(tech => (
-                    <span key={tech} className="modal-tech-tag">{tech}</span>
-                  ))}
+            {/* Modal Header with Hero Image */}
+            <div className="modal-hero-section">
+              <div 
+                className="modal-hero-image"
+                style={{ 
+                  backgroundImage: `url(${selectedProject.image})`,
+                  backgroundColor: selectedProject.color 
+                }}
+              >
+                <div className="modal-hero-overlay">
+                  <div className="modal-hero-content">
+                    <span className="modal-category-badge">{selectedProject.category}</span>
+                    <h2 className="modal-title">{selectedProject.title}</h2>
+                  </div>
                 </div>
               </div>
-              <div className="modal-footer">
+              
+              <button 
+                className="modal-close-enhanced" 
+                onClick={(e) => {
+                  console.log('Close button clicked');
+                  handleCloseModal(e);
+                }}
+                type="button"
+                title="Close modal"
+              >
+                <i className="fas fa-times"></i>
+              </button>
+            </div>
+
+            {/* Modal Content */}
+            <div className="modal-content-enhanced">
+              {/* Project Description */}
+              <div className="modal-section">
+                <div className="section-header">
+                  <i className="fas fa-info-circle section-icon"></i>
+                  <h4 className="section-title">Project Overview</h4>
+                </div>
+                <p className="modal-description">{selectedProject.description}</p>
+              </div>
+
+              {/* Action Buttons */}
+              <div className="modal-actions">
                 <button 
-                  className="modal-btn primary"
+                  className="modal-btn-enhanced primary"
                   onClick={() => navigate(`/project/${selectedProject.id}`)}
                 >
+                  <i className="fas fa-eye me-2"></i>
                   View Full Details
+                  <div className="btn-glow"></div>
                 </button>
+                
                 {selectedProject.demoLink !== "#" && (
-                  <a href={selectedProject.demoLink} className="modal-btn secondary" target="_blank" rel="noopener noreferrer">
+                  <a 
+                    href={selectedProject.demoLink} 
+                    className="modal-btn-enhanced secondary" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                  >
+                    <i className="fas fa-external-link-alt me-2"></i>
                     Live Demo
+                    <div className="btn-glow"></div>
+                  </a>
+                )}
+                
+                {selectedProject.codeLink !== "#" && (
+                  <a 
+                    href={selectedProject.codeLink} 
+                    className="modal-btn-enhanced tertiary" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                  >
+                    <i className="fab fa-github me-2"></i>
+                    Source Code
+                    <div className="btn-glow"></div>
                   </a>
                 )}
               </div>
+            </div>
+
+            {/* Modal Background Decoration */}
+            <div className="modal-decoration">
+              <div className="decoration-circle circle-1"></div>
+              <div className="decoration-circle circle-2"></div>
+              <div className="decoration-circle circle-3"></div>
             </div>
           </div>
         </div>
