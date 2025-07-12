@@ -129,14 +129,14 @@ function PersonalJourney() {
   const funFacts = [
     { fact: "I've tried ramen in over 50 different restaurants (Kanto Ramen da best 😉)", icon: "🍜" },
     { fact: "Can solve a Rubik's cube in under 2 minutes", icon: "🧩" },
-    { fact: "Plays chess", icon: "♟️" },
-    { fact: "Can play table tennis", icon: "🏓" },
-    { fact: "Plays Mobile Legends", icon: "🎮" },
-    { fact: "Listening to music is my therapy.", icon: "🎵" },
+    { fact: "Plays chess.", icon: "♟️" },
+    { fact: "Can play table tennis.", icon: "🏓" },
+    { fact: "Skinner mobile legends player.", icon: "🎮" },
+    { fact: "I listen to the lyrics rather than the music.", icon: "🎵" },
     { fact: "Singing is my passion, but I'm not the best at it.", icon: "🎤" },
     { fact: "Loves going out to beaches.", icon: "🏖️" },
-    { fact: "Learned to cook during the pandemic", icon: "👨‍🍳" },
-    { fact: "Riding motorcycles is also my hobby. Loves long rides.", icon: "🏍️" }
+    { fact: "Learned to cook during the pandemic.", icon: "👨‍🍳" },
+    { fact: "Likes to drive long distances with my motorcycle.", icon: "🏍️" }
   ];
 
   return (
