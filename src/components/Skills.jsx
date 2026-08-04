@@ -1,319 +1,129 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect } from 'react';
 import AOS from 'aos';
+import {
+  IconGlobe, IconZap, IconShield, IconAtom, IconCode, IconLayoutGrid, IconEdit, IconGitBranch,
+  IconPalette, IconTarget, IconLayers, IconImage, IconFilm, IconTerminal, IconBox,
+  IconMonitor, IconTool, IconBrush
+} from './icons/Icon';
+
+const programmingSkills = [
+  { name: 'HTML5', level: 95, icon: IconGlobe, color: '#e34c26' },
+  { name: 'CSS3', level: 90, icon: IconBrush, color: '#264de4' },
+  { name: 'JavaScript (ES6+)', level: 92, icon: IconZap, color: '#f7df1e' },
+  { name: 'TypeScript', level: 80, icon: IconShield, color: '#3178c6' },
+  { name: 'React.js', level: 88, icon: IconAtom, color: '#61dafb' },
+  { name: 'PHP', level: 70, icon: IconCode, color: '#777bb4' },
+  { name: 'Bootstrap', level: 85, icon: IconLayoutGrid, color: '#7952b3' },
+  { name: 'WordPress', level: 75, icon: IconEdit, color: '#21759b' },
+  { name: 'Git & GitHub', level: 85, icon: IconGitBranch, color: '#f05032' },
+];
+
+const softwareSkills = [
+  { name: 'Canva', level: 85, icon: IconPalette, color: '#00c4cc' },
+  { name: 'Adobe XD', level: 75, icon: IconTarget, color: '#ff61f6' },
+  { name: 'Figma', level: 80, icon: IconLayers, color: '#f24e1e' },
+  { name: 'Adobe Photoshop', level: 70, icon: IconImage, color: '#31a8ff' },
+  { name: 'Adobe Animate', level: 65, icon: IconFilm, color: '#cc2936' },
+  { name: 'VS Code', level: 95, icon: IconTerminal, color: '#007acc' },
+  { name: 'Blender', level: 60, icon: IconBox, color: '#e87d0d' },
+];
+
+function ProficiencyDots({ level, color }) {
+  const filled = Math.round(level / 20);
+  return (
+    <div className="d-flex gap-1 mt-2">
+      {[0, 1, 2, 3, 4].map((i) => (
+        <span
+          key={i}
+          style={{
+            width: '14px',
+            height: '4px',
+            borderRadius: '2px',
+            background: i < filled ? color : 'var(--border-subtle)',
+            transition: 'background 0.3s ease'
+          }}
+        />
+      ))}
+    </div>
+  );
+}
+
+function SkillGroup({ title, icon, accent, skills, delayBase }) {
+  const GroupIcon = icon;
+  return (
+    <div className="mb-5">
+      <div className="d-flex align-items-center gap-3 mb-4" data-aos="fade-up">
+        <div
+          className="d-inline-flex align-items-center justify-content-center rounded-circle flex-shrink-0"
+          style={{ width: '52px', height: '52px', background: `${accent}1f`, border: `1.5px solid ${accent}55`, color: accent }}
+        >
+          <GroupIcon size={24} />
+        </div>
+        <h3 className="section-heading mb-0" style={{ fontSize: '1.5rem' }}>{title}</h3>
+      </div>
+
+      <div className="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-3">
+        {skills.map((skill, index) => (
+          <div key={skill.name} className="col" data-aos="fade-up" data-aos-delay={delayBase + index * 60}>
+            <div className="glass-card interactive p-3 d-flex align-items-center gap-3 h-100">
+              <div
+                className="rounded-circle d-flex align-items-center justify-content-center flex-shrink-0"
+                style={{ width: '48px', height: '48px', background: `${skill.color}1f`, border: `1.5px solid ${skill.color}55`, color: skill.color }}
+              >
+                <skill.icon size={22} />
+              </div>
+              <div className="flex-grow-1">
+                <div className="fw-semibold" style={{ color: 'var(--text-primary)', fontSize: '0.95rem' }}>{skill.name}</div>
+                <ProficiencyDots level={skill.level} color={skill.color} />
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
 
 function Skills() {
   useEffect(() => {
     AOS.init({ duration: 1000 });
   }, []);
 
-  const programmingSkills = [
-    { name: 'HTML5 & CSS3', level: 95, icon: '🌐', color: '#e34c26' },
-    { name: 'JavaScript (ES6+)', level: 92, icon: '⚡', color: '#f7df1e' },
-    { name: 'TypeScript', level: 80, icon: '🛡️', color: '#3178c6' },
-    { name: 'React.js', level: 88, icon: '⚛️', color: '#61dafb' },
-    { name: 'PHP', level: 70, icon: '🐘', color: '#777bb4' },
-    { name: 'Bootstrap', level: 85, icon: '🎨', color: '#7952b3' },
-    { name: 'WordPress', level: 75, icon: '📝', color: '#21759b' },
-    { name: 'Git & GitHub', level: 85, icon: '📦', color: '#f05032' },
+  const avg = (list) => Math.round(list.reduce((acc, s) => acc + s.level, 0) / list.length);
+
+  const summary = [
+    { number: programmingSkills.length, label: 'Programming Skills', color: 'var(--teal-300)' },
+    { number: softwareSkills.length, label: 'Design Tools', color: 'var(--orange-300)' },
+    { number: `${avg(programmingSkills)}%`, label: 'Avg Programming', color: 'var(--teal-300)' },
+    { number: `${avg(softwareSkills)}%`, label: 'Avg Design Tools', color: 'var(--orange-300)' },
   ];
-
-  const softwareSkills = [
-    { name: 'Canva', level: 85, icon: '🎨', color: '#00c4cc' },
-    { name: 'Adobe XD', level: 75, icon: '🎯', color: '#ff61f6' },
-    { name: 'Figma', level: 80, icon: '🎭', color: '#f24e1e' },
-    { name: 'Adobe Photoshop', level: 70, icon: '🖼️', color: '#31a8ff' },
-    { name: 'Adobe Animate', level: 65, icon: '🎬', color: '#cc2936' },
-    { name: 'VS Code', level: 95, icon: '💻', color: '#007acc' },
-    { name: 'Blender', level: 60, icon: '🔥', color: '#e87d0d' },
-  ];
-
-  const allSkills = [...programmingSkills, ...softwareSkills];
-
-  // Refs for each skill card
-  const cardRefs = useRef([]);
-  const [widths, setWidths] = useState(allSkills.map(() => 0));
-
-  useEffect(() => {
-    const observers = [];
-    cardRefs.current = cardRefs.current.slice(0, allSkills.length);
-    allSkills.forEach((_, i) => {
-      observers[i] = new window.IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting) {
-            setWidths(prev => {
-              const newWidths = [...prev];
-              newWidths[i] = allSkills[i].level;
-              return newWidths;
-            });
-            observers[i].disconnect();
-          }
-        },
-        { threshold: 0.5 }
-      );
-      if (cardRefs.current[i]) {
-        observers[i].observe(cardRefs.current[i]);
-      }
-    });
-    return () => observers.forEach(obs => obs.disconnect());
-  }, [allSkills.length]);
 
   return (
-    <section id="skills" className="py-5" style={{ backgroundColor: '#f8f9fa' }}>
-      <div className="container">
-        {/* Header Section */}
+    <section id="skills" className="section-modern alt">
+      <div className="section-glow" style={{ width: 460, height: 460, top: -160, right: -160, background: 'radial-gradient(circle, rgba(255,107,53,0.2), transparent 70%)' }} />
+      <div className="section-glow" style={{ width: 420, height: 420, bottom: -140, left: -140, background: 'radial-gradient(circle, rgba(26,122,117,0.25), transparent 70%)' }} />
+
+      <div className="container position-relative" style={{ zIndex: 1 }}>
         <div className="text-center mb-5" data-aos="fade-up">
-          <h2 className="display-5 fw-bold mb-3" style={{ color: '#2c3e50' }}>
-            Professional Skills
-          </h2>
-          <p className="lead text-muted mb-4">
-            Technologies and tools that drive my development journey
+          <span className="eyebrow mb-3"><IconZap size={14} />Skills</span>
+          <h2 className="section-heading display-4 mt-3 mb-3">Technologies I Work With</h2>
+          <p className="section-subtitle lead mx-auto" style={{ maxWidth: '620px' }}>
+            Tools and technologies that drive my development journey
           </p>
-          <div className="mx-auto" style={{ 
-            width: '80px', 
-            height: '4px', 
-            background: 'linear-gradient(90deg, #007bff, #6f42c1)',
-            borderRadius: '2px'
-          }}></div>
         </div>
 
-        {/* Skills Grid */}
-        <div className="row g-4">
-          {/* Programming Skills Section */}
-          <div className="col-12">
-            <div className="mb-5">
-              <div className="text-center mb-4" data-aos="fade-up">
-                <div className="d-inline-flex align-items-center justify-content-center rounded-circle mb-3" 
-                     style={{ 
-                       width: '80px', 
-                       height: '80px', 
-                       background: 'linear-gradient(135deg, #007bff, #0056b3)',
-                       color: 'white',
-                       fontSize: '2rem'
-                     }}>
-                  💻
-                </div>
-                <h3 className="h3 fw-bold text-primary mb-2">Programming & Frameworks</h3>
-                <p className="text-muted">Core development technologies and frameworks</p>
-              </div>
-              
-              <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4">
-                {programmingSkills.map((skill, index) => (
-                  <div
-                    key={index}
-                    className="col"
-                    data-aos="fade-up"
-                    data-aos-delay={index * 100}
-                    ref={el => (cardRefs.current[index] = el)}
-                  >
-                    <div className="card border-0 h-100 shadow-sm" 
-                         style={{ 
-                           transition: 'all 0.3s ease',
-                           cursor: 'pointer'
-                         }}
-                         onMouseEnter={(e) => {
-                           e.currentTarget.style.transform = 'translateY(-5px)';
-                           e.currentTarget.style.boxShadow = '0 0.5rem 1rem rgba(0, 0, 0, 0.15)';
-                         }}
-                         onMouseLeave={(e) => {
-                           e.currentTarget.style.transform = 'translateY(0)';
-                           e.currentTarget.style.boxShadow = '0 0.125rem 0.25rem rgba(0, 0, 0, 0.075)';
-                         }}>
-                      <div className="card-body p-4">
-                        <div className="d-flex align-items-center mb-3">
-                          <div 
-                            className="rounded-circle d-flex align-items-center justify-content-center me-3"
-                            style={{ 
-                              width: '55px', 
-                              height: '55px',
-                              background: `linear-gradient(135deg, ${skill.color}20, ${skill.color}40)`,
-                              border: `2px solid ${skill.color}`,
-                              fontSize: '22px'
-                            }}
-                          >
-                            {skill.icon}
-                          </div>
-                          <div className="flex-grow-1">
-                            <h6 className="fw-bold mb-1" style={{ fontSize: '0.95rem' }}>{skill.name}</h6>
-                            <small className="text-muted">Proficiency</small>
-                          </div>
-                        </div>
-                        
-                        <div className="progress mb-3" style={{ height: '8px', borderRadius: '20px', backgroundColor: '#e9ecef' }}>
-                          <div
-                            className="progress-bar"
-                            role="progressbar"
-                            style={{
-                              width: `${widths[index]}%`,
-                              transition: 'width 2.5s cubic-bezier(0.4,0,0.2,1)',
-                              background: `linear-gradient(90deg, ${skill.color}, ${skill.color}dd)`,
-                              borderRadius: '20px',
-                              position: 'relative'
-                            }}
-                            aria-valuenow={skill.level}
-                            aria-valuemin="0"
-                            aria-valuemax="100"
-                          >
-                            <div style={{
-                              position: 'absolute',
-                              top: '50%',
-                              right: '8px',
-                              transform: 'translateY(-50%)',
-                              width: '4px',
-                              height: '4px',
-                              backgroundColor: 'white',
-                              borderRadius: '50%',
-                              opacity: widths[index] > 0 ? 1 : 0,
-                              transition: 'opacity 0.5s ease'
-                            }}></div>
-                          </div>
-                        </div>
-                        
-                        <div className="d-flex justify-content-between align-items-center">
-                          <span className="text-muted small">Level</span>
-                          <span className="fw-bold" style={{ color: skill.color, fontSize: '0.9rem' }}>
-                            {skill.level}%
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
+        <SkillGroup title="Programming & Frameworks" icon={IconMonitor} accent="var(--teal-300)" skills={programmingSkills} delayBase={0} />
+        <SkillGroup title="Design & Development Tools" icon={IconTool} accent="var(--orange-300)" skills={softwareSkills} delayBase={100} />
 
-          {/* Design & Tools Section */}
-          <div className="col-12">
-            <div className="mb-4">
-              <div className="text-center mb-4" data-aos="fade-up">
-                <div className="d-inline-flex align-items-center justify-content-center rounded-circle mb-3" 
-                     style={{ 
-                       width: '80px', 
-                       height: '80px', 
-                       background: 'linear-gradient(135deg, #28a745, #20c997)',
-                       color: 'white',
-                       fontSize: '2rem'
-                     }}>
-                  🛠️
-                </div>
-                <h3 className="h3 fw-bold text-success mb-2">Design & Development Tools</h3>
-                <p className="text-muted">Creative software and productivity tools</p>
+        {/* Summary stats */}
+        <div className="glass-card p-4 p-md-5" data-aos="fade-up">
+          <div className="row row-cols-2 row-cols-md-4 g-4 text-center">
+            {summary.map((item, i) => (
+              <div className="col" key={i}>
+                <div className="section-heading display-6 mb-1" style={{ color: item.color }}>{item.number}</div>
+                <div className="section-subtitle small">{item.label}</div>
               </div>
-              
-              <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4">
-                {softwareSkills.map((skill, index) => (
-                  <div
-                    key={index + programmingSkills.length}
-                    className="col"
-                    data-aos="fade-up"
-                    data-aos-delay={index * 100}
-                    ref={el => (cardRefs.current[index + programmingSkills.length] = el)}
-                  >
-                    <div className="card border-0 h-100 shadow-sm" 
-                         style={{ 
-                           transition: 'all 0.3s ease',
-                           cursor: 'pointer'
-                         }}
-                         onMouseEnter={(e) => {
-                           e.currentTarget.style.transform = 'translateY(-5px)';
-                           e.currentTarget.style.boxShadow = '0 0.5rem 1rem rgba(0, 0, 0, 0.15)';
-                         }}
-                         onMouseLeave={(e) => {
-                           e.currentTarget.style.transform = 'translateY(0)';
-                           e.currentTarget.style.boxShadow = '0 0.125rem 0.25rem rgba(0, 0, 0, 0.075)';
-                         }}>
-                      <div className="card-body p-4">
-                        <div className="d-flex align-items-center mb-3">
-                          <div 
-                            className="rounded-circle d-flex align-items-center justify-content-center me-3"
-                            style={{ 
-                              width: '55px', 
-                              height: '55px',
-                              background: `linear-gradient(135deg, ${skill.color}20, ${skill.color}40)`,
-                              border: `2px solid ${skill.color}`,
-                              fontSize: '22px'
-                            }}
-                          >
-                            {skill.icon}
-                          </div>
-                          <div className="flex-grow-1">
-                            <h6 className="fw-bold mb-1" style={{ fontSize: '0.95rem' }}>{skill.name}</h6>
-                            <small className="text-muted">Proficiency</small>
-                          </div>
-                        </div>
-                        
-                        <div className="progress mb-3" style={{ height: '8px', borderRadius: '20px', backgroundColor: '#e9ecef' }}>
-                          <div
-                            className="progress-bar"
-                            role="progressbar"
-                            style={{
-                              width: `${widths[index + programmingSkills.length]}%`,
-                              transition: 'width 2.5s cubic-bezier(0.4,0,0.2,1)',
-                              background: `linear-gradient(90deg, ${skill.color}, ${skill.color}dd)`,
-                              borderRadius: '20px',
-                              position: 'relative'
-                            }}
-                            aria-valuenow={skill.level}
-                            aria-valuemin="0"
-                            aria-valuemax="100"
-                          >
-                            <div style={{
-                              position: 'absolute',
-                              top: '50%',
-                              right: '8px',
-                              transform: 'translateY(-50%)',
-                              width: '4px',
-                              height: '4px',
-                              backgroundColor: 'white',
-                              borderRadius: '50%',
-                              opacity: widths[index + programmingSkills.length] > 0 ? 1 : 0,
-                              transition: 'opacity 0.5s ease'
-                            }}></div>
-                          </div>
-                        </div>
-                        
-                        <div className="d-flex justify-content-between align-items-center">
-                          <span className="text-muted small">Level</span>
-                          <span className="fw-bold" style={{ color: skill.color, fontSize: '0.9rem' }}>
-                            {skill.level}%
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Additional Stats Section */}
-        <div className="row mt-5 pt-4" data-aos="fade-up">
-          <div className="col-12">
-            <div className="text-center p-4 rounded-3" style={{ backgroundColor: 'white', boxShadow: '0 0.125rem 0.25rem rgba(0, 0, 0, 0.075)' }}>
-              <div className="row row-cols-2 row-cols-md-4 g-4">
-                <div className="col">
-                  <div className="h3 fw-bold text-primary mb-1">{programmingSkills.length}</div>
-                  <div className="small text-muted">Programming Skills</div>
-                </div>
-                <div className="col">
-                  <div className="h3 fw-bold text-success mb-1">{softwareSkills.length}</div>
-                  <div className="small text-muted">Design Tools</div>
-                </div>
-                <div className="col">
-                  <div className="h3 fw-bold text-info mb-1">
-                    {Math.round(programmingSkills.reduce((acc, skill) => acc + skill.level, 0) / programmingSkills.length)}%
-                  </div>
-                  <div className="small text-muted">Avg Programming</div>
-                </div>
-                <div className="col">
-                  <div className="h3 fw-bold text-warning mb-1">
-                    {Math.round(softwareSkills.reduce((acc, skill) => acc + skill.level, 0) / softwareSkills.length)}%
-                  </div>
-                  <div className="small text-muted">Avg Design Tools</div>
-                </div>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </div>

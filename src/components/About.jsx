@@ -1,233 +1,171 @@
-import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { useState } from 'react';
+import { IconUser, IconBriefcase, IconZap, IconRocket, IconMapPin, IconClock } from './icons/Icon';
+
+const EXPERIENCE_START = new Date(2017, 5, 1); // June 2017, per Experience section
+
+function getYearsOfExperience(startDate) {
+  const now = new Date();
+  let years = now.getFullYear() - startDate.getFullYear();
+  const hadAnniversaryThisYear =
+    now.getMonth() > startDate.getMonth() ||
+    (now.getMonth() === startDate.getMonth() && now.getDate() >= startDate.getDate());
+  if (!hadAnniversaryThisYear) years--;
+  return years;
+}
 
 function About() {
-  const [isVisible, setIsVisible] = useState(false);
   const [hoveredStat, setHoveredStat] = useState(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    const aboutSection = document.getElementById('about');
-    if (aboutSection) {
-      observer.observe(aboutSection);
-    }
-
-    return () => observer.disconnect();
-  }, []);
+  const yearsOfExperience = getYearsOfExperience(EXPERIENCE_START);
 
   const stats = [
-    { number: '7+', label: 'Years Experience', icon: '💼', color: 'primary', description: 'Professional development experience' },
-    { number: '24/7', label: 'Available', icon: '⚡', color: 'info', description: 'Ready for new challenges' }
+    { number: `${yearsOfExperience}+`, label: 'Years Experience', description: 'Professional development experience', icon: IconBriefcase },
+    { number: '24/7', label: 'Available', description: 'Ready for new challenges', icon: IconZap }
   ];
 
   return (
-    <section id="about" className="py-5" style={{ 
-      background: 'linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%)',
-      minHeight: '100vh'
-    }}>
-      <div className="container">
-        {/* Section Header */}
-        <div className="text-center mb-5">
-          <h2 className={`display-4 fw-bold mb-3 ${isVisible ? 'animate__animated animate__fadeInUp' : ''}`}>
-            About Me
-            <span className="text-primary ms-3">👨‍💻</span>
-          </h2>
-          <div className="mx-auto" style={{ width: '100px', height: '4px', background: 'linear-gradient(90deg, #007bff, #20c997)', borderRadius: '2px' }}></div>
+    <section id="about" className="section-modern">
+      <div className="section-glow" style={{ width: 500, height: 500, top: -180, left: -180, background: 'radial-gradient(circle, rgba(26,122,117,0.28), transparent 70%)' }} />
+      <div className="section-glow" style={{ width: 420, height: 420, bottom: -140, right: -140, background: 'radial-gradient(circle, rgba(255,107,53,0.2), transparent 70%)' }} />
+
+      <div className="container position-relative" style={{ zIndex: 1 }}>
+        <div className="text-center mb-5" data-aos="fade-up">
+          <span className="eyebrow mb-3"><IconUser size={14} />About Me</span>
+          <h2 className="section-heading display-4 mt-3 mb-3">Building thoughtful digital experiences</h2>
+          <p className="section-subtitle lead mx-auto" style={{ maxWidth: '620px' }}>
+            A closer look at the developer behind the code.
+          </p>
         </div>
 
-        <div className="row align-items-center mb-5">
-          {/* Enhanced Profile Image Column */}
-          <div className="col-lg-4 text-center mb-4 mb-lg-0">
+        <div className="row align-items-center g-5 mb-5">
+          {/* Profile photo */}
+          <div className="col-lg-4 text-center" data-aos="fade-right">
             <div className="position-relative d-inline-block">
-              {/* Animated background circle */}
-              <div 
+              <div
                 className="position-absolute rounded-circle"
                 style={{
-                  width: '240px',
-                  height: '240px',
-                  background: 'linear-gradient(45deg, #007bff, #20c997, #fd7e14)',
-                  animation: 'spin 20s linear infinite',
-                  top: '-20px',
-                  left: '-20px',
-                  zIndex: 0
+                  width: '260px',
+                  height: '260px',
+                  top: '-10px',
+                  left: '-10px',
+                  background: 'conic-gradient(from 0deg, var(--teal-500), var(--orange-500), var(--teal-500))',
+                  animation: 'spin 14s linear infinite',
+                  opacity: 0.55,
+                  filter: 'blur(1px)'
                 }}
-              ></div>
-              
-              <div 
-                className="rounded-circle p-2 d-inline-block position-relative bg-white shadow-lg"
-                style={{ zIndex: 1 }}
-              >
+              />
+              <div className="glass-card position-relative p-2 d-inline-flex" style={{ zIndex: 1 }}>
                 <img
                   src="/personal/images/michael2.jpg"
                   alt="Michael - Web Developer"
                   className="rounded-circle"
-                  style={{ 
-                    width: '200px', 
-                    height: '200px', 
+                  style={{
+                    width: '220px',
+                    height: '220px',
                     objectFit: 'cover',
                     objectPosition: 'center top',
                     transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
                     cursor: 'pointer'
                   }}
                   onMouseOver={(e) => {
-                    e.target.style.transform = 'scale(1.1) rotate(5deg)';
-                    e.target.style.filter = 'brightness(1.1)';
+                    e.target.style.transform = 'scale(1.08)';
                   }}
                   onMouseOut={(e) => {
-                    e.target.style.transform = 'scale(1) rotate(0deg)';
-                    e.target.style.filter = 'brightness(1)';
+                    e.target.style.transform = 'scale(1)';
                   }}
                 />
               </div>
 
-              {/* Floating elements */}
-              <div className="position-absolute top-0 end-0 bg-primary rounded-circle d-flex align-items-center justify-content-center" 
-                   style={{ width: '40px', height: '40px', transform: 'translate(10px, -10px)', animation: 'float 3s ease-in-out infinite' }}>
-                <span className="text-white fw-bold">7+</span>
-              </div>
-              <div className="position-absolute bottom-0 start-0 bg-success rounded-circle d-flex align-items-center justify-content-center" 
-                   style={{ width: '35px', height: '35px', transform: 'translate(-10px, 10px)', animation: 'float 3s ease-in-out infinite 1.5s' }}>
-                <span className="text-white">🚀</span>
-              </div>
-            </div>
-          </div>
-
-          {/* Enhanced Content Column */}
-          <div className="col-lg-8">
-            <div className="ps-lg-4">
-              <div className="mb-4">
-                <h3 className="h4 fw-bold text-primary mb-3">Hello! I'm Michael 👋</h3>
-                <p className="lead text-dark lh-lg mb-4" style={{ fontSize: '1.1rem' }}>
-                  A passionate <span className="fw-bold text-primary">Web Application Developer</span> at PV Multimedia Inc., 
-                  dedicated to creating exceptional digital experiences that bridge the gap between innovative design and robust functionality.
-                </p>
-                
-                <p className="text-muted lh-lg mb-4">
-                  With over <span className="fw-bold text-success">7 years of hands-on experience</span>, I specialize in modern web technologies 
-                  and have a genuine love for clean, efficient code that makes a difference. My journey in tech has been driven by curiosity, 
-                  continuous learning, and a passion for solving complex problems with elegant solutions.
-                </p>
-
-                <p className="text-muted lh-lg mb-4">
-                  When I'm not coding, you'll find me exploring new cuisines 
-                  <span className="text-warning fw-bold"> (especially authentic ramen! 🍜)</span>, traveling to discover new cultures, 
-                  capturing moments through photography, or staying active through fitness. I believe that diverse experiences 
-                  make me a better developer and a more creative problem-solver.
-                </p>
-              </div>
-
-              {/* Philosophy Card - Enhanced */}
-              <div className="card border-0 shadow-sm mb-4 position-relative overflow-hidden" 
-                   style={{ 
-                     background: 'linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%)',
-                     border: '1px solid rgba(0,123,255,0.1) !important'
-                   }}>
-                <div className="position-absolute top-0 start-0" 
-                     style={{ 
-                       width: '4px', 
-                       height: '100%', 
-                       background: 'linear-gradient(to bottom, #007bff, #20c997)' 
-                     }}></div>
-                <div className="card-body p-4 ps-5">
-                  <h5 className="card-title text-primary mb-3 d-flex align-items-center">
-                    <i className="bi bi-lightbulb me-2 fs-4"></i>My Development Philosophy
-                  </h5>
-                  <blockquote className="blockquote mb-0">
-                    <p className="card-text text-muted mb-3" style={{ fontStyle: 'italic' }}>
-                      "Great code is not just about making things work—it's about creating solutions that are elegant, 
-                      maintainable, and deliver real value to users. Every project is an opportunity to learn something new 
-                      and push the boundaries of what's possible."
-                    </p>
-                    <footer className="blockquote-footer text-primary">
-                      <small>Michael's approach to development</small>
-                    </footer>
-                  </blockquote>
-                </div>
-              </div>
-
-              {/* Quick Facts */}
-              <div className="row">
-                <div className="col-md-6 mb-3">
-                  <div className="d-flex align-items-center p-3 bg-light rounded-3">
-                    <i className="bi bi-geo-alt-fill text-primary me-3 fs-5"></i>
-                    <div>
-                      <small className="text-muted d-block">Location</small>
-                      <span className="fw-semibold">Remote & On-site</span>
-                    </div>
-                  </div>
-                </div>
-                <div className="col-md-6 mb-3">
-                  <div className="d-flex align-items-center p-3 bg-light rounded-3">
-                    <i className="bi bi-clock-fill text-success me-3 fs-5"></i>
-                    <div>
-                      <small className="text-muted d-block">Availability</small>
-                      <span className="fw-semibold">Full-time & Projects</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Enhanced Stats Grid */}
-        <div className="row mb-5 justify-content-center">
-          {stats.map((stat, index) => (
-            <div key={index} className="col-lg-4 col-md-6 mb-4">
-              <div 
-                className={`card border-0 shadow-sm h-100 text-center transition-all ${hoveredStat === index ? 'shadow-lg' : ''}`}
-                style={{ 
-                  cursor: 'pointer',
-                  transform: hoveredStat === index ? 'translateY(-10px) scale(1.02)' : 'translateY(0)',
-                  transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-                  background: hoveredStat === index ? `linear-gradient(135deg, ${stat.color === 'primary' ? '#007bff' : stat.color === 'success' ? '#28a745' : stat.color === 'info' ? '#17a2b8' : '#ffc107'} 0%, #ffffff 100%)` : 'white'
+              <div
+                className="position-absolute rounded-circle d-flex align-items-center justify-content-center"
+                style={{
+                  width: '54px', height: '54px', top: '-6px', right: '-10px',
+                  background: 'var(--brand-gradient)', boxShadow: 'var(--shadow-glow-orange)',
+                  animation: 'float 3s ease-in-out infinite'
                 }}
-                onMouseEnter={() => setHoveredStat(index)}
-                onMouseLeave={() => setHoveredStat(null)}
               >
-                <div className="card-body p-4">
-                  <div className="fs-1 mb-3" style={{ 
-                    transform: hoveredStat === index ? 'scale(1.2) rotate(10deg)' : 'scale(1)',
-                    transition: 'transform 0.3s ease'
-                  }}>{stat.icon}</div>
-                  <h3 className={`text-${stat.color} fw-bold mb-2`} style={{
-                    fontSize: hoveredStat === index ? '2.5rem' : '2rem',
-                    transition: 'font-size 0.3s ease'
-                  }}>{stat.number}</h3>
-                  <p className="text-muted mb-2 fw-semibold">{stat.label}</p>
-                  <small className="text-muted opacity-75">{stat.description}</small>
-                </div>
+                <span className="text-white fw-bold">{yearsOfExperience}+</span>
+              </div>
+              <div
+                className="glass-card position-absolute rounded-circle d-flex align-items-center justify-content-center"
+                style={{ width: '48px', height: '48px', bottom: '4px', left: '-14px', color: 'var(--teal-300)', animation: 'float 3s ease-in-out infinite 1.5s' }}
+              >
+                <IconRocket size={22} />
               </div>
             </div>
-          ))}
-        </div>
+          </div>
 
-        {/* Personal Journey Button */}
-        <div className="row mb-5">
-          <div className="col-12 text-center">
-            <div className="card border-0 shadow-lg" style={{ background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)' }}>
-              <div className="card-body p-5 text-white">
-                <h4 className="fw-bold mb-3">Want to Know More About My Personal Story?</h4>
-                <p className="mb-4 opacity-90">
-                  Beyond the professional journey, discover the person behind the code. 
-                  Learn about my personal experiences, values, and what makes me who I am.
-                </p>
-                <Link to="/personal-journey" className="btn btn-light btn-lg px-5 fw-semibold">
-                  <i className="bi bi-heart me-2"></i>My Personal Journey
-                </Link>
+          {/* Bio */}
+          <div className="col-lg-8" data-aos="fade-left">
+            <h3 className="section-heading mb-3">Hello! I&rsquo;m Michael</h3>
+            <p className="section-subtitle lh-lg mb-3 fs-5">
+              A passionate <strong style={{ color: 'var(--orange-300)' }}>Web Application Developer</strong> at PV Multimedia Inc.,
+              dedicated to creating exceptional digital experiences that bridge the gap between innovative design and robust functionality.
+            </p>
+            <p className="section-subtitle lh-lg mb-3">
+              With over <strong style={{ color: 'var(--teal-300)' }}>{yearsOfExperience} years of hands-on experience</strong>, I specialize in modern web technologies
+              and have a genuine love for clean, efficient code that makes a difference. My journey in tech has been driven by curiosity,
+              continuous learning, and a passion for solving complex problems with elegant solutions.
+            </p>
+            <p className="section-subtitle lh-lg mb-4">
+              When I&rsquo;m not coding, you&rsquo;ll find me exploring new cuisines <strong style={{ color: 'var(--orange-300)' }}>(especially authentic ramen!)</strong>,
+              traveling to discover new cultures, capturing moments through photography, or staying active through fitness. I believe that diverse experiences
+              make me a better developer and a more creative problem-solver.
+            </p>
+
+            {/* Quick facts */}
+            <div className="row g-3">
+              <div className="col-sm-6">
+                <div className="glass-card p-3 d-flex align-items-center gap-3">
+                  <div style={{ color: 'var(--teal-300)' }}><IconMapPin size={22} /></div>
+                  <div>
+                    <small className="section-subtitle d-block">Location</small>
+                    <span className="fw-semibold" style={{ color: 'var(--text-primary)' }}>Remote & On-site</span>
+                  </div>
+                </div>
+              </div>
+              <div className="col-sm-6">
+                <div className="glass-card p-3 d-flex align-items-center gap-3">
+                  <div style={{ color: 'var(--orange-300)' }}><IconClock size={22} /></div>
+                  <div>
+                    <small className="section-subtitle d-block">Availability</small>
+                    <span className="fw-semibold" style={{ color: 'var(--text-primary)' }}>Full-time & Projects</span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
 
+        {/* Stats */}
+        <div className="row g-4 justify-content-center">
+          {stats.map((stat, index) => {
+            const StatIcon = stat.icon;
+            return (
+              <div className="col-md-5 col-lg-4" key={index} data-aos="fade-up" data-aos-delay={index * 100}>
+                <div
+                  className="glass-card interactive text-center p-4 h-100"
+                  onMouseEnter={() => setHoveredStat(index)}
+                  onMouseLeave={() => setHoveredStat(null)}
+                >
+                  <div
+                    className="d-inline-flex mb-3 p-3 rounded-circle"
+                    style={{
+                      background: 'rgba(255, 107, 53, 0.12)',
+                      color: 'var(--orange-400, #ff8c5a)',
+                      transform: hoveredStat === index ? 'scale(1.1) rotate(8deg)' : 'scale(1)',
+                      transition: 'transform 0.3s ease'
+                    }}
+                  >
+                    <StatIcon size={30} />
+                  </div>
+                  <h3 className="section-heading display-6 mb-1">{stat.number}</h3>
+                  <div className="section-subtitle fw-semibold mb-1">{stat.label}</div>
+                  <small className="section-subtitle opacity-75">{stat.description}</small>
+                </div>
+              </div>
+            );
+          })}
+        </div>
       </div>
 
       <style>{`
@@ -235,93 +173,9 @@ function About() {
           from { transform: rotate(0deg); }
           to { transform: rotate(360deg); }
         }
-        
         @keyframes float {
           0%, 100% { transform: translateY(0px); }
           50% { transform: translateY(-10px); }
-        }
-        
-        .transition-all {
-          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
-        .card:hover {
-          transform: translateY(-5px);
-        }
-        
-        /* Smooth scroll behavior */
-        html {
-          scroll-behavior: smooth;
-        }
-        
-        /* Enhanced button hover effects */
-        .btn {
-          position: relative;
-          overflow: hidden;
-          transition: all 0.3s ease;
-        }
-        
-        .btn::before {
-          content: '';
-          position: absolute;
-          top: 0;
-          left: -100%;
-          width: 100%;
-          height: 100%;
-          background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-          transition: left 0.5s;
-        }
-        
-        .btn:hover::before {
-          left: 100%;
-        }
-        
-        /* Custom scrollbar */
-        ::-webkit-scrollbar {
-          width: 8px;
-        }
-        
-        ::-webkit-scrollbar-track {
-          background: #f1f1f1;
-          border-radius: 4px;
-        }
-        
-        ::-webkit-scrollbar-thumb {
-          background: linear-gradient(to bottom, #007bff, #20c997);
-          border-radius: 4px;
-        }
-        
-        ::-webkit-scrollbar-thumb:hover {
-          background: linear-gradient(to bottom, #0056b3, #17a085);
-        }
-        
-        /* Accessibility improvements */
-        .card:focus-visible {
-          outline: 2px solid #007bff;
-          outline-offset: 2px;
-        }
-        
-        @media (prefers-reduced-motion: reduce) {
-          * {
-            animation-duration: 0.01ms !important;
-            animation-iteration-count: 1 !important;
-            transition-duration: 0.01ms !important;
-          }
-        }
-        
-        /* Mobile optimizations */
-        @media (max-width: 768px) {
-          .display-4 {
-            font-size: 2rem;
-          }
-          
-          .card-body {
-            padding: 1.5rem !important;
-          }
-          
-          .fs-1 {
-            font-size: 2rem !important;
-          }
         }
       `}</style>
     </section>

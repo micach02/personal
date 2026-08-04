@@ -1,6 +1,47 @@
 import { useParams, useNavigate } from 'react-router-dom';
 import { useState, useEffect, useRef } from 'react';
+import { IconCheck } from './icons/Icon';
 import '../styles/project-detail.css';
+
+// Splits a description string (plain paragraphs plus "• " bulleted blocks,
+// separated by blank lines) into properly formatted paragraphs and lists.
+function renderFormattedText(text) {
+  if (!text) return null;
+  const blocks = text.trim().split(/\n\n+/);
+  return blocks.map((block, i) => {
+    const lines = block.split('\n').map((l) => l.trim()).filter(Boolean);
+
+    // A block can be a lone list, or a short heading line followed by a list
+    // (e.g. "Key features include:" immediately above the "• " lines).
+    let heading = null;
+    let bulletLines = lines;
+    if (lines.length > 1 && !lines[0].startsWith('•') && lines.slice(1).every((l) => l.startsWith('•'))) {
+      heading = lines[0];
+      bulletLines = lines.slice(1);
+    }
+    const isList = bulletLines.length > 0 && bulletLines.every((l) => l.startsWith('•'));
+
+    if (isList) {
+      return (
+        <div key={i} className="mb-4">
+          {heading && <p className="fw-bold mb-2" style={{ color: '#1e293b' }}>{heading}</p>}
+          <ul className="list-unstyled mb-0">
+            {bulletLines.map((line, j) => (
+              <li key={j} className="d-flex align-items-start gap-2 mb-2">
+                <span className="mt-1 flex-shrink-0" style={{ color: '#1a7a75' }}>
+                  <IconCheck size={15} />
+                </span>
+                <span>{line.replace(/^•\s*/, '')}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      );
+    }
+
+    return <p key={i} className="mb-4">{lines.join(' ')}</p>;
+  });
+}
 
 function ProjectDetail() {
   const { id } = useParams();
@@ -83,159 +124,6 @@ The project was built using modern web technologies and follows best practices f
     },
     {
       id: 2,
-      title: "Banking Simulation App",
-      description: "Interactive educational tool for learning banking concepts through hands-on simulation with virtual accounts and real-world scenarios.",
-      fullDescription: `The Banking Simulation App is an interactive educational tool designed to teach users about core banking concepts and financial management through hands-on simulation. Users can create virtual accounts, perform transactions, and explore real-world banking scenarios in a safe, risk-free environment.
-
-Built with HTML5, CSS3, Bootstrap, JavaScript, Chart.js, and PHP, the app emphasizes responsive design, security, and user-friendly workflows. It features modules for account management, transaction processing, loan calculations, analytics dashboards, and customizable scenarios, making it ideal for both self-learners and classroom use.
-
-Key features include:
-• Virtual account creation and management
-• Real-time transaction processing simulation
-• Loan calculation and approval workflows
-• Interactive financial analytics dashboards
-• Customizable banking scenarios for different learning levels
-• Progress tracking and performance analytics
-• Multi-user support for classroom environments
-• Secure, risk-free learning environment
-• Responsive design for various devices
-• Comprehensive reporting and assessment tools
-
-The platform provides an engaging way to understand banking operations, financial planning, and risk management concepts without the complexity of real financial systems.`,
-      technologies: ["PHP", "JavaScript", "Bootstrap", "Chart.js"],
-      demoLink: "#",
-      codeLink: "#",
-      image: `${import.meta.env.BASE_URL}images/projects/project2/project2_img1.png`,
-      category: "FinTech",
-      challenges: [
-        "Data Consistency & Validation: Ensuring all simulated transactions and account operations maintained data integrity and reflected real-world banking logic.",
-        "Security Considerations: Implementing secure authentication and protecting sensitive user data, even in a simulated environment, to prevent misuse.",
-        "Responsive Design: Making the application fully functional and visually appealing across a wide range of devices and screen sizes.",
-        "Complex Feature Integration: Developing features like loan calculations, analytics dashboards, and customizable scenarios required careful planning and modular code structure.",
-        "User Experience: Designing intuitive workflows for banking operations and providing clear feedback to users during simulations.",
-        "Testing & Debugging: Thoroughly testing all features to identify and resolve bugs, especially in transaction logic and user progress tracking."
-      ],
-      roleAndResponsibilities: [
-        "Full Stack Developer: Designed and implemented both the frontend and backend of the Banking Simulation App using HTML5, CSS3, Bootstrap, JavaScript, and PHP.",
-        "UI/UX Design Collaboration: Contributed to the UI/UX design process, helping to create an intuitive, accessible, and responsive interface for a seamless user experience across devices.",
-        "Feature Development: Developed core features such as virtual account management, transaction simulation, and analytics dashboard.",
-        "Testing & Deployment: Conducted thorough testing, fixed bugs, and deployed the application for educational use."
-      ],
-      gallery: [
-        `${import.meta.env.BASE_URL}images/projects/project2/project2_img1.png`,
-        `${import.meta.env.BASE_URL}images/projects/project2/project2_img2.png`,
-        `${import.meta.env.BASE_URL}images/projects/project2/project2_img3.png`,
-        `${import.meta.env.BASE_URL}images/projects/project2/project2_img4.png`,
-        `${import.meta.env.BASE_URL}images/projects/project2/project2_img5.png`,
-        `${import.meta.env.BASE_URL}images/projects/project2/project2_img6.png`,
-        `${import.meta.env.BASE_URL}images/projects/project2/project2_img7.png`,
-        `${import.meta.env.BASE_URL}images/projects/project2/project2_img8.png`,
-        `${import.meta.env.BASE_URL}images/projects/project2/project2_img9.png`,
-        `${import.meta.env.BASE_URL}images/projects/project2/project2_img10.png`,
-        `${import.meta.env.BASE_URL}images/projects/project2/project2_img11.png`,
-        `${import.meta.env.BASE_URL}images/projects/project2/project2_img12.png`
-      ]
-    },
-    {
-      id: 3,
-      title: "Wealth Management App",
-      description: "Comprehensive platform for tracking, analyzing, and optimizing personal finances and investments with interactive dashboards and analytics.",
-      fullDescription: `The Wealth Management App is a comprehensive platform designed to help users track, analyze, and optimize their personal finances and investments. It empowers individuals to set financial goals, monitor portfolios, and make informed decisions through interactive dashboards and analytics.
-
-Built with HTML5, CSS3, Bootstrap, JavaScript, Chart.js, and PHP, the app features secure authentication, real-time portfolio tracking, goal setting, asset allocation analysis, and personalized insights. Its responsive design ensures a seamless experience across devices, making it ideal for both novice and experienced investors.
-
-Key features include:
-• Comprehensive portfolio tracking across multiple asset classes
-• Real-time market data integration and price updates
-• Interactive financial analytics dashboards
-• Goal-based investment planning and tracking
-• Asset allocation analysis and optimization recommendations
-• Risk assessment and diversification tools
-• Performance benchmarking against market indices
-• Personalized financial insights and recommendations
-• Secure user authentication and data protection
-• Responsive design for seamless cross-device experience
-• Educational resources for informed decision-making
-• Tax optimization strategies and planning tools
-
-The platform combines powerful analytics with user-friendly interfaces, making complex financial concepts accessible to users of all experience levels while providing the depth needed for sophisticated investment management.`,
-      technologies: ["PHP", "JavaScript", "jQuery", "Bootstrap", "Chart.js"],
-      demoLink: "#",
-      codeLink: "#",
-      image: `${import.meta.env.BASE_URL}images/projects/project3/project3_img1.png`,
-      category: "FinTech",
-      challenges: [
-        "Real-Time Data Integration: Integrating live market data and updating user portfolios in real time for accurate financial tracking.",
-        "Security & Privacy: Ensuring secure authentication and protecting sensitive financial data from unauthorized access.",
-        "Responsive Design: Delivering a seamless and visually appealing experience across desktops, tablets, and smartphones.",
-        "Complex Analytics: Building interactive dashboards for asset allocation, risk analysis, and goal progress tracking.",
-        "User Engagement: Designing features that motivate users to set, track, and achieve their financial goals.",
-        "Testing & Debugging: Ensuring accuracy in financial calculations and reliability in data visualization components."
-      ],
-      roleAndResponsibilities: [
-        "Full Stack Developer: Designed and implemented both the frontend and backend of the Wealth Management App using HTML5, CSS3, Bootstrap, JavaScript, and PHP.",
-        "UI/UX Design Collaboration: Collaborated on creating an intuitive, accessible, and visually appealing interface for effortless financial management.",
-        "Feature Development: Developed modules for portfolio tracking, goal setting, asset allocation, and interactive analytics dashboards.",
-        "Testing & Deployment: Conducted comprehensive testing, resolved bugs, and deployed the application for end-user access."
-      ],
-      gallery: [
-        `${import.meta.env.BASE_URL}images/projects/project3/project3_img1.png`,
-        `${import.meta.env.BASE_URL}images/projects/project3/project3_img2.png`,
-        `${import.meta.env.BASE_URL}images/projects/project3/project3_img4.png`,
-        `${import.meta.env.BASE_URL}images/projects/project3/project3_img5.png`
-      ]
-    },
-    {
-      id: 4,
-      title: "3D Avatar Animation",
-      description: "A lifelike 3D avatar speaker designed for presentations and e-learning content with synchronized mouth and facial movements.",
-      fullDescription: `This project showcases a lifelike 3D avatar speaker designed for presentations and e-learning content. The avatar is animated to synchronize mouth and facial movements with audio, providing a natural and engaging user experience.
-
-The project utilizes Blender for 3D modeling and animation, and NVIDIA Omniverse for real-time rendering and integration into web-based platforms.
-
-Key features include:
-• Realistic 3D character modeling optimized for speaking presentations
-• Advanced facial rigging for natural mouth and expression movements
-• Audio-synchronized lip-sync animation system
-• Real-time rendering capabilities for web integration
-• Smooth facial expressions that enhance communication
-• Professional presentation-ready avatar design
-• Cross-platform compatibility for various e-learning platforms
-• Optimized performance for real-time applications
-
-The avatar system is specifically designed for educational and professional use cases, making digital presentations more engaging and personal. The integration with NVIDIA Omniverse enables seamless deployment across different platforms while maintaining high visual quality.`,
-      technologies: ["Blender", "NVIDIA Omniverse"],
-      demoLink: "#",
-      codeLink: "#",
-      image: `${import.meta.env.BASE_URL}images/projects/project4/project4_img1.png`,
-      category: "Animation",
-      challenges: [
-        "Realistic Lip Sync: Achieving accurate synchronization between the avatar's mouth movements and audio required fine-tuning animation curves and experimenting with different speech-to-animation tools.",
-        "Facial Expression Complexity: Creating natural and expressive facial animations involved detailed rigging and careful keyframing to avoid uncanny or robotic results.",
-        "Performance Optimization: Ensuring smooth real-time rendering in web environments demanded optimization of 3D assets and efficient integration with NVIDIA Omniverse.",
-        "Cross-Platform Compatibility: Integrating the animated avatar into various presentation platforms required addressing differences in browser and device support."
-      ],
-      roleAndResponsibilities: [
-        "3D Modeling & Animation: Designed and rigged the avatar using Blender, ensuring lifelike facial and mouth movements.",
-        "Speech Synchronization: Implemented audio-driven animation to match speech with avatar expressions.",
-        "Integration: Embedded the animated avatar into web-based presentations using NVIDIA Omniverse and custom scripts."
-      ],
-      gallery: [
-        `${import.meta.env.BASE_URL}images/projects/project4/project4_img1.png`,
-        `${import.meta.env.BASE_URL}images/projects/project4/project4_img2.png`,
-        `${import.meta.env.BASE_URL}images/projects/project4/project4_img3.png`,
-        `${import.meta.env.BASE_URL}images/projects/project4/project4_img4.png`,
-        `${import.meta.env.BASE_URL}images/projects/project4/project4_img5.png`,
-        `${import.meta.env.BASE_URL}images/projects/project4/project4_img6.png`,
-        `${import.meta.env.BASE_URL}images/projects/project4/project4_img7.png`,
-        `${import.meta.env.BASE_URL}images/projects/project4/project4_img8.png`,
-        `${import.meta.env.BASE_URL}images/projects/project4/project4_img9.png`,
-        `${import.meta.env.BASE_URL}images/projects/project4/project4_img10.png`,
-        `${import.meta.env.BASE_URL}images/projects/project4/project4_img11.png`
-      ]
-    },
-    {
-      id: 5,
       title: "Personal Portfolio Website",
       description: "A modern React-based portfolio website showcasing my professional skills, projects, and career journey with interactive components and responsive design.",
       fullDescription: `This personal portfolio website represents my journey as a full-stack developer, originally crafted from scratch using fundamental web technologies (HTML5, CSS3, and JavaScript) before being completely reimagined and rebuilt with React and modern development frameworks. The transformation showcases my evolution as a developer and serves as a comprehensive digital showcase of my professional skills, innovative projects, and career progression.
@@ -287,6 +175,144 @@ The development process followed modern best practices including component-based
         `${import.meta.env.BASE_URL}images/projects/project5/project5_img6.png`,
         `${import.meta.env.BASE_URL}images/projects/project5/project5_img7.png`
       ]
+    },
+    {
+      id: 3,
+      title: "PVM Project Tracker",
+      description: "Internal production tracker for PV Multimedia Inc., managing course module, video, and game development pipelines across multiple teams with real-time status tracking.",
+      fullDescription: `PVM Project Tracker is an internal production management system built for PV Multimedia Inc. to coordinate content production across four distinct workspaces: BMAI course modules, Fitforbanking course modules, video production, and game development. Each workspace tracks development status, assigned developers, versioning, and delivery to stakeholders across hundreds of production entries.
+
+The application is a hand-rolled PHP MVC built without a framework, using a PSR-4 autoloader and flat-file JSON storage instead of a database, which keeps the tool lightweight and easy to deploy while still handling a growing catalog of production records. It includes a full developer and editor management workspace, a searchable and filterable module catalog, and a dark/light theme that syncs across every page.
+
+Key features include:
+• Four dedicated tracker workspaces: BMAI, Fitforbanking, Video, and Game development
+• Searchable, filterable module catalog with category, series, developer, and status filters
+• Developer and editor management shared across all trackers
+• Bulk edit support for updating multiple entries at once
+• Nested module hierarchy (course → chapter → module) with expandable rows
+• Dark/light theme toggle persisted across sessions
+• Built-in onboarding tour for new team members
+
+The system replaced a set of scattered spreadsheets with a single, purpose-built tool the whole team now uses daily to track exactly what has been built, by whom, and what still needs review.`,
+      technologies: ["PHP", "JavaScript", "JSON", "Custom MVC"],
+      demoLink: "#",
+      codeLink: "#",
+      image: `${import.meta.env.BASE_URL}images/projects/project6/project6_img1.png`,
+      category: "Web Development",
+      challenges: [
+        "Framework-Free Architecture: Building a maintainable PSR-4 autoloaded MVC from scratch, without a framework, required careful separation of controllers, models, and views to keep the codebase organized as it grew.",
+        "Flat-File Data at Scale: Managing hundreds of production records in JSON files instead of a database meant writing careful read/write logic to avoid data corruption during concurrent edits.",
+        "Cross-Tracker Consistency: Keeping shared concepts (developers, editors, statuses) consistent across four independently evolving tracker workspaces required a shared data layer.",
+        "Usability for Non-Developers: Designing bulk-edit and filtering tools that production staff could use confidently without technical training."
+      ],
+      roleAndResponsibilities: [
+        "Sole Developer: Designed and built the entire application end to end, from the MVC core and routing to every tracker view.",
+        "Data Architecture: Designed the JSON-based data layer and models for projects, catalogs, developers, and activity logs.",
+        "UI/UX Design: Designed the full interface, including the dark/light theme system and the interactive onboarding tour.",
+        "Ongoing Maintenance: Continue to maintain and extend the tool based on day-to-day feedback from the production team."
+      ],
+      gallery: [
+        `${import.meta.env.BASE_URL}images/projects/project6/project6_img1.png`,
+        `${import.meta.env.BASE_URL}images/projects/project6/project6_img2.png`,
+        `${import.meta.env.BASE_URL}images/projects/project6/project6_img3.png`
+      ]
+    },
+    {
+      id: 4,
+      title: "Game Projects Manager",
+      description: "PHP MVC admin panel for deploying and managing game and web projects, with ZIP-based semantic versioning, a built-in database manager, and full activity audit logging.",
+      fullDescription: `Game Projects Manager (internally "Cebu Projects Admin Panel") is a PHP MVC admin system for deploying, versioning, and operating a portfolio of game and web projects from a single dashboard. Projects are deployed by uploading a ZIP file; the system automatically extracts it, detects whether the project name already exists, and bumps the semantic version accordingly, keeping every previous release live and addressable at its own URL.
+
+Beyond deployment, it includes a full database manager for browsing tables, running raw SQL queries, and inserting or truncating rows without leaving the admin panel, plus a storyboard module for attaching and organizing supporting documents (PDF, Word, Excel, PowerPoint) per project. Every action taken in the panel, from login attempts to deletions, is written to a rotating activity log with timestamp, IP address, and outcome.
+
+Key features include:
+• ZIP-based project deployment with automatic semantic version bumping
+• Database manager: browse, search, insert, truncate, drop, and run raw SQL
+• Storyboard document management per project (PDF, Word, Excel, PowerPoint)
+• Full activity audit log for every admin action, with IP and status
+• bcrypt authentication with rate limiting and account lockout
+• CSRF protection on every form and hardened session cookies
+• Path-traversal and symlink checks on every ZIP upload
+• Live dashboard with recent projects and server disk space usage
+
+The panel is the operational backbone for shipping and maintaining a growing library of interactive game and web builds without manual FTP juggling or untracked server changes.`,
+      technologies: ["PHP", "MySQL", "JavaScript", "Custom MVC"],
+      demoLink: "#",
+      codeLink: "#",
+      image: `${import.meta.env.BASE_URL}images/projects/project7/project7_img1.png`,
+      category: "Web Development",
+      challenges: [
+        "Safe ZIP Deployment: Extracting untrusted ZIP uploads safely required explicit checks against path traversal and symlink attacks before any file touched the filesystem.",
+        "Semantic Versioning Logic: Automatically detecting whether an upload was a patch, minor, or major update relative to the existing deployed project needed careful diffing logic.",
+        "Admin Security: Implementing bcrypt password hashing, rate-limited login attempts, CSRF tokens, and hardened session cookies to production-grade standards for an internally facing tool.",
+        "Direct Database Access: Building a safe-enough raw SQL query interface for trusted admins while still guarding against accidental destructive operations."
+      ],
+      roleAndResponsibilities: [
+        "Sole Developer: Designed and built the full admin panel, including the deployment pipeline, database manager, and audit logging system.",
+        "Security Implementation: Implemented authentication, CSRF protection, security headers, and upload validation.",
+        "DevOps Tooling: Designed the semantic versioning and ZIP deployment workflow used to ship every game and web project.",
+        "Documentation: Authored the full setup, deployment, and troubleshooting documentation for the panel."
+      ],
+      gallery: [
+        `${import.meta.env.BASE_URL}images/projects/project7/project7_img1.png`,
+        `${import.meta.env.BASE_URL}images/projects/project7/project7_img2.png`,
+        `${import.meta.env.BASE_URL}images/projects/project7/project7_img3.png`,
+        `${import.meta.env.BASE_URL}images/projects/project7/project7_img4.png`,
+        `${import.meta.env.BASE_URL}images/projects/project7/project7_img5.png`,
+        `${import.meta.env.BASE_URL}images/projects/project7/project7_img6.png`
+      ]
+    },
+    {
+      id: 5,
+      title: "Fitforbanking Game Series",
+      description: "A continuously growing series of browser-based financial literacy simulation games built on a shared engine, featuring leaderboards, PDF certificate export, and instructor-led session tools.",
+      fullDescription: `The Fitforbanking Game Series is an ongoing collection of browser-based financial literacy simulations built for the Fitforbanking training platform. It started with titles like Bank Management, Money Market Challenge, Managing FX Exposure, Managing Bond Portfolio, Bond Hedging Challenge, and WM Index Tracking, and has continued to grow since, with newer additions such as Corporate Finance, Market Risk Management, Managing Option Portfolios, and Wealth Management - Asset Allocation. Each game turns a specific banking or finance concept into a hands-on, scored simulation instead of a passive lesson.
+
+Every game in the series shares a common PHP and JavaScript engine: a lightweight client-side router, a shared leaderboard API with CSRF protection and rate limiting, idle-session detection for classroom use, and a game-master mode that lets a facilitator run a session for a group of players. Session results can be exported directly to PDF as a shareable certificate or report, and every game persists progress to a MySQL-backed leaderboard. That shared foundation is what lets new titles get added to the series on an ongoing basis rather than being built from scratch each time.
+
+Key features include:
+• A continuously expanding library of financial simulation games sharing one underlying engine
+• Real-time leaderboard with CSRF-protected, rate-limited submission API
+• Game-master mode for instructor-led classroom sessions
+• PDF certificate and report export on session completion
+• Idle-session detection to gracefully handle inactive players
+• Config-driven game data (e.g. balance sheets) for easy content updates
+• Responsive, presentation-friendly UI reused consistently across the series
+
+The series turned a stack of financial theory into an engaging, replayable practice tool that training teams use directly in live sessions, backed by a shared engine that keeps adding new games to the lineup fast and low-effort.`,
+      technologies: ["HTML5", "JavaScript", "PHP", "MySQL"],
+      demoLink: "#",
+      codeLink: "#",
+      image: `${import.meta.env.BASE_URL}images/projects/project8/project8_img1.png`,
+      category: "FinTech",
+      challenges: [
+        "Shared Engine Design: Building a single router, leaderboard API, and UI framework flexible enough to support many different game mechanics without duplicating code per title.",
+        "Session Integrity: Implementing CSRF protection, rate limiting, and idle-session detection to keep leaderboard submissions fair and abuse-resistant.",
+        "Facilitator Tooling: Designing a game-master mode that lets an instructor run and monitor a live session for a full classroom of players.",
+        "Certificate Generation: Integrating client-side PDF export so players could walk away with a shareable record of their results."
+      ],
+      roleAndResponsibilities: [
+        "Sole Developer: Built the shared game engine and continue to build new games in the series, from UI to leaderboard backend.",
+        "Backend Development: Implemented the PHP leaderboard API, CSRF protection, rate limiting, and MySQL schema shared across games.",
+        "Game Design: Translate banking and finance concepts into scored, replayable game mechanics for each new title.",
+        "Facilitator Tools: Built the game-master mode and PDF export used in live, instructor-led training sessions."
+      ],
+      gallery: [
+        `${import.meta.env.BASE_URL}images/projects/project8/project8_img1.png`,
+        `${import.meta.env.BASE_URL}images/projects/project8/project8_img2.png`,
+        `${import.meta.env.BASE_URL}images/projects/project8/project8_img3.png`,
+        `${import.meta.env.BASE_URL}images/projects/project8/project8_img4.png`,
+        `${import.meta.env.BASE_URL}images/projects/project8/project8_img5.png`,
+        `${import.meta.env.BASE_URL}images/projects/project8/project8_img6.png`,
+        `${import.meta.env.BASE_URL}images/projects/project8/project8_img7.png`,
+        `${import.meta.env.BASE_URL}images/projects/project8/project8_img8.png`,
+        `${import.meta.env.BASE_URL}images/projects/project8/project8_img9.png`,
+        `${import.meta.env.BASE_URL}images/projects/project8/project8_img10.png`,
+        `${import.meta.env.BASE_URL}images/projects/project8/project8_img11.png`,
+        `${import.meta.env.BASE_URL}images/projects/project8/project8_img12.png`,
+        `${import.meta.env.BASE_URL}images/projects/project8/project8_img13.png`,
+        `${import.meta.env.BASE_URL}images/projects/project8/project8_img14.png`
+      ]
     }
   ];
 
@@ -317,7 +343,7 @@ The development process followed modern best practices including component-based
           <div className="spinner-border text-primary mb-3" role="status" style={{ width: '3rem', height: '3rem' }}>
             <span className="visually-hidden">Loading...</span>
           </div>
-          <p className="text-muted">Loading project details...</p>
+          <p style={{ color: 'rgba(244, 246, 251, 0.65)' }}>Loading project details...</p>
         </div>
       </div>
     );
@@ -327,8 +353,8 @@ The development process followed modern best practices including component-based
     return (
       <div className="container py-5">
         <div className="text-center">
-          <h2>Project Not Found</h2>
-          <p className="text-muted">The project you're looking for doesn't exist.</p>
+          <h2 style={{ color: 'var(--text-primary, #f4f6fb)' }}>Project Not Found</h2>
+          <p style={{ color: 'rgba(244, 246, 251, 0.65)' }}>The project you're looking for doesn't exist.</p>
           <button className="btn btn-primary" onClick={() => navigate('/')}>
             Back to Home
           </button>
@@ -360,7 +386,7 @@ The development process followed modern best practices including component-based
           height: '60px',
           zIndex: 1050,
           border: 'none',
-          background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+          background: 'linear-gradient(135deg, #1a7a75 0%, #ff6b35 100%)',
           backdropFilter: 'blur(10px)'
         }}
         onClick={() => {
@@ -380,7 +406,8 @@ The development process followed modern best practices including component-based
       <nav className="position-relative overflow-hidden" style={{
         background: 'rgba(255, 255, 255, 0.8)',
         backdropFilter: 'blur(20px)',
-        borderBottom: '1px solid rgba(255, 255, 255, 0.2)'
+        borderBottom: '1px solid rgba(255, 255, 255, 0.2)',
+        marginTop: '74px'
       }}>
         <div className="container">
           <div className="d-flex align-items-center justify-content-between py-3">
@@ -397,7 +424,7 @@ The development process followed modern best practices including component-based
                       window.scrollTo({ top: 0, behavior: 'smooth' });
                     }, 100);
                   }}
-                  style={{ color: '#667eea' }}
+                  style={{ color: '#1a7a75' }}
                 >
                   <i className="fas fa-home me-2"></i>Home
                 </button>
@@ -420,7 +447,7 @@ The development process followed modern best practices including component-based
                       }
                     }, 100);
                   }}
-                  style={{ color: '#667eea' }}
+                  style={{ color: '#1a7a75' }}
                 >
                   <i className="fas fa-folder me-2"></i>Projects
                 </button>
@@ -462,7 +489,7 @@ The development process followed modern best practices including component-based
         ref={heroRef}
         className="position-relative overflow-hidden" 
         style={{
-          background: 'linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%)',
+          background: 'linear-gradient(135deg, #1a7a75 0%, #ff6b35 50%, #ff6b35 100%)',
           minHeight: '80vh'
         }}
       >
@@ -680,17 +707,30 @@ The development process followed modern best practices including component-based
                         const ctx = canvas.getContext('2d');
                         
                         const gradient = ctx.createLinearGradient(0, 0, 400, 300);
-                        gradient.addColorStop(0, '#667eea');
-                        gradient.addColorStop(1, '#764ba2');
+                        gradient.addColorStop(0, '#1a7a75');
+                        gradient.addColorStop(1, '#ff6b35');
                         ctx.fillStyle = gradient;
                         ctx.fillRect(0, 0, 400, 300);
-                        
-                        ctx.font = '64px Arial';
-                        ctx.textAlign = 'center';
-                        ctx.textBaseline = 'middle';
-                        ctx.fillStyle = 'white';
-                        ctx.fillText('🚀', 200, 150);
-                        
+
+                        // Simple vector "image" placeholder glyph
+                        ctx.strokeStyle = 'rgba(255,255,255,0.9)';
+                        ctx.lineWidth = 4;
+                        ctx.lineJoin = 'round';
+                        ctx.lineCap = 'round';
+                        ctx.strokeRect(150, 105, 100, 75);
+                        ctx.beginPath();
+                        ctx.arc(172, 128, 6, 0, Math.PI * 2);
+                        ctx.stroke();
+                        ctx.beginPath();
+                        ctx.moveTo(160, 172);
+                        ctx.lineTo(190, 142);
+                        ctx.lineTo(210, 162);
+                        ctx.lineTo(240, 132);
+                        ctx.lineTo(240, 180);
+                        ctx.lineTo(160, 180);
+                        ctx.closePath();
+                        ctx.stroke();
+
                         e.target.src = canvas.toDataURL();
                       }}
                     />
@@ -711,7 +751,7 @@ The development process followed modern best practices including component-based
       </section>
 
       {/* Ultra Modern Main Content Section */}
-      <section id="project-details" className="py-5" style={{ background: 'linear-gradient(180deg, #f8f9ff 0%, #ffffff 100%)' }}>
+      <section id="project-details" className="py-5" style={{ background: 'var(--bg-base, #0a0e17)' }}>
         <div className="container">
           <div className="row g-5">
             {/* Left Column - Enhanced Content */}
@@ -722,7 +762,7 @@ The development process followed modern best practices including component-based
                   <div 
                     className="rounded-circle p-4 me-4 shadow-lg position-relative"
                     style={{
-                      background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                      background: 'linear-gradient(135deg, #1a7a75 0%, #ff6b35 100%)',
                       color: 'white'
                     }}
                   >
@@ -737,7 +777,7 @@ The development process followed modern best practices including component-based
                   </div>
                   <div>
                     <h2 className="h2 mb-1 gradient-text fw-bold">Project Overview</h2>
-                    <p className="text-muted mb-0 fs-6">Comprehensive project details and insights</p>
+                    <p className="mb-0 fs-6" style={{ color: "rgba(244, 246, 251, 0.65)" }}>Comprehensive project details and insights</p>
                   </div>
                 </div>
                 <div 
@@ -746,16 +786,16 @@ The development process followed modern best practices including component-based
                     background: 'rgba(255, 255, 255, 0.95)',
                     backdropFilter: 'blur(20px)',
                     borderRadius: '24px',
-                    border: '1px solid rgba(102, 126, 234, 0.1)',
-                    boxShadow: '0 10px 40px rgba(102, 126, 234, 0.1)'
+                    border: '1px solid rgba(26, 122, 117, 0.1)',
+                    boxShadow: '0 10px 40px rgba(26, 122, 117, 0.1)'
                   }}
                 >
                   {/* Header with gradient */}
                   <div 
                     className="px-5 py-3"
                     style={{
-                      background: 'linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%)',
-                      borderBottom: '1px solid rgba(102, 126, 234, 0.1)'
+                      background: 'linear-gradient(135deg, rgba(26, 122, 117, 0.05) 0%, rgba(255, 107, 53, 0.05) 100%)',
+                      borderBottom: '1px solid rgba(26, 122, 117, 0.1)'
                     }}
                   >
                     <div className="d-flex align-items-center justify-content-between">
@@ -772,28 +812,27 @@ The development process followed modern best practices including component-based
                   
                   {/* Content */}
                   <div className="p-5">
-                    <div 
-                      className="text-muted lh-lg position-relative" 
-                      style={{ 
-                        whiteSpace: 'pre-line',
+                    <div
+                      className="position-relative"
+                      style={{
                         fontSize: '1.1rem',
                         color: '#5a6c7d',
                         lineHeight: '1.8'
                       }}
                     >
                       {/* Add reading progress indicator */}
-                      <div 
+                      <div
                         className="position-absolute start-0 top-0"
                         style={{
                           width: '4px',
                           height: '100%',
-                          background: 'linear-gradient(to bottom, #667eea, #764ba2)',
+                          background: 'linear-gradient(to bottom, #1a7a75, #ff6b35)',
                           borderRadius: '2px',
                           opacity: '0.3'
                         }}
                       />
                       <div className="ps-4">
-                        {project.fullDescription}
+                        {renderFormattedText(project.fullDescription)}
                       </div>
                     </div>
                   </div>
@@ -822,7 +861,7 @@ The development process followed modern best practices including component-based
                     </div>
                     <div>
                       <h2 className="h2 mb-1 fw-bold" style={{ color: '#28a745' }}>Project Gallery</h2>
-                      <p className="text-muted mb-0 fs-6">Visual showcase of project features and interface</p>
+                      <p className="mb-0 fs-6" style={{ color: "rgba(244, 246, 251, 0.65)" }}>Visual showcase of project features and interface</p>
                     </div>
                   </div>
                   <div 
@@ -885,13 +924,26 @@ The development process followed modern best practices including component-based
                               gradient.addColorStop(1, '#20c997');
                               ctx.fillStyle = gradient;
                               ctx.fillRect(0, 0, 800, 500);
-                              
-                              ctx.font = '48px Arial';
-                              ctx.textAlign = 'center';
-                              ctx.textBaseline = 'middle';
-                              ctx.fillStyle = 'white';
-                              ctx.fillText('🖼️', 400, 250);
-                              
+
+                              // Simple vector "image" placeholder glyph
+                              ctx.strokeStyle = 'rgba(255,255,255,0.9)';
+                              ctx.lineWidth = 7;
+                              ctx.lineJoin = 'round';
+                              ctx.lineCap = 'round';
+                              ctx.strokeRect(300, 200, 200, 150);
+                              ctx.beginPath();
+                              ctx.arc(344, 246, 12, 0, Math.PI * 2);
+                              ctx.stroke();
+                              ctx.beginPath();
+                              ctx.moveTo(320, 335);
+                              ctx.lineTo(380, 275);
+                              ctx.lineTo(420, 315);
+                              ctx.lineTo(480, 255);
+                              ctx.lineTo(480, 350);
+                              ctx.lineTo(320, 350);
+                              ctx.closePath();
+                              ctx.stroke();
+
                               e.target.src = canvas.toDataURL();
                             }}
                           />
@@ -1076,7 +1128,7 @@ The development process followed modern best practices including component-based
                   </div>
                   <div>
                     <h2 className="h2 mb-1 fw-bold" style={{ color: '#fd7e14' }}>Technical Challenges</h2>
-                    <p className="text-muted mb-0 fs-6">Problems solved and solutions implemented</p>
+                    <p className="mb-0 fs-6" style={{ color: "rgba(244, 246, 251, 0.65)" }}>Problems solved and solutions implemented</p>
                   </div>
                 </div>
                 <div 
@@ -1202,7 +1254,7 @@ The development process followed modern best practices including component-based
                     </div>
                     <div>
                       <h2 className="h2 mb-1 fw-bold" style={{ color: '#6f42c1' }}>Role & Responsibilities</h2>
-                      <p className="text-muted mb-0 fs-6">Key contributions and professional duties</p>
+                      <p className="mb-0 fs-6" style={{ color: "rgba(244, 246, 251, 0.65)" }}>Key contributions and professional duties</p>
                     </div>
                   </div>
                   <div 
@@ -1325,7 +1377,7 @@ The development process followed modern best practices including component-based
                   <div 
                     className="text-white text-center py-5 position-relative"
                     style={{
-                      background: 'linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%)'
+                      background: 'linear-gradient(135deg, #1a7a75 0%, #ff6b35 50%, #ff6b35 100%)'
                     }}
                   >
                     {/* Floating Decoration */}
@@ -1367,7 +1419,7 @@ The development process followed modern best practices including component-based
                         <span 
                           className="badge fs-6 px-4 py-2 rounded-pill"
                           style={{
-                            background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                            background: 'linear-gradient(135deg, #1a7a75 0%, #ff6b35 100%)',
                             color: 'white'
                           }}
                         >
@@ -1388,9 +1440,9 @@ The development process followed modern best practices including component-based
                             key={tech} 
                             className="badge px-3 py-2 rounded-pill"
                             style={{
-                              background: 'rgba(102, 126, 234, 0.1)',
-                              color: '#667eea',
-                              border: '1px solid rgba(102, 126, 234, 0.2)',
+                              background: 'rgba(26, 122, 117, 0.1)',
+                              color: '#1a7a75',
+                              border: '1px solid rgba(26, 122, 117, 0.2)',
                               transition: 'all 0.3s ease',
                               animationName: 'slideInFromBottom',
                               animationDuration: '0.5s',
@@ -1399,58 +1451,17 @@ The development process followed modern best practices including component-based
                               animationDelay: `${index * 0.1}s`
                             }}
                             onMouseEnter={(e) => {
-                              e.target.style.background = 'rgba(102, 126, 234, 0.2)';
+                              e.target.style.background = 'rgba(26, 122, 117, 0.2)';
                               e.target.style.transform = 'translateY(-2px) scale(1.05)';
                             }}
                             onMouseLeave={(e) => {
-                              e.target.style.background = 'rgba(102, 126, 234, 0.1)';
+                              e.target.style.background = 'rgba(26, 122, 117, 0.1)';
                               e.target.style.transform = 'translateY(0) scale(1)';
                             }}
                           >
                             {tech}
                           </span>
                         ))}
-                      </div>
-                    </div>
-
-                    {/* Modern Project Stats */}
-                    <div className="mb-4">
-                      <label className="fw-bold text-muted small text-uppercase mb-3 d-block">Project Metrics</label>
-                      <div className="row g-3">
-                        <div className="col-6">
-                          <div 
-                            className="text-center p-3 rounded-4 hover-lift"
-                            style={{
-                              background: 'linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%)',
-                              border: '1px solid rgba(102, 126, 234, 0.2)'
-                            }}
-                          >
-                            <div 
-                              className="fw-bold fs-4 mb-1"
-                              style={{ color: '#667eea' }}
-                            >
-                              {project.challenges.length}
-                            </div>
-                            <small className="text-muted fw-medium">Challenges</small>
-                          </div>
-                        </div>
-                        <div className="col-6">
-                          <div 
-                            className="text-center p-3 rounded-4 hover-lift"
-                            style={{
-                              background: 'linear-gradient(135deg, rgba(40, 167, 69, 0.1) 0%, rgba(32, 201, 151, 0.1) 100%)',
-                              border: '1px solid rgba(40, 167, 69, 0.2)'
-                            }}
-                          >
-                            <div 
-                              className="fw-bold fs-4 mb-1"
-                              style={{ color: '#28a745' }}
-                            >
-                              {project.technologies.length}
-                            </div>
-                            <small className="text-muted fw-medium">Technologies</small>
-                          </div>
-                        </div>
                       </div>
                     </div>
 
@@ -1461,7 +1472,7 @@ The development process followed modern best practices including component-based
                           href={project.demoLink} 
                           className="btn btn-lg fw-bold rounded-pill"
                           style={{
-                            background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                            background: 'linear-gradient(135deg, #1a7a75 0%, #ff6b35 100%)',
                             color: 'white',
                             border: 'none',
                             padding: '15px 30px',
@@ -1471,11 +1482,11 @@ The development process followed modern best practices including component-based
                           rel="noopener noreferrer"
                           onMouseEnter={(e) => {
                             e.target.style.transform = 'translateY(-3px) scale(1.02)';
-                            e.target.style.boxShadow = '0 15px 40px rgba(102, 126, 234, 0.4)';
+                            e.target.style.boxShadow = '0 15px 40px rgba(26, 122, 117, 0.4)';
                           }}
                           onMouseLeave={(e) => {
                             e.target.style.transform = 'translateY(0) scale(1)';
-                            e.target.style.boxShadow = '0 8px 25px rgba(102, 126, 234, 0.2)';
+                            e.target.style.boxShadow = '0 8px 25px rgba(26, 122, 117, 0.2)';
                           }}
                         >
                           <i className="fas fa-rocket me-3"></i>
@@ -1494,15 +1505,15 @@ The development process followed modern best practices including component-based
                           target="_blank" 
                           rel="noopener noreferrer"
                           onMouseEnter={(e) => {
-                            e.target.style.background = '#667eea';
-                            e.target.style.borderColor = '#667eea';
+                            e.target.style.background = '#1a7a75';
+                            e.target.style.borderColor = '#1a7a75';
                             e.target.style.color = 'white';
                             e.target.style.transform = 'translateY(-3px)';
                           }}
                           onMouseLeave={(e) => {
                             e.target.style.background = 'transparent';
-                            e.target.style.borderColor = '#667eea';
-                            e.target.style.color = '#667eea';
+                            e.target.style.borderColor = '#1a7a75';
+                            e.target.style.color = '#1a7a75';
                             e.target.style.transform = 'translateY(0)';
                           }}
                         >
@@ -1510,135 +1521,6 @@ The development process followed modern best practices including component-based
                           View Source
                         </a>
                       )}
-                    </div>
-                  </div>
-                </div>
-
-                {/* Modern Navigation Card */}
-                <div 
-                  className="modern-card"
-                  style={{
-                    background: 'rgba(255, 255, 255, 0.9)',
-                    backdropFilter: 'blur(20px)',
-                    borderRadius: '20px',
-                    border: '1px solid rgba(255, 255, 255, 0.2)'
-                  }}
-                >
-                  <div 
-                    className="px-4 py-3"
-                    style={{
-                      background: 'linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%)',
-                      borderRadius: '20px 20px 0 0',
-                      borderBottom: '1px solid rgba(102, 126, 234, 0.1)'
-                    }}
-                  >
-                    <h6 className="mb-0 fw-bold gradient-text">
-                      <i className="fas fa-compass me-2"></i>
-                      Quick Navigation
-                    </h6>
-                  </div>
-                  <div className="p-4">
-                    <div className="d-grid gap-3">
-                      <button 
-                        className="btn btn-outline-primary d-flex align-items-center justify-content-center fw-medium rounded-pill"
-                        style={{ padding: '12px 24px', transition: 'all 0.3s ease' }}
-                        onClick={() => {
-                          // Navigate to home page and scroll to top
-                          navigate('/', { replace: true });
-                          
-                          // Use setTimeout to ensure the home page is loaded before scrolling
-                          setTimeout(() => {
-                            window.scrollTo({ top: 0, behavior: 'smooth' });
-                          }, 100);
-                        }}
-                        onMouseEnter={(e) => {
-                          e.target.style.background = '#667eea';
-                          e.target.style.borderColor = '#667eea';
-                          e.target.style.color = 'white';
-                          e.target.style.transform = 'translateY(-2px)';
-                        }}
-                        onMouseLeave={(e) => {
-                          e.target.style.background = 'transparent';
-                          e.target.style.borderColor = '#667eea';
-                          e.target.style.color = '#667eea';
-                          e.target.style.transform = 'translateY(0)';
-                        }}
-                      >
-                        <i className="fas fa-home me-3"></i>
-                        Back to Home
-                      </button>
-                      <button 
-                        className="btn btn-outline-secondary d-flex align-items-center justify-content-center fw-medium rounded-pill"
-                        style={{ padding: '12px 24px', transition: 'all 0.3s ease' }}
-                        onClick={() => {
-                          // Navigate to home page and scroll to projects after navigation
-                          navigate('/', { replace: true });
-                          
-                          // Use setTimeout to ensure the home page is loaded before scrolling
-                          setTimeout(() => {
-                            const projectsSection = document.getElementById('projects');
-                            if (projectsSection) {
-                              projectsSection.scrollIntoView({ 
-                                behavior: 'smooth',
-                                block: 'start'
-                              });
-                            }
-                          }, 100);
-                        }}
-                        onMouseEnter={(e) => {
-                          e.target.style.background = '#6c757d';
-                          e.target.style.borderColor = '#6c757d';
-                          e.target.style.color = 'white';
-                          e.target.style.transform = 'translateY(-2px)';
-                        }}
-                        onMouseLeave={(e) => {
-                          e.target.style.background = 'transparent';
-                          e.target.style.borderColor = '#6c757d';
-                          e.target.style.color = '#6c757d';
-                          e.target.style.transform = 'translateY(0)';
-                        }}
-                      >
-                        <i className="fas fa-th-large me-3"></i>
-                        All Projects
-                      </button>
-                    </div>
-                    
-                    {/* Enhanced Project Navigation */}
-                    <div className="section-divider"></div>
-                    <small className="text-muted d-block mb-3 fw-medium">Browse Projects</small>
-                    <div className="d-flex gap-3">
-                      <button 
-                        className="btn btn-outline-primary flex-fill rounded-pill"
-                        style={{ 
-                          minHeight: '45px',
-                          transition: 'all 0.3s ease',
-                          opacity: parseInt(id) <= 1 ? 0.5 : 1
-                        }}
-                        onClick={() => {
-                          const prevId = Math.max(1, parseInt(id) - 1);
-                          navigate(`/project/${prevId}`);
-                        }}
-                        disabled={parseInt(id) <= 1}
-                      >
-                        <i className="fas fa-chevron-left me-2"></i>
-                        Previous
-                      </button>
-                      <button 
-                        className="btn btn-outline-primary flex-fill rounded-pill"
-                        style={{ 
-                          minHeight: '45px',
-                          transition: 'all 0.3s ease',
-                          opacity: parseInt(id) >= projects.length ? 0.5 : 1
-                        }}
-                        onClick={() => {
-                          const nextId = Math.min(projects.length, parseInt(id) + 1);
-                          navigate(`/project/${nextId}`);
-                        }}
-                        disabled={parseInt(id) >= projects.length}
-                      >
-                        Next
-                        <i className="fas fa-chevron-right ms-2"></i>
-                      </button>
                     </div>
                   </div>
                 </div>
@@ -1652,7 +1534,7 @@ The development process followed modern best practices including component-based
       <section 
         className="position-relative py-5 overflow-hidden"
         style={{
-          background: 'linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%)',
+          background: 'linear-gradient(135deg, #1a7a75 0%, #ff6b35 50%, #ff6b35 100%)',
           marginTop: '5rem'
         }}
       >
@@ -1730,7 +1612,7 @@ The development process followed modern best practices including component-based
                       background: 'rgba(255, 255, 255, 0.95)',
                       backdropFilter: 'blur(20px)',
                       border: 'none',
-                      color: '#667eea',
+                      color: '#1a7a75',
                       transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)'
                     }}
                     onClick={() => {
@@ -1820,7 +1702,7 @@ The development process followed modern best practices including component-based
         }
         
         ::-webkit-scrollbar-thumb {
-          background: linear-gradient(to bottom, #667eea, #764ba2);
+          background: linear-gradient(to bottom, #1a7a75, #ff6b35);
           border-radius: 4px;
         }
         
@@ -1891,7 +1773,7 @@ The development process followed modern best practices including component-based
         
         /* Enhanced utility classes */
         .gradient-text {
-          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          background: linear-gradient(135deg, #1a7a75 0%, #ff6b35 100%);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
           background-clip: text;
@@ -1942,7 +1824,7 @@ The development process followed modern best practices including component-based
         
         .section-divider {
           height: 1px;
-          background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.3), transparent);
+          background: linear-gradient(90deg, transparent, rgba(26, 122, 117, 0.3), transparent);
           margin: 1.5rem 0;
         }
         
@@ -1977,7 +1859,7 @@ The development process followed modern best practices including component-based
         /* Enhanced focus states for accessibility */
         .challenge-card:focus-within,
         .responsibility-card:focus-within {
-          outline: 2px solid #667eea;
+          outline: 2px solid #1a7a75;
           outline-offset: 2px;
         }
         

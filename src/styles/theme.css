@@ -1,0 +1,203 @@
+/* ============================================================
+   Design tokens — dark, glass, teal/orange brand system.
+   Single source of truth for the redesign; components consume
+   these via CSS variables and the utility classes below.
+   ============================================================ */
+
+:root {
+  /* Base canvas */
+  --bg-base: #0a0e17;
+  --bg-base-alt: #0d1424;
+  --bg-base-soft: #10192d;
+
+  /* Glass surfaces */
+  --surface: rgba(255, 255, 255, 0.045);
+  --surface-hover: rgba(255, 255, 255, 0.075);
+  --surface-strong: rgba(255, 255, 255, 0.09);
+  --border-subtle: rgba(255, 255, 255, 0.09);
+  --border-strong: rgba(255, 255, 255, 0.18);
+
+  /* Text */
+  --text-primary: #f4f6fb;
+  --text-secondary: rgba(244, 246, 251, 0.72);
+  --text-muted: rgba(244, 246, 251, 0.5);
+
+  /* Brand */
+  --teal-900: #062f2d;
+  --teal-700: #0a4d4a;
+  --teal-500: #1a7a75;
+  --teal-300: #4fb3ac;
+  --orange-600: #e85a2a;
+  --orange-500: #ff6b35;
+  --orange-300: #ffab7a;
+  --brand-gradient: linear-gradient(135deg, var(--teal-500) 0%, var(--orange-500) 100%);
+
+  /* Shape */
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-pill: 999px;
+
+  /* Elevation (colored glow, not flat black shadow) */
+  --shadow-card: 0 20px 45px rgba(0, 0, 0, 0.35);
+  --shadow-glow-teal: 0 10px 35px rgba(26, 122, 117, 0.28);
+  --shadow-glow-orange: 0 10px 35px rgba(255, 107, 53, 0.28);
+
+  --font-heading: 'Raleway', sans-serif;
+}
+
+body {
+  background: var(--bg-base);
+  color: var(--text-primary);
+}
+
+/* ---------- Layout ---------- */
+
+.section-modern {
+  position: relative;
+  padding: 6.5rem 0;
+  overflow: hidden;
+  background: var(--bg-base);
+}
+
+.section-modern.alt {
+  background: var(--bg-base-alt);
+}
+
+.section-glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ---------- Typography ---------- */
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--orange-300);
+  background: rgba(255, 107, 53, 0.1);
+  border: 1px solid rgba(255, 107, 53, 0.25);
+  padding: 0.45rem 1.1rem;
+  border-radius: var(--radius-pill);
+}
+
+.section-heading {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+}
+
+.section-subtitle {
+  color: var(--text-secondary);
+}
+
+/* ---------- Surfaces ---------- */
+
+.glass-card {
+  background: var(--surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), background 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+}
+
+.glass-card.interactive:hover {
+  background: var(--surface-hover);
+  border-color: var(--border-strong);
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-card);
+}
+
+/* ---------- Buttons ---------- */
+
+.btn-modern-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: var(--brand-gradient);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-pill);
+  padding: 0.85rem 2rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: var(--shadow-glow-orange);
+}
+
+.btn-modern-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 40px rgba(255, 107, 53, 0.4);
+  color: #fff;
+}
+
+.btn-modern-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: transparent;
+  border: 1.5px solid var(--border-strong);
+  color: var(--text-primary);
+  border-radius: var(--radius-pill);
+  padding: 0.85rem 2rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.btn-modern-outline:hover {
+  background: var(--surface-hover);
+  border-color: var(--teal-300);
+  color: var(--text-primary);
+}
+
+/* ---------- Pills / tags ---------- */
+
+.pill-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: var(--surface);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  border-radius: var(--radius-pill);
+  padding: 0.5rem 1.1rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: all 0.25s ease;
+}
+
+.pill-tag:hover {
+  border-color: var(--border-strong);
+  color: var(--text-primary);
+}
+
+/* ---------- Scrollbar (dark) ---------- */
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-base);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, var(--teal-500), var(--orange-500));
+  border-radius: var(--radius-pill);
+}
+
+::selection {
+  background: rgba(255, 107, 53, 0.35);
+  color: #fff;
+}

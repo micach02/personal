@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
+import { IconUser, IconRocket, IconBriefcase, IconGraduationCap, IconLightbulb, IconMail, IconDot } from "./icons/Icon";
 
 function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -99,12 +100,12 @@ function Header() {
   };
 
   const menuItems = [
-    { label: 'About', href: '#about', icon: '👨‍💻' },
-    { label: 'Skills', href: '#skills', icon: '🚀' },
-    { label: 'Experience', href: '#experience', icon: '💼' },
-    { label: 'Education', href: '#education', icon: '🎓' },
-    { label: 'Projects', href: '#projects', icon: '💡' },
-    { label: 'Contact', href: '#contact', icon: '📧' }
+    { label: 'About', href: '#about', icon: IconUser },
+    { label: 'Skills', href: '#skills', icon: IconRocket },
+    { label: 'Experience', href: '#experience', icon: IconBriefcase },
+    { label: 'Education', href: '#education', icon: IconGraduationCap },
+    { label: 'Projects', href: '#projects', icon: IconLightbulb },
+    { label: 'Contact', href: '#contact', icon: IconMail }
   ];
 
   return (
@@ -112,8 +113,8 @@ function Header() {
       className="fixed-top shadow-lg"
       style={{
         background: scrolled 
-          ? "rgba(27, 31, 59, 0.95)" 
-          : "rgba(27, 31, 59, 0.85)",
+          ? "rgba(10, 14, 23, 0.95)" 
+          : "rgba(10, 14, 23, 0.85)",
         color: "white",
         zIndex: 1030,
         backdropFilter: "blur(12px)",
@@ -143,7 +144,7 @@ function Header() {
             <div
               style={{
                 fontSize: scrolled ? 24 : 28,
-                background: "linear-gradient(135deg, #FF6F3C, #00A8E8)",
+                background: "linear-gradient(135deg, #ff6b35, #00A8E8)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
                 backgroundClip: "text",
@@ -190,7 +191,7 @@ function Header() {
             className="d-md-none btn btn-link p-2 border-0 position-relative"
             aria-label="Toggle navigation"
             style={{ 
-              color: "#FF6F3C", 
+              color: "#ff6b35", 
               fontSize: 24,
               transition: 'all 0.3s ease',
               background: 'rgba(255, 111, 60, 0.1)',
@@ -212,7 +213,7 @@ function Header() {
                   position: 'absolute',
                   width: '100%',
                   height: '2px',
-                  background: '#FF6F3C',
+                  background: '#ff6b35',
                   top: menuOpen ? '50%' : '20%',
                   transform: menuOpen ? 'translateY(-50%) rotate(45deg)' : 'translateY(-50%)',
                   transition: 'all 0.3s ease'
@@ -223,7 +224,7 @@ function Header() {
                   position: 'absolute',
                   width: '100%',
                   height: '2px',
-                  background: '#FF6F3C',
+                  background: '#ff6b35',
                   top: '50%',
                   transform: 'translateY(-50%)',
                   opacity: menuOpen ? 0 : 1,
@@ -235,7 +236,7 @@ function Header() {
                   position: 'absolute',
                   width: '100%',
                   height: '2px',
-                  background: '#FF6F3C',
+                  background: '#ff6b35',
                   top: menuOpen ? '50%' : '80%',
                   transform: menuOpen ? 'translateY(-50%) rotate(-45deg)' : 'translateY(-50%)',
                   transition: 'all 0.3s ease'
@@ -246,15 +247,15 @@ function Header() {
 
           {/* Enhanced Desktop Navigation */}
           <nav className="d-none d-md-flex align-items-center gap-1">
-            {menuItems.map((item, index) => (
-              <button 
+            {menuItems.map((item) => (
+              <button
                 key={item.href}
-                className="btn position-relative overflow-hidden"
+                className="btn position-relative overflow-hidden d-flex align-items-center"
                 style={{
-                  color: activeSection === item.href.slice(1) ? '#FF6F3C' : '#fff',
+                  color: activeSection === item.href.slice(1) ? '#ff6b35' : '#fff',
                   border: 'none',
-                  background: activeSection === item.href.slice(1) 
-                    ? 'rgba(255, 111, 60, 0.15)' 
+                  background: activeSection === item.href.slice(1)
+                    ? 'rgba(255, 111, 60, 0.15)'
                     : 'transparent',
                   borderRadius: '25px',
                   padding: '8px 20px',
@@ -263,15 +264,15 @@ function Header() {
                   fontWeight: '500',
                   transition: 'all 0.3s ease',
                   transform: 'translateY(0)',
-                  boxShadow: activeSection === item.href.slice(1) 
-                    ? '0 2px 8px rgba(255, 111, 60, 0.3)' 
+                  boxShadow: activeSection === item.href.slice(1)
+                    ? '0 2px 8px rgba(255, 111, 60, 0.3)'
                     : 'none'
                 }}
                 onClick={() => handleNavigation(item.href)}
                 onMouseEnter={(e) => {
                   if (activeSection !== item.href.slice(1)) {
                     e.currentTarget.style.background = 'rgba(255, 111, 60, 0.1)';
-                    e.currentTarget.style.color = '#FF6F3C';
+                    e.currentTarget.style.color = '#ff6b35';
                     e.currentTarget.style.transform = 'translateY(-2px)';
                     e.currentTarget.style.boxShadow = '0 4px 12px rgba(255, 111, 60, 0.2)';
                   }
@@ -285,9 +286,7 @@ function Header() {
                   }
                 }}
               >
-                <span className="me-2" style={{ fontSize: '16px' }}>
-                  {item.icon}
-                </span>
+                <item.icon size={16} className="me-2" />
                 {item.label}
                 
                 {/* Active indicator */}
@@ -299,7 +298,7 @@ function Header() {
                       left: '50%',
                       width: '60%',
                       height: '2px',
-                      background: 'linear-gradient(90deg, transparent, #FF6F3C, transparent)',
+                      background: 'linear-gradient(90deg, transparent, #ff6b35, transparent)',
                       transform: 'translateX(-50%)',
                       borderRadius: '2px'
                     }}
@@ -317,7 +316,7 @@ function Header() {
             top: '100%',
             left: '0',
             right: '0',
-            background: 'rgba(27, 31, 59, 0.98)',
+            background: 'rgba(10, 14, 23, 0.98)',
             backdropFilter: 'blur(12px)',
             WebkitBackdropFilter: 'blur(12px)',
             borderRadius: '0 0 20px 20px',
@@ -335,12 +334,12 @@ function Header() {
           {menuItems.map((item, index) => (
             <button
               key={item.href}
-              className="d-block btn w-100 text-start mb-2"
+              className="d-block btn w-100 text-start mb-2 d-flex align-items-center"
               style={{
                 background: activeSection === item.href.slice(1) 
                   ? 'rgba(255, 111, 60, 0.15)' 
                   : 'rgba(255, 255, 255, 0.05)',
-                color: activeSection === item.href.slice(1) ? '#FF6F3C' : '#fff',
+                color: activeSection === item.href.slice(1) ? '#ff6b35' : '#fff',
                 border: '1px solid rgba(255, 255, 255, 0.1)',
                 borderRadius: '12px',
                 padding: '12px 16px',
@@ -355,21 +354,10 @@ function Header() {
               }}
               onClick={() => handleNavigation(item.href)}
             >
-              <span className="me-3" style={{ fontSize: '18px' }}>
-                {item.icon}
-              </span>
+              <item.icon size={18} className="me-3" />
               {item.label}
               {activeSection === item.href.slice(1) && (
-                <span 
-                  className="float-end"
-                  style={{ 
-                    color: '#FF6F3C',
-                    fontSize: '12px',
-                    marginTop: '2px'
-                  }}
-                >
-                  ●
-                </span>
+                <IconDot size={9} className="ms-auto" />
               )}
             </button>
           ))}
