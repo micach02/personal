@@ -2,10 +2,83 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Michael Vincent</title>
+
+    <title>Michael Vincent Abellar | Web Application Developer</title>
+    <meta name="description" content="Portfolio of Michael Vincent Abellar, a Web Application Developer based in Cebu City, Philippines, specializing in React, JavaScript, PHP and modern e-learning &amp; web platforms. Explore his projects, skills, and experience." />
+    <meta name="author" content="Michael Vincent Abellar" />
+    <link rel="canonical" href="https://micach02.github.io/personal/" />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#0a0e17" />
+
+    <!-- Open Graph / Facebook / LinkedIn -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://micach02.github.io/personal/" />
+    <meta property="og:title" content="Michael Vincent Abellar | Web Application Developer" />
+    <meta property="og:description" content="Portfolio of Michael Vincent Abellar, a Web Application Developer based in Cebu City, Philippines, specializing in React, JavaScript and PHP." />
+    <meta property="og:image" content="https://micach02.github.io/personal/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Michael Vincent Abellar | Web Application Developer" />
+    <meta name="twitter:description" content="Portfolio of Michael Vincent Abellar, a Web Application Developer based in Cebu City, Philippines." />
+    <meta name="twitter:image" content="https://micach02.github.io/personal/og-image.png" />
+
+    <!-- Favicons. Plain root-relative paths (not %BASE_URL%) — Vite already rewrites these
+         with the configured base in both dev and build; %BASE_URL% here double-prepends it
+         in dev only, breaking the manifest with a base of e.g. /personal/personal/. -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700;800&display=swap" rel="stylesheet">
+
+    <!-- Structured data for search engines -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Michael Vincent Abellar",
+        "jobTitle": "Web Application Developer",
+        "url": "https://micach02.github.io/personal/",
+        "image": "https://micach02.github.io/personal/og-image.png",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Cebu City",
+          "addressCountry": "PH"
+        },
+        "worksFor": {
+          "@type": "Organization",
+          "name": "PV Multimedia Inc."
+        },
+        "sameAs": [
+          "https://github.com/micach02",
+          "https://www.linkedin.com/in/michael-vincent-abellar-971798a5/"
+        ]
+      }
+    </script>
+
+    <!-- GitHub Pages SPA fallback: decode the redirect from 404.html back into a real route
+         before React Router reads the URL. See public/404.html for the matching encode step.
+         Pattern: https://github.com/rafgraph/spa-github-pages -->
+    <script type="text/javascript">
+      (function (l) {
+        if (l.search[1] === '/') {
+          var decoded = l.search.slice(1).split('&').map(function (s) {
+            return s.replace(/~and~/g, '&');
+          }).join('?');
+          window.history.replaceState(null, null, l.pathname.slice(0, -1) + decoded + l.hash);
+        }
+      }(window.location));
+    </script>
   </head>
   <body>
     <div id="root"></div>

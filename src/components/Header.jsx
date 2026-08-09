@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { IconUser, IconRocket, IconBriefcase, IconGraduationCap, IconLightbulb, IconMail, IconDot } from "./icons/Icon";
 
@@ -8,6 +8,28 @@ function Header() {
   const [activeSection, setActiveSection] = useState('');
   const navigate = useNavigate();
   const location = useLocation();
+  const headerRef = useRef(null);
+
+  // Close the mobile menu on Escape, or on a click/tap outside the header
+  useEffect(() => {
+    if (!menuOpen) return;
+
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') setMenuOpen(false);
+    };
+    const handleClickOutside = (e) => {
+      if (headerRef.current && !headerRef.current.contains(e.target)) {
+        setMenuOpen(false);
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [menuOpen]);
 
   // Handle scroll effect for header background
   useEffect(() => {
@@ -110,6 +132,7 @@ function Header() {
 
   return (
     <header
+      ref={headerRef}
       className="fixed-top shadow-lg"
       style={{
         background: scrolled 
@@ -127,11 +150,16 @@ function Header() {
       <div className="container">
         <div className="d-flex justify-content-between align-items-center position-relative">
           {/* Enhanced Brand/Logo */}
-          <div 
+          <button
+            type="button"
             className="fw-bold d-flex align-items-center gap-2 position-relative"
-            style={{ 
+            aria-label="Michael Vincent — go to homepage"
+            style={{
               cursor: 'pointer',
-              transition: 'all 0.3s ease'
+              transition: 'all 0.3s ease',
+              background: 'transparent',
+              border: 'none',
+              padding: 0
             }}
             onClick={() => navigate('/')}
             onMouseEnter={(e) => {
@@ -184,13 +212,15 @@ function Header() {
               }}
               className="logo-glow"
             />
-          </div>
+          </button>
 
           {/* Enhanced Hamburger for mobile */}
           <button
             className="d-md-none btn btn-link p-2 border-0 position-relative"
             aria-label="Toggle navigation"
-            style={{ 
+            aria-expanded={menuOpen}
+            aria-controls="mobile-nav-menu"
+            style={{
               color: "#ff6b35", 
               fontSize: 24,
               transition: 'all 0.3s ease',
@@ -311,6 +341,8 @@ function Header() {
 
         {/* Enhanced Mobile menu */}
         <div
+          id="mobile-nav-menu"
+          aria-hidden={!menuOpen}
           style={{
             position: 'absolute',
             top: '100%',
@@ -324,7 +356,9 @@ function Header() {
             maxHeight: menuOpen ? '400px' : '0',
             overflow: 'hidden',
             transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
-            border: menuOpen ? '1px solid rgba(255, 111, 60, 0.2)' : 'none',
+            borderLeft: menuOpen ? '1px solid rgba(255, 111, 60, 0.2)' : 'none',
+            borderRight: menuOpen ? '1px solid rgba(255, 111, 60, 0.2)' : 'none',
+            borderBottom: menuOpen ? '1px solid rgba(255, 111, 60, 0.2)' : 'none',
             borderTop: 'none',
             boxShadow: menuOpen ? '0 10px 30px rgba(0, 0, 0, 0.3)' : 'none',
             zIndex: 1000
@@ -335,6 +369,7 @@ function Header() {
             <button
               key={item.href}
               className="d-block btn w-100 text-start mb-2 d-flex align-items-center"
+              tabIndex={menuOpen ? 0 : -1}
               style={{
                 background: activeSection === item.href.slice(1) 
                   ? 'rgba(255, 111, 60, 0.15)' 
@@ -376,9 +411,11 @@ function Header() {
           }
         }
         
-        /* Smooth scrolling enhancement */
-        html {
-          scroll-behavior: smooth;
+        /* Smooth scrolling enhancement — skip for users who've asked for reduced motion */
+        @media (prefers-reduced-motion: no-preference) {
+          html {
+            scroll-behavior: smooth;
+          }
         }
       `}</style>
     </header>

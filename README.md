@@ -107,22 +107,24 @@ src/
 │   ├── Footer.jsx      # Site footer
 │   ├── Header.jsx      # Navigation header
 │   ├── Hero.jsx        # Hero section
-│   ├── PersonalJourney.jsx # Personal story
 │   ├── ProjectDetail.jsx   # Individual project pages
-│   ├── Projects_new.jsx    # Projects gallery
-│   └── Skills.jsx      # Skills showcase
+│   ├── Projects.jsx        # Projects gallery
+│   ├── Skills.jsx      # Skills showcase
+│   └── icons/Icon.jsx  # Shared inline SVG icon set
 ├── config/             # Configuration files
 │   └── emailjs.js      # EmailJS configuration
 ├── styles/             # CSS stylesheets
+│   ├── theme.css
 │   ├── project-detail.css
 │   └── projects-ultra-modern.css
-├── assets/             # Static assets
 ├── App.jsx             # Main app component
 └── main.jsx            # App entry point
 
 public/
 ├── images/             # Project and profile images
-└── index.html          # HTML template
+├── favicon.svg, favicon-*.png, apple-touch-icon.png, site.webmanifest
+├── robots.txt, sitemap.xml, 404.html  # SEO + GitHub Pages SPA routing
+└── og-image.png        # Open Graph / social share preview
 ```
 
 ## 🎯 Key Components
@@ -155,7 +157,7 @@ Update personal details in the respective component files:
 - `src/components/Experience.jsx` - Work experience
 - `src/components/Education.jsx` - Educational background
 - `src/components/Skills.jsx` - Technical skills
-- `src/components/Projects_new.jsx` - Project portfolio
+- `src/components/Projects.jsx` - Project portfolio
 
 ### Styling
 - Modify CSS variables for color schemes

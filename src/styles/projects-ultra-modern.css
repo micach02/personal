@@ -640,7 +640,8 @@
   transition: opacity 0.3s ease;
 }
 
-.project-card-ultra:hover .thumbnail-overlay {
+.project-card-ultra:hover .thumbnail-overlay,
+.project-card-ultra:focus-within .thumbnail-overlay {
   opacity: 1;
 }
 
