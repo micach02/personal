@@ -4,7 +4,7 @@ import { emailjsConfig } from '../config/emailjs';
 import { IconMail, IconMapPin, IconClock, IconCheck } from './icons/Icon';
 
 const socialLinks = [
-  { icon: 'fab fa-linkedin-in', url: 'https://www.linkedin.com/in/michael-vincent-abellar-971798a5/', label: 'LinkedIn', color: '#0077b5' },
+  { icon: 'fab fa-linkedin-in', url: 'https://www.linkedin.com/in/michael-vincent-abellar/', label: 'LinkedIn', color: '#0077b5' },
   { icon: 'fab fa-github', url: 'https://github.com/micach02', label: 'GitHub', color: '#333' },
   { icon: 'fab fa-facebook', url: 'https://www.facebook.com/mykill.vitsen/', label: 'Facebook', color: '#1877f2' },
   { icon: 'fab fa-instagram', url: 'https://www.instagram.com/mykillvitsen/', label: 'Instagram', color: '#e4405f' }

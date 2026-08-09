@@ -6,6 +6,12 @@
   position: relative;
 }
 
+/* ---------- Section anchors (for the sidebar "On This Page" nav) ---------- */
+
+.detail-section-anchor {
+  scroll-margin-top: 100px;
+}
+
 /* ---------- Section header icon badge ---------- */
 
 .detail-icon-circle {
@@ -90,6 +96,27 @@
 .nav-pill-btn:disabled {
   opacity: 0.35;
   cursor: not-allowed;
+}
+
+/* ---------- Sidebar "On This Page" quick nav ---------- */
+
+.quick-nav-link {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.55rem 0.6rem;
+  border-radius: 10px;
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.quick-nav-link:hover,
+.quick-nav-link:focus-visible {
+  background: var(--surface-hover);
+  color: var(--orange-300);
 }
 
 /* ---------- Floating back button ---------- */
@@ -276,6 +303,28 @@
   backdrop-filter: blur(10px);
 }
 
+.gallery-expand-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(10, 14, 23, 0.75);
+  backdrop-filter: blur(10px);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.25s ease;
+}
+
+.gallery-expand-btn:hover {
+  background: var(--orange-500);
+  transform: scale(1.08);
+}
+
 .gallery-thumb {
   position: relative;
   display: block;
@@ -325,6 +374,111 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+/* ---------- Gallery lightbox ---------- */
+
+.gallery-lightbox-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(5, 7, 12, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  padding: 2rem;
+  animation: lightbox-fade-in 0.25s ease;
+}
+
+@keyframes lightbox-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.gallery-lightbox {
+  position: relative;
+  max-width: 100%;
+  max-height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lightbox-image {
+  max-width: 100%;
+  max-height: 85vh;
+  object-fit: contain;
+  border-radius: 12px;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+}
+
+.lightbox-close-btn {
+  position: absolute;
+  top: -3rem;
+  right: 0;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.25s ease;
+}
+
+.lightbox-close-btn:hover {
+  background: var(--orange-500);
+  border-color: var(--orange-500);
+  transform: rotate(90deg);
+}
+
+.lightbox-nav-btn {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  transition: all 0.25s ease;
+}
+
+.lightbox-nav-btn:hover {
+  background: var(--orange-500);
+  border-color: var(--orange-500);
+  transform: translateY(-50%) scale(1.08);
+}
+
+.lightbox-nav-prev {
+  left: 1.5rem;
+}
+
+.lightbox-nav-next {
+  right: 1.5rem;
+}
+
+.lightbox-counter {
+  position: fixed;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  font-size: 0.9rem;
+  padding: 0.5rem 1.1rem;
+  border-radius: var(--radius-pill);
+  backdrop-filter: blur(10px);
 }
 
 /* ---------- CTA ---------- */
@@ -384,7 +538,8 @@
     font-size: 1rem;
   }
 
-  .gallery-nav-btn {
+  .gallery-nav-btn,
+  .gallery-expand-btn {
     width: 38px;
     height: 38px;
   }
@@ -392,6 +547,30 @@
   .detail-icon-circle {
     width: 50px;
     height: 50px;
+  }
+
+  .detail-section-anchor {
+    scroll-margin-top: 80px;
+  }
+
+  .lightbox-nav-btn {
+    width: 42px;
+    height: 42px;
+    font-size: 0.95rem;
+  }
+
+  .lightbox-nav-prev {
+    left: 0.5rem;
+  }
+
+  .lightbox-nav-next {
+    right: 0.5rem;
+  }
+
+  .lightbox-close-btn {
+    top: -2.75rem;
+    width: 36px;
+    height: 36px;
   }
 }
 
@@ -402,11 +581,19 @@
     animation: none;
   }
 
+  .gallery-lightbox-backdrop {
+    animation: none;
+  }
+
   .detail-card,
   .gallery-thumb,
+  .gallery-expand-btn,
+  .quick-nav-link,
   .hero-tech-pill,
   .back-to-home-fab,
   .cta-btn-light,
+  .lightbox-close-btn,
+  .lightbox-nav-btn,
   .project-hero-image-frame img {
     transition: none !important;
   }
