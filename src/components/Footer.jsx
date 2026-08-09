@@ -1,7 +1,7 @@
 import { IconArrowUp } from './icons/Icon';
 
 const socialLinks = [
-  { icon: 'fab fa-linkedin-in', url: 'https://www.linkedin.com/in/michael-vincent-abellar-971798a5/', label: 'LinkedIn' },
+  { icon: 'fab fa-linkedin-in', url: 'https://www.linkedin.com/in/michael-vincent-abellar/', label: 'LinkedIn' },
   { icon: 'fab fa-github', url: 'https://github.com/micach02', label: 'GitHub' },
   { icon: 'fab fa-facebook', url: 'https://www.facebook.com/mykill.vitsen/', label: 'Facebook' },
   { icon: 'fab fa-instagram', url: 'https://www.instagram.com/mykillvitsen/', label: 'Instagram' }
