@@ -346,6 +346,16 @@ export function IconArrowUp({ size = 24, ...props }) {
   );
 }
 
+export function IconFileText({ size = 24, ...props }) {
+  return (
+    <svg {...base(size)} {...props}>
+      <path d="M7 3h7l5 5v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z" />
+      <path d="M14 3v5h5" />
+      <path d="M9 13h6M9 17h6" />
+    </svg>
+  );
+}
+
 export function IconDot({ size = 10, ...props }) {
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" {...props}>

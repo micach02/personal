@@ -1,8 +1,6 @@
-import { useEffect } from 'react';
-import AOS from 'aos';
 import {
-  IconGraduationCap, IconRocket, IconEdit, IconPalette, IconLandmark,
-  IconAward, IconCheck, IconBookOpen, IconBarChart
+  IconGraduationCap, IconLandmark,
+  IconAward, IconCheck, IconBookOpen
 } from './icons/Icon';
 
 const education = [
@@ -26,59 +24,7 @@ const education = [
   }
 ];
 
-const professionalDevelopment = [
-  {
-    id: 1,
-    title: "Complete Web Development Bootcamp",
-    provider: "Udemy",
-    instructor: "Dr. Angela Yu",
-    period: "2023 - Present",
-    status: "In Progress",
-    description: "Comprehensive full-stack web development course covering HTML, CSS, JavaScript, Node.js, React, MongoDB, and modern web development practices.",
-    technologies: ["HTML5", "CSS3", "JavaScript", "React", "Node.js", "MongoDB", "Express.js"],
-    progress: 30,
-    icon: IconRocket,
-    color: "#ff6b35",
-    url: "https://www.udemy.com/course/the-complete-web-development-bootcamp/"
-  },
-  {
-    id: 2,
-    title: "WordPress 2025: The Complete WordPress Website Course",
-    provider: "Udemy",
-    instructor: "Tanzeel Ur Rehman",
-    period: "2025 - Present",
-    status: "In Progress",
-    description: "Comprehensive WordPress course covering website creation, theme customization, plugin development, e-commerce setup, and modern WordPress development practices.",
-    technologies: ["WordPress", "PHP", "MySQL", "HTML", "CSS", "JavaScript", "WooCommerce"],
-    progress: 8,
-    icon: IconEdit,
-    color: "#1a7a75",
-    url: "https://www.udemy.com/course/wordpress-2025-complete-wordpress-website-course/"
-  },
-  {
-    id: 3,
-    title: "Google UX Design Professional Certificate",
-    provider: "Coursera",
-    instructor: "Google",
-    period: "2025 - Present",
-    status: "In Progress",
-    description: "Comprehensive UX design program covering user research, wireframing, prototyping, usability testing, and design thinking. Learn industry-standard tools and methodologies to create user-centered designs.",
-    technologies: ["Figma", "Adobe XD", "Sketch", "User Research", "Prototyping", "Wireframing", "Usability Testing"],
-    progress: 23,
-    icon: IconPalette,
-    color: "#ff6b35",
-    url: "https://www.coursera.org/professional-certificates/google-ux-design"
-  }
-];
-
 function Education() {
-  useEffect(() => {
-    AOS.init({ duration: 1000 });
-  }, []);
-
-  const ongoingCourses = professionalDevelopment.filter(course => course.status === "In Progress");
-  const completedCourses = professionalDevelopment.filter(course => course.status === "Completed");
-
   return (
     <section id="education" className="section-modern alt">
       <div className="section-glow" style={{ width: 460, height: 460, top: -160, right: -160, background: 'radial-gradient(circle, rgba(26,122,117,0.25), transparent 70%)' }} />
@@ -135,8 +81,10 @@ function Education() {
                           style={{ width: '120px', height: '120px', background: '#fff', border: `3px solid ${edu.color}40` }}
                         >
                           <img
-                            src="/personal/images/citu.png"
+                            src={`${import.meta.env.BASE_URL}images/citu.png`}
                             alt="Cebu Institute of Technology - University Logo"
+                            loading="lazy"
+                            decoding="async"
                             style={{ width: '100%', height: '100%', objectFit: 'contain', borderRadius: '50%' }}
                           />
                         </div>
@@ -185,44 +133,6 @@ function Education() {
               </div>
             </div>
           ))}
-        </div>
-
-        {/* Summary */}
-        <div
-          className="rounded-4 position-relative overflow-hidden p-4 p-md-5"
-          style={{ background: 'var(--brand-gradient)' }}
-          data-aos="fade-up"
-        >
-          <div style={{ position: 'absolute', top: '-50px', right: '-50px', width: '200px', height: '200px', background: 'rgba(255,255,255,0.1)', borderRadius: '50%' }} />
-          <div style={{ position: 'absolute', bottom: '-30px', left: '-30px', width: '150px', height: '150px', background: 'rgba(255,255,255,0.06)', borderRadius: '50%' }} />
-
-          <div className="position-relative" style={{ zIndex: 1 }}>
-            <h3 className="text-center text-white mb-5 fw-bold d-flex align-items-center justify-content-center gap-2">
-              <IconBarChart size={26} />
-              Learning Journey Overview
-            </h3>
-            <div className="row text-center g-4">
-              <div className="col-md-3 col-6">
-                <h1 className="display-4 fw-bold mb-0 text-white">{education.length}</h1>
-                <p className="mb-0 fw-medium text-white opacity-75">Formal Degrees</p>
-              </div>
-              <div className="col-md-3 col-6">
-                <h1 className="display-4 fw-bold mb-0 text-white">{completedCourses.length}</h1>
-                <p className="mb-0 fw-medium text-white opacity-75">Courses Completed</p>
-              </div>
-              <div className="col-md-3 col-6">
-                <h1 className="display-4 fw-bold mb-0 text-white">{ongoingCourses.length}</h1>
-                <p className="mb-0 fw-medium text-white opacity-75">Currently Learning</p>
-              </div>
-              <div className="col-md-3 col-6">
-                <h1 className="display-4 fw-bold mb-0 text-white">&infin;</h1>
-                <p className="mb-0 fw-medium text-white opacity-75">Growth Mindset</p>
-              </div>
-            </div>
-            <p className="text-center text-white opacity-75 fst-italic mt-4 mb-0">
-              &ldquo;Education is the most powerful weapon which you can use to change the world.&rdquo; &mdash; Nelson Mandela
-            </p>
-          </div>
         </div>
       </div>
     </section>

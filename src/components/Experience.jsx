@@ -1,5 +1,3 @@
-import { useEffect } from 'react';
-import AOS from 'aos';
 import { IconBriefcase, IconGraduationCap, IconTarget, IconCheck, IconZap, IconCalendar, IconMapPin } from './icons/Icon';
 
 const experiences = [
@@ -7,7 +5,7 @@ const experiences = [
     id: 1,
     title: "Web App Developer",
     company: "PV Multimedia Inc.",
-    logo: "/personal/images/pvm_logo.svg",
+    logo: `${import.meta.env.BASE_URL}images/pvm_logo.svg`,
     period: "June 2017 - Present",
     location: "On-site",
     type: "Full-time",
@@ -26,7 +24,7 @@ const experiences = [
     id: 2,
     title: "Technician",
     company: "Channel Technologies Inc.",
-    logo: "/personal/images/channel_technologies_inc_logo.jpg",
+    logo: `${import.meta.env.BASE_URL}images/channel_technologies_inc_logo.jpg`,
     period: "Oct 2016 - Mar 2017",
     location: "On-site",
     type: "Internship",
@@ -45,7 +43,7 @@ const experiences = [
     id: 3,
     title: "Technician",
     company: "CEBU CITY HALL, MICS Department",
-    logo: "/personal/images/cebu_city.png",
+    logo: `${import.meta.env.BASE_URL}images/cebu_city.png`,
     period: "April - June 2016",
     location: "On-site",
     type: "Internship",
@@ -63,10 +61,6 @@ const experiences = [
 ];
 
 function Experience() {
-  useEffect(() => {
-    AOS.init({ duration: 1000 });
-  }, []);
-
   return (
     <section id="experience" className="section-modern">
       <div className="section-glow" style={{ width: 480, height: 480, top: -160, left: -160, background: 'radial-gradient(circle, rgba(26,122,117,0.25), transparent 70%)' }} />
@@ -198,6 +192,8 @@ function Experience() {
                               <img
                                 src={exp.logo}
                                 alt={`${exp.company} logo`}
+                                loading="lazy"
+                                decoding="async"
                                 style={{ width: '60px', height: '60px', objectFit: 'contain', borderRadius: '6px' }}
                               />
                             </div>

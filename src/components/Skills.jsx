@@ -1,5 +1,3 @@
-import { useEffect } from 'react';
-import AOS from 'aos';
 import {
   IconGlobe, IconZap, IconShield, IconAtom, IconCode, IconLayoutGrid, IconEdit, IconGitBranch,
   IconPalette, IconTarget, IconLayers, IconImage, IconFilm, IconTerminal, IconBox,
@@ -31,7 +29,7 @@ const softwareSkills = [
 function ProficiencyDots({ level, color }) {
   const filled = Math.round(level / 20);
   return (
-    <div className="d-flex gap-1 mt-2">
+    <div className="d-flex gap-1 mt-2" role="img" aria-label={`${level}% proficiency`} title={`${level}% proficiency`}>
       {[0, 1, 2, 3, 4].map((i) => (
         <span
           key={i}
@@ -85,10 +83,6 @@ function SkillGroup({ title, icon, accent, skills, delayBase }) {
 }
 
 function Skills() {
-  useEffect(() => {
-    AOS.init({ duration: 1000 });
-  }, []);
-
   const avg = (list) => Math.round(list.reduce((acc, s) => acc + s.level, 0) / list.length);
 
   const summary = [

@@ -1,0 +1,24 @@
+{
+  "name": "Michael Vincent Abellar | Web Application Developer",
+  "short_name": "Michael Vincent",
+  "description": "Portfolio of Michael Vincent Abellar, a Web Application Developer based in Cebu City, Philippines.",
+  "start_url": "/personal/",
+  "scope": "/personal/",
+  "display": "standalone",
+  "background_color": "#0a0e17",
+  "theme_color": "#0a0e17",
+  "icons": [
+    {
+      "src": "/personal/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/personal/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}

@@ -30,10 +30,6 @@ function About() {
       <div className="container position-relative" style={{ zIndex: 1 }}>
         <div className="text-center mb-5" data-aos="fade-up">
           <span className="eyebrow mb-3"><IconUser size={14} />About Me</span>
-          <h2 className="section-heading display-4 mt-3 mb-3">Building thoughtful digital experiences</h2>
-          <p className="section-subtitle lead mx-auto" style={{ maxWidth: '620px' }}>
-            A closer look at the developer behind the code.
-          </p>
         </div>
 
         <div className="row align-items-center g-5 mb-5">
@@ -55,8 +51,10 @@ function About() {
               />
               <div className="glass-card position-relative p-2 d-inline-flex" style={{ zIndex: 1 }}>
                 <img
-                  src="/personal/images/michael2.jpg"
+                  src={`${import.meta.env.BASE_URL}images/michael2.jpg`}
                   alt="Michael - Web Developer"
+                  loading="lazy"
+                  decoding="async"
                   className="rounded-circle"
                   style={{
                     width: '220px',

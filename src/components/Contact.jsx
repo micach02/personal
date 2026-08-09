@@ -58,14 +58,12 @@ function Contact() {
         reply_to: formData.email.trim(),
       };
 
-      const result = await emailjs.send(
+      await emailjs.send(
         emailjsConfig.SERVICE_ID,
         emailjsConfig.TEMPLATE_ID,
         templateParams,
         emailjsConfig.PUBLIC_KEY
       );
-
-      console.log('Email sent successfully:', result);
 
       setIsSubmitted(true);
       setFormData({ name: '', email: '', subject: '', message: '' });
@@ -126,6 +124,7 @@ function Contact() {
 
                   {isSubmitted && (
                     <div
+                      role="status"
                       className="d-flex align-items-center gap-3 mb-4 p-3 rounded-3"
                       style={{ background: 'rgba(34, 197, 94, 0.12)', border: '1px solid rgba(34,197,94,0.35)' }}
                     >
@@ -143,6 +142,7 @@ function Contact() {
 
                   {submitError && (
                     <div
+                      role="alert"
                       className="d-flex align-items-center gap-3 mb-4 p-3 rounded-3"
                       style={{ background: 'rgba(220, 53, 69, 0.12)', border: '1px solid rgba(220,53,69,0.35)' }}
                     >
@@ -240,8 +240,6 @@ function Contact() {
                     <div className="flex-grow-1" style={{ fontSize: '14px', lineHeight: 1.4 }}>
                       <small className="section-subtitle d-block mb-1">Location</small>
                       <div className="mb-1 fw-semibold" style={{ color: 'var(--text-primary)' }}>Cebu City, Philippines</div>
-                      <div className="section-subtitle" style={{ fontSize: '13px' }}>#55 Panganiban St., Brgy. Pahina Central</div>
-                      <div className="section-subtitle" style={{ fontSize: '13px' }}>Cebu, 6000</div>
                       <small className="section-subtitle mt-1 d-block" style={{ fontSize: '12px' }}>Philippines Standard Time (PST)</small>
                     </div>
                   </div>
@@ -263,7 +261,7 @@ function Contact() {
                     </div>
                     <div className="flex-grow-1" style={{ fontSize: '14px', lineHeight: 1.4 }}>
                       <small className="section-subtitle d-block mb-1">Phone</small>
-                      <a href="tel:+639393661843" className="fw-semibold text-decoration-none" style={{ color: 'var(--text-primary)' }}>+63 939 366 1843</a>
+                      <a href="tel:+639936160737" className="fw-semibold text-decoration-none" style={{ color: 'var(--text-primary)' }}>+63 993 616 0737</a>
                       <small className="section-subtitle d-block" style={{ fontSize: '12px' }}>Available for calls</small>
                     </div>
                   </div>

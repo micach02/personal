@@ -2,11 +2,15 @@ import { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { IconRocket } from './icons/Icon';
 
+const MODAL_TITLE_ID = 'project-modal-title';
+
 function Projects() {
   const [hoveredProject, setHoveredProject] = useState(null);
   const [selectedProject, setSelectedProject] = useState(null);
   const [activeCategory, setActiveCategory] = useState("All");
   const sectionRef = useRef(null);
+  const modalRef = useRef(null);
+  const previousFocusRef = useRef(null);
   const navigate = useNavigate();
 
   // Enhanced project data with more details
@@ -18,7 +22,7 @@ function Projects() {
       technologies: ["HTML5", "JavaScript", "CSS3", "jQuery", "Bootstrap", "PHP"],
       demoLink: "#",
       codeLink: "#",
-      image: `${import.meta.env.BASE_URL}images/projects/project1/project1_img1.png`,
+      image: `${import.meta.env.BASE_URL}images/projects/project1/project1_img1.webp`,
       category: "Web Development",
       color: "#667eea"
     },
@@ -29,7 +33,7 @@ function Projects() {
       technologies: ["React", "Vite", "Bootstrap", "AOS", "Modern CSS"],
       demoLink: "#",
       codeLink: "#",
-      image: `${import.meta.env.BASE_URL}images/projects/project5/project5_img1.png`,
+      image: `${import.meta.env.BASE_URL}images/projects/project5/project5_img1.webp`,
       category: "Web Development",
       color: "#4facfe"
     },
@@ -40,7 +44,7 @@ function Projects() {
       technologies: ["PHP", "JavaScript", "JSON", "Custom MVC"],
       demoLink: "#",
       codeLink: "#",
-      image: `${import.meta.env.BASE_URL}images/projects/project6/project6_img1.png`,
+      image: `${import.meta.env.BASE_URL}images/projects/project6/project6_img1.webp`,
       category: "Web Development",
       color: "#1a7a75"
     },
@@ -51,7 +55,7 @@ function Projects() {
       technologies: ["PHP", "MySQL", "JavaScript", "Custom MVC"],
       demoLink: "#",
       codeLink: "#",
-      image: `${import.meta.env.BASE_URL}images/projects/project7/project7_img1.png`,
+      image: `${import.meta.env.BASE_URL}images/projects/project7/project7_img1.webp`,
       category: "Web Development",
       color: "#6f42c1"
     },
@@ -62,7 +66,7 @@ function Projects() {
       technologies: ["HTML5", "JavaScript", "PHP", "MySQL"],
       demoLink: "#",
       codeLink: "#",
-      image: `${import.meta.env.BASE_URL}images/projects/project8/project8_img1.png`,
+      image: `${import.meta.env.BASE_URL}images/projects/project8/project8_img1.webp`,
       category: "FinTech",
       color: "#ff6b35"
     }
@@ -86,13 +90,44 @@ function Projects() {
     return () => document.removeEventListener('keydown', handleEscape);
   }, [selectedProject]);
 
+  // Move focus into the modal when it opens, and back to whatever triggered
+  // it when it closes, so keyboard/screen-reader users aren't stranded.
+  useEffect(() => {
+    if (selectedProject) {
+      previousFocusRef.current = document.activeElement;
+      const id = requestAnimationFrame(() => modalRef.current?.focus());
+      return () => cancelAnimationFrame(id);
+    }
+    if (previousFocusRef.current instanceof HTMLElement) {
+      previousFocusRef.current.focus();
+      previousFocusRef.current = null;
+    }
+  }, [selectedProject]);
+
+  // Simple focus trap: keep Tab/Shift+Tab cycling within the modal while it's open
+  const handleModalKeyDown = (e) => {
+    if (e.key !== 'Tab' || !modalRef.current) return;
+    const focusable = modalRef.current.querySelectorAll(
+      'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
+    );
+    if (focusable.length === 0) return;
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    if (e.shiftKey && document.activeElement === first) {
+      e.preventDefault();
+      last.focus();
+    } else if (!e.shiftKey && document.activeElement === last) {
+      e.preventDefault();
+      first.focus();
+    }
+  };
+
   // Handle modal close
   const handleCloseModal = (e) => {
     if (e) {
       e.preventDefault();
       e.stopPropagation();
     }
-    console.log('Closing modal'); // Debug log
     setSelectedProject(null);
   };
 
@@ -130,6 +165,7 @@ function Projects() {
                   key={category}
                   className={`filter-pill ${activeCategory === category ? 'active' : ''}`}
                   onClick={() => setActiveCategory(category)}
+                  aria-pressed={activeCategory === category}
                   style={{ '--delay': `${index * 0.1}s` }}
                 >
                   <span className="pill-text">{category}</span>
@@ -167,9 +203,11 @@ function Projects() {
                 <div className="card-glow"></div>
                 
                 <div className="project-thumbnail">
-                  <img 
-                    src={project.image} 
+                  <img
+                    src={project.image}
                     alt={project.title}
+                    loading="lazy"
+                    decoding="async"
                     onError={(e) => {
                       const canvas = document.createElement('canvas');
                       canvas.width = 400;
@@ -193,7 +231,15 @@ function Projects() {
                   
                   <div className="thumbnail-overlay">
                     <div className="overlay-icons">
-                      <button className="icon-btn" title="View Details">
+                      <button
+                        className="icon-btn"
+                        title="View Details"
+                        aria-label={`View details for ${project.title}`}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setSelectedProject(project);
+                        }}
+                      >
                         <i className="fas fa-eye"></i>
                       </button>
                       {project.demoLink !== "#" && (
@@ -301,19 +347,19 @@ function Projects() {
 
       {/* Enhanced Project Detail Modal */}
       {selectedProject && (
-        <div 
-          className="project-modal-backdrop" 
-          onClick={(e) => {
-            console.log('Backdrop clicked');
-            handleCloseModal(e);
-          }}
+        <div
+          className="project-modal-backdrop"
+          onClick={handleCloseModal}
         >
-          <div 
-            className="project-modal-enhanced" 
-            onClick={(e) => {
-              console.log('Modal clicked, stopping propagation');
-              e.stopPropagation();
-            }}
+          <div
+            className="project-modal-enhanced"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby={MODAL_TITLE_ID}
+            ref={modalRef}
+            tabIndex={-1}
+            onClick={(e) => e.stopPropagation()}
+            onKeyDown={handleModalKeyDown}
           >
             {/* Modal Header with Hero Image */}
             <div className="modal-hero-section">
@@ -327,17 +373,14 @@ function Projects() {
                 <div className="modal-hero-overlay">
                   <div className="modal-hero-content">
                     <span className="modal-category-badge">{selectedProject.category}</span>
-                    <h2 className="modal-title">{selectedProject.title}</h2>
+                    <h2 className="modal-title" id={MODAL_TITLE_ID}>{selectedProject.title}</h2>
                   </div>
                 </div>
               </div>
               
-              <button 
-                className="modal-close-enhanced" 
-                onClick={(e) => {
-                  console.log('Close button clicked');
-                  handleCloseModal(e);
-                }}
+              <button
+                className="modal-close-enhanced"
+                onClick={handleCloseModal}
                 type="button"
                 title="Close modal"
               >
