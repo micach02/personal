@@ -298,10 +298,10 @@ The series turned a stack of financial theory into an engaging, replayable pract
 
 // A titled glass-card section with a colored icon badge — the recurring shell used
 // for Overview / Gallery / Challenges / Role & Responsibilities below.
-function DetailSection({ icon, color, title, subtitle, badge, children }) {
+function DetailSection({ id, icon, color, title, subtitle, badge, children }) {
   const Icon = icon;
   return (
-    <div className="mb-5" data-aos="fade-up">
+    <div id={id} className="mb-5 detail-section-anchor" data-aos="fade-up">
       <div className="d-flex align-items-center gap-3 mb-4 flex-wrap detail-section-header">
         <div className="detail-icon-circle" style={{ background: `${color}1f`, border: `1.5px solid ${color}55`, color }}>
           <Icon size={24} />
@@ -353,7 +353,10 @@ function ProjectDetail() {
   const [activeImageIndex, setActiveImageIndex] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
   const [scrollProgress, setScrollProgress] = useState(0);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
   const heroRef = useRef(null);
+  const lightboxRef = useRef(null);
+  const lightboxTriggerRef = useRef(null);
 
   // Handle scroll progress for modern scroll indicator
   useEffect(() => {
@@ -400,6 +403,63 @@ function ProjectDetail() {
     }, 100);
   };
 
+  const showPrevImage = () => {
+    if (!project?.gallery) return;
+    setActiveImageIndex((prev) => (prev === 0 ? project.gallery.length - 1 : prev - 1));
+  };
+  const showNextImage = () => {
+    if (!project?.gallery) return;
+    setActiveImageIndex((prev) => (prev === project.gallery.length - 1 ? 0 : prev + 1));
+  };
+
+  const openLightbox = (e) => {
+    lightboxTriggerRef.current = e?.currentTarget ?? null;
+    setLightboxOpen(true);
+  };
+
+  // Move focus into the lightbox when it opens, and back to whatever
+  // triggered it when it closes.
+  useEffect(() => {
+    if (lightboxOpen) {
+      const id = requestAnimationFrame(() => lightboxRef.current?.focus());
+      return () => cancelAnimationFrame(id);
+    }
+    if (lightboxTriggerRef.current instanceof HTMLElement) {
+      lightboxTriggerRef.current.focus();
+      lightboxTriggerRef.current = null;
+    }
+  }, [lightboxOpen]);
+
+  // Escape closes, Left/Right browse images, Tab stays trapped inside
+  const handleLightboxKeyDown = (e) => {
+    if (e.key === 'Escape') {
+      setLightboxOpen(false);
+      return;
+    }
+    if (e.key === 'ArrowLeft') {
+      e.preventDefault();
+      showPrevImage();
+      return;
+    }
+    if (e.key === 'ArrowRight') {
+      e.preventDefault();
+      showNextImage();
+      return;
+    }
+    if (e.key !== 'Tab' || !lightboxRef.current) return;
+    const focusable = lightboxRef.current.querySelectorAll('button:not([disabled])');
+    if (focusable.length === 0) return;
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    if (e.shiftKey && document.activeElement === first) {
+      e.preventDefault();
+      last.focus();
+    } else if (!e.shiftKey && document.activeElement === last) {
+      e.preventDefault();
+      first.focus();
+    }
+  };
+
   if (isLoading) {
     return (
       <div className="d-flex justify-content-center align-items-center" style={{ minHeight: '100vh', background: 'var(--bg-base)' }}>
@@ -439,12 +499,12 @@ function ProjectDetail() {
         }}
       />
 
-      {/* Floating back button */}
+      {/* Floating back button — returns to project browsing, not the homepage top */}
       <button
         className="back-to-home-fab"
-        onClick={goHome}
-        title="Back to Home"
-        aria-label="Back to Home"
+        onClick={() => goToSection('projects')}
+        title="Back to Projects"
+        aria-label="Back to Projects"
       >
         <i className="fas fa-arrow-left"></i>
       </button>
@@ -598,6 +658,7 @@ function ProjectDetail() {
           <div className="row g-5">
             <div className="col-lg-8">
               <DetailSection
+                id="overview"
                 icon={IconFileText}
                 color="var(--teal-300)"
                 title="Project Overview"
@@ -609,6 +670,7 @@ function ProjectDetail() {
 
               {project.gallery && project.gallery.length > 0 && (
                 <DetailSection
+                  id="gallery"
                   icon={IconImage}
                   color="var(--orange-300)"
                   title="Project Gallery"
@@ -621,8 +683,9 @@ function ProjectDetail() {
                       alt={`${project.title} - Image ${activeImageIndex + 1}`}
                       loading="lazy"
                       decoding="async"
-                      className="img-fluid rounded-3 w-100"
-                      style={{ maxHeight: '500px', objectFit: 'cover' }}
+                      className="img-fluid rounded-3 w-100 gallery-main-image"
+                      style={{ maxHeight: '500px', objectFit: 'contain', cursor: 'zoom-in' }}
+                      onClick={openLightbox}
                       onError={(e) => {
                         const canvas = document.createElement('canvas');
                         canvas.width = 800;
@@ -658,14 +721,14 @@ function ProjectDetail() {
                       <>
                         <button
                           className="gallery-nav-btn gallery-nav-prev"
-                          onClick={() => setActiveImageIndex((prev) => (prev === 0 ? project.gallery.length - 1 : prev - 1))}
+                          onClick={showPrevImage}
                           aria-label="Previous image"
                         >
                           <i className="fas fa-chevron-left"></i>
                         </button>
                         <button
                           className="gallery-nav-btn gallery-nav-next"
-                          onClick={() => setActiveImageIndex((prev) => (prev === project.gallery.length - 1 ? 0 : prev + 1))}
+                          onClick={showNextImage}
                           aria-label="Next image"
                         >
                           <i className="fas fa-chevron-right"></i>
@@ -673,7 +736,17 @@ function ProjectDetail() {
                       </>
                     )}
 
-                    <div className="gallery-counter">
+                    <button
+                      type="button"
+                      className="gallery-expand-btn"
+                      onClick={openLightbox}
+                      aria-label="View full size"
+                      title="View full size"
+                    >
+                      <i className="fas fa-expand"></i>
+                    </button>
+
+                    <div className="gallery-counter" aria-live="polite">
                       {activeImageIndex + 1} / {project.gallery.length}
                     </div>
                   </div>
@@ -725,6 +798,7 @@ function ProjectDetail() {
               )}
 
               <DetailSection
+                id="challenges"
                 icon={IconTarget}
                 color="var(--orange-300)"
                 title="Technical Challenges"
@@ -735,7 +809,7 @@ function ProjectDetail() {
                   {project.challenges.map((challenge, index) => {
                     const [title, description] = challenge.split(': ');
                     return (
-                      <div key={index} className="col-12">
+                      <div key={index} className="col-md-6">
                         <DetailCard icon={IconLightbulb} color="var(--orange-300)" title={title} description={description || challenge} />
                       </div>
                     );
@@ -745,6 +819,7 @@ function ProjectDetail() {
 
               {project.roleAndResponsibilities && (
                 <DetailSection
+                  id="role"
                   icon={IconBriefcase}
                   color="var(--teal-300)"
                   title="Role & Responsibilities"
@@ -755,7 +830,7 @@ function ProjectDetail() {
                     {project.roleAndResponsibilities.map((responsibility, index) => {
                       const [role, description] = responsibility.split(': ');
                       return (
-                        <div key={index} className="col-12">
+                        <div key={index} className="col-md-6">
                           <DetailCard icon={IconCheckCircle} color="var(--teal-300)" title={role} description={description || responsibility} />
                         </div>
                       );
@@ -812,6 +887,28 @@ function ProjectDetail() {
                     </div>
                   </div>
                 </div>
+
+                <nav className="glass-card p-3" aria-label="Jump to section">
+                  <div className="section-subtitle small fw-bold text-uppercase mb-2 px-2" style={{ letterSpacing: '0.06em' }}>
+                    On This Page
+                  </div>
+                  <a href="#overview" className="quick-nav-link">
+                    <IconFileText size={15} />Overview
+                  </a>
+                  {project.gallery && project.gallery.length > 0 && (
+                    <a href="#gallery" className="quick-nav-link">
+                      <IconImage size={15} />Gallery
+                    </a>
+                  )}
+                  <a href="#challenges" className="quick-nav-link">
+                    <IconTarget size={15} />Technical Challenges
+                  </a>
+                  {project.roleAndResponsibilities && (
+                    <a href="#role" className="quick-nav-link">
+                      <IconBriefcase size={15} />Role & Responsibilities
+                    </a>
+                  )}
+                </nav>
               </div>
             </div>
           </div>
@@ -854,6 +951,60 @@ function ProjectDetail() {
           </div>
         </div>
       </section>
+
+      {/* Gallery lightbox — full-size view, opened from the expand button or the main image */}
+      {lightboxOpen && project.gallery && (
+        <div className="gallery-lightbox-backdrop" onClick={() => setLightboxOpen(false)}>
+          <div
+            className="gallery-lightbox"
+            role="dialog"
+            aria-modal="true"
+            aria-label={`${project.title} — image ${activeImageIndex + 1} of ${project.gallery.length}`}
+            ref={lightboxRef}
+            tabIndex={-1}
+            onClick={(e) => e.stopPropagation()}
+            onKeyDown={handleLightboxKeyDown}
+          >
+            <button
+              className="lightbox-close-btn"
+              onClick={() => setLightboxOpen(false)}
+              aria-label="Close full-size view"
+            >
+              <i className="fas fa-times"></i>
+            </button>
+
+            <img
+              src={project.gallery[activeImageIndex]}
+              alt={`${project.title} - Image ${activeImageIndex + 1}`}
+              className="lightbox-image"
+              decoding="async"
+            />
+
+            {project.gallery.length > 1 && (
+              <>
+                <button
+                  className="lightbox-nav-btn lightbox-nav-prev"
+                  onClick={showPrevImage}
+                  aria-label="Previous image"
+                >
+                  <i className="fas fa-chevron-left"></i>
+                </button>
+                <button
+                  className="lightbox-nav-btn lightbox-nav-next"
+                  onClick={showNextImage}
+                  aria-label="Next image"
+                >
+                  <i className="fas fa-chevron-right"></i>
+                </button>
+              </>
+            )}
+
+            <div className="lightbox-counter" aria-live="polite">
+              {activeImageIndex + 1} / {project.gallery.length}
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
