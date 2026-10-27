@@ -10,7 +10,7 @@ import Experience from './components/Experience';
 import Education from './components/Education';
 import ProjectDetail from './components/ProjectDetail';
 import './styles/theme.css';
-import './styles/projects-ultra-modern.css';
+import './styles/site.css';
 
 function App() {
   return (
@@ -20,12 +20,12 @@ function App() {
           <>
             <Header />
             <Hero />
-            <main>
-              <About />
-              <Skills />
-              <Experience />
-              <Education />
+            <main id="main">
               <Projects />
+              <Experience />
+              <Skills />
+              <About />
+              <Education />
               <Contact />
             </main>
             <Footer />
