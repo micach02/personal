@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Michael Vincent Abellar — Résumé</title>
+<!--
+  Source for the résumé PDF. Edit the text below, then regenerate:
+
+    "C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe" --headless=new --disable-gpu ^
+      --no-pdf-header-footer --print-to-pdf="public\Michael-Abellar-Resume.pdf" "resume\resume.html"
+
+  (Run from the project root.) Keep it to one A4 page.
+-->
+<style>
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 210mm; height: 297mm; }
+  body {
+    font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    font-size: 9.3pt;
+    line-height: 1.42;
+    color: #2b3240;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    display: flex;
+  }
+
+  /* ---- Sidebar ---- */
+  aside {
+    width: 72mm;
+    background: #2f3748;
+    color: #dfe5ef;
+    padding: 12mm 7.5mm 10mm;
+  }
+  .photo {
+    display: block;
+    width: 36mm;
+    height: 36mm;
+    margin: 0 auto 5mm;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center 18%;
+    background: #fff;
+    border: 1.2mm solid #46506a;
+  }
+  aside h1 { font-size: 16.5pt; font-weight: 400; text-align: center; color: #fff; line-height: 1.15; }
+  aside .title { text-align: center; color: #5cc8f5; font-size: 10.5pt; margin: 1.2mm 0 6mm; }
+
+  aside h2 {
+    font-size: 8.6pt;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #5cc8f5;
+    margin: 5.2mm 0 1.8mm;
+    padding-bottom: 1mm;
+    border-bottom: 0.3mm solid #46506a;
+  }
+  aside h2:first-of-type { margin-top: 0; }
+  .contact div { margin-bottom: 1.4mm; overflow-wrap: anywhere; font-size: 8.8pt; }
+  .contact b { display: block; color: #8d99b3; font-weight: 600; font-size: 7.4pt; letter-spacing: 0.06em; text-transform: uppercase; }
+
+  .skill { margin-bottom: 2.6mm; }
+  .skill b { display: block; color: #fff; font-size: 8.8pt; margin-bottom: 0.3mm; }
+  .skill span { font-size: 8.7pt; color: #cfd6e4; }
+
+  .edu strong { color: #fff; display: block; font-size: 9.2pt; }
+  .edu span { display: block; font-size: 8.7pt; color: #cfd6e4; }
+
+  /* ---- Main ---- */
+  main { flex: 1; padding: 12mm 10mm 10mm 9mm; }
+  main h2 {
+    font-size: 10pt;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: #2f3748;
+    margin: 0 0 2mm;
+    padding-bottom: 1mm;
+    border-bottom: 0.4mm solid #5cc8f5;
+  }
+  main section + section { margin-top: 4.5mm; }
+  .summary { color: #3b4458; }
+
+  .job-head { display: flex; justify-content: space-between; align-items: baseline; gap: 4mm; }
+  .job-head h3 { font-size: 10.6pt; color: #1e2533; }
+  .job-head .when { font-size: 8.8pt; color: #5b6579; white-space: nowrap; }
+  .company { color: #3f6fd8; font-weight: 600; font-size: 9.4pt; margin-bottom: 1.6mm; }
+
+  ul { list-style: none; }
+  li { position: relative; padding-left: 4mm; margin-bottom: 1.3mm; }
+  li::before { content: ''; position: absolute; left: 0.6mm; top: 1.9mm; width: 1.3mm; height: 1.3mm; border-radius: 50%; background: #5cc8f5; }
+
+  .project { margin-bottom: 2.6mm; }
+  .project h4 { font-size: 9.6pt; color: #1e2533; }
+  .project h4 em { font-style: normal; font-weight: 400; color: #5b6579; font-size: 8.4pt; }
+  .project p { color: #3b4458; }
+
+  .earlier .row { display: flex; justify-content: space-between; gap: 4mm; margin-bottom: 1.6mm; }
+  .earlier .row b { color: #1e2533; }
+  .earlier .row span { color: #5b6579; font-size: 8.6pt; white-space: nowrap; }
+  .earlier p { color: #3b4458; font-size: 8.9pt; }
+</style>
+</head>
+<body>
+  <aside>
+    <img class="photo" src="../public/images/headshot.jpg" alt="Michael Vincent Abellar" />
+    <h1>Michael Vincent Abellar</h1>
+    <div class="title">Web Application Developer</div>
+
+    <h2>Contact</h2>
+    <div class="contact">
+      <div><b>Email</b>michaelabellar75@gmail.com</div>
+      <div><b>Phone</b>+63 993 616 0737</div>
+      <div><b>Location</b>Cebu City, Philippines</div>
+      <div><b>LinkedIn</b>linkedin.com/in/michael-vincent-abellar</div>
+      <div><b>GitHub</b>github.com/micach02</div>
+      <div><b>Portfolio</b>micach02.github.io/personal</div>
+    </div>
+
+    <h2>Skills</h2>
+    <div class="skill"><b>Front-end</b><span>HTML5, CSS3, JavaScript (ES6+), jQuery, React, TypeScript, Bootstrap, Tailwind CSS, Chart.js</span></div>
+    <div class="skill"><b>Back-end &amp; data</b><span>PHP, MySQL, SQL / PDO, Supabase (Postgres, RLS, Auth), REST API integration, WordPress</span></div>
+    <div class="skill"><b>Tools &amp; workflow</b><span>Git &amp; GitHub, VS Code, XAMPP, FileZilla, Vite, cross-browser testing, performance optimization</span></div>
+    <div class="skill"><b>Design</b><span>Figma, Photoshop, Adobe Creative Suite, Adobe Animate</span></div>
+    <div class="skill"><b>AI tools</b><span>Claude, ChatGPT, GitHub Copilot</span></div>
+
+    <h2>Education</h2>
+    <div class="edu">
+      <strong>B.S. Information Technology</strong>
+      <span>Cebu Institute of Technology – University</span>
+      <span>2012 – 2017</span>
+      <span>Capstone: School Library Management System</span>
+    </div>
+  </aside>
+
+  <main>
+    <section>
+      <h2>Profile</h2>
+      <p class="summary">
+        Web Application Developer with 9+ years of experience building responsive websites, interactive web
+        applications and e-learning platforms. Full-stack across HTML5, CSS3, JavaScript, PHP, MySQL and WordPress,
+        with a focus on UI/UX, performance and maintainable code. Turns Figma and Photoshop designs into
+        pixel-perfect, cross-browser interfaces, and uses AI tools to speed up development, debugging and refactoring.
+      </p>
+    </section>
+
+    <section>
+      <h2>Experience</h2>
+      <div class="job-head"><h3>Web Application Developer</h3><span class="when">2017 – Present</span></div>
+      <div class="company">PV Multimedia Inc. · Cebu City</div>
+      <ul>
+        <li>Develop and maintain web applications for corporate and e-learning systems, working with designers to turn UI/UX concepts, storyboards and wireframes into responsive, production-ready interfaces.</li>
+        <li>Built interactive banking simulation modules with dynamic graphs, balance-sheet calculations and financial reporting.</li>
+        <li>Led the migration of legacy Adobe Edge Animate projects to modern native HTML, CSS and JavaScript.</li>
+        <li>Integrated dynamic charts and dashboards with Chart.js; created responsive WordPress sites and custom front-end interfaces.</li>
+        <li>Created animated 3D avatar tutors for educational content.</li>
+        <li>Use Claude, ChatGPT and GitHub Copilot to accelerate development, debugging and code refactoring.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Selected projects</h2>
+      <div class="project">
+        <h4>Fitforbanking Game Series <em>HTML5 · JavaScript · PHP · MySQL</em></h4>
+        <p>Browser-based financial-literacy simulation games on a shared engine, with leaderboards, PDF certificates and instructor-led sessions.</p>
+      </div>
+      <div class="project">
+        <h4>PVM Project Tracker <em>PHP · JavaScript · custom MVC</em></h4>
+        <p>Internal tracker for planning, tasks and progress across course, video and game pipelines, with real-time dashboards and reporting.</p>
+      </div>
+      <div class="project">
+        <h4>Game Projects Manager <em>PHP · MySQL · custom MVC</em></h4>
+        <p>Admin panel for deploying and managing game and web projects, with ZIP-based semantic versioning, a built-in database manager and full activity audit logging.</p>
+      </div>
+      <div class="project">
+        <h4>Interactive E-Learning Modules <em>HTML5 · JavaScript · jQuery · PHP</em></h4>
+        <p>Responsive modules with interactive quizzes, data visualisations, animations and progress tracking.</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>Personal projects</h2>
+      <p class="summary">
+        <b>TripSplit</b>, <b>MykelHub</b>, <b>Lunelle</b> and <b>myKelKaraokeHub</b>: four React apps (three in TypeScript on
+        Supabase with Postgres, Row Level Security and Auth) covering shared-expense splitting with offline support,
+        a store credit and inventory ledger, a private cycle tracker with partner sharing, and a karaoke jukebox with a
+        QR-code phone remote and in-browser scoring.
+      </p>
+    </section>
+
+    <section class="earlier">
+      <h2>Earlier experience</h2>
+      <div class="row"><b>Technician (Intern) · Channel Technologies Inc.</b><span>Oct 2016 – Mar 2017</span></div>
+      <div class="row"><b>Technician (Intern) · Cebu City Hall, MICS Department</b><span>Apr – Jun 2016</span></div>
+      <p>Hands-on hardware installation, software updates, system testing and technical support in retail, financial and government environments.</p>
+    </section>
+  </main>
+</body>
+</html>

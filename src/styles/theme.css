@@ -44,6 +44,11 @@
   --shadow-glow-orange: 0 10px 35px rgba(255, 107, 53, 0.28);
 
   --font-heading: 'Raleway', sans-serif;
+
+  /* Point Bootstrap's text colors at the dark theme so un-styled text/headings are readable */
+  --bs-body-color: var(--text-primary);
+  --bs-heading-color: var(--text-primary);
+  --bs-body-bg: var(--bg-base);
 }
 
 body {
